@@ -3053,7 +3053,7 @@ maker.textpro("https://textpro.me/create-logo-style-marvel-studios-ver-metal-972
 case 'bible': case 'bq': case 'bible-quotes': 
 const bible = await fetchJson('https://raw.githubusercontent.com/HBMods-OFC/Media/main/QuotesMizo/BibleQuote.json')
 const mizo_bible = bible[Math.floor(Math.random() * bible.length)]
-const thuziak = `*${mizo_bible}*`
+const thuziak = `${mizo_bible}`
 return replymizobiblequotes(thuziak)         
 break
 case 'thuril': {
