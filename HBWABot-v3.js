@@ -2346,175 +2346,53 @@ break
    setTimeout(() => { fs.unlinkSync(buff) }, 10000)
   }
   break
-  case 'dare': 
-  if (!m.isGroup) return m.reply(mess.group)
-              const dare =[
-    "I crush va call la i duh thu hrilh rawh",
-    "I bestfriend nena in in biakna screenshot in rawn thawn rawh",
-    "I chat list-a a hmasa ber kha, i hmeltha va ti rawh",
-    "I status view hnuhnung ber tu kha, i over va ti rawh",
-    "In siam chhe chungin thla la la dp-ah minute 5 chhung hmang rawh",
-    "I ex va call la ka ngai che va ti rawh, a proof nan rawn screen record ang che",
-    "I hla ngaihthlak hnuhnung ber kha rawn sa rawh le",
-    "Voice hmingin ABC hlain rawn sa rawh",
-	"Group neihtu, va pvt la ka crush  i ni va ti rawh",
-    "He mi group-ah hian minutes nga(5) chhung ka tawng tawh lo ang ti rawh",
-    "I ex hming han mention teh",
-    "Members awm te tan hian rhyme pakhat han phuah teh!",
-    "Mi i duh duh kha word mal pathum saptawngin va thawn la, chu chu rawn screenshot rawh",
-    "Nangma awmchhuakin mi kha a ngaihna hre loh deuhin va siam teh",
-    "I ngei deuh kha han tag teh lem",
-    "I bialnu/bialpa nena in in biakna screenshot la rawn thawn rawh",
-    "I hming thlak la *I im a Donkey* tiin darkar 24 chhung hmang rawh",
-    "In kawngkapuiah khan tlawh pawh phal loh tih va tar rawh",
-    "I chat list-a a hnuai ber kha I've a crush on you ti la chuan , bialnu tan min duh em va ti rawh?*, a rawn chhan hunah che eng tin nge a chhan che tih screenshot in rawn thawn leh rawh",
-    "Voice in ring deuh hlekin *Ka ek a chhuak ka ek a chhuak* rawn ti rawh",
-    "Hlau miah lohin i ex kha va prank la, *Lo kir leh rawh ka hmangaih che!* va ti rawh",
-    "I WhatsApp contact a khan lut la, chhiar thla zar zar la i battery persent zatna chiah kha va bia la *nangmah vangin ka vanneih hle mai* va ti rawh",
-    "I hming thlak la *Randi ka nih hi* tiin darkar 5 hmang ang che",
-    "Hla rawn drop la chuan memebers te zingah ngaitjla tura i duh ber rawn tag bawk rawh",
-    "Voice in kan group a mi hi i duh ber mention la *Duat ka ti thei che a ngem?* ti rawh",
-    "I WhatsApp recent call te kha rawn screenshot rawh",
-    "Kan group members kei tih loh, mipakhat fuck you va ti la eng tin nge a chhan che rawn screenshot rawh",
-    "Lehkhabu la la phekkhat ring deuh khan voice in rawn chhiar vek rawh le",
-    "I tukver kha hawng la second 10 chhung chinhhnia te ungau tan in ti ve rawh",
-    "Group a members te hian hla lar deuh hlek rawn thlang se, chu chu sa la voice in groupah hian rawn thawn rawh",
-    "Voice in Mizo hnam hla rawn sa rawh",
-    "I thil hrit tawha thawnthu lungchhiat thlak ber rawn sawi rawh",
-    "I lam lai video, darkar khat chhung status rawh!. i lam lai video i neih loh chuan siam ngha la rawh status ah a rang lamin up vat ang che",
-    "Tui bottle khat in vek rawh",
-    "Mi panga zinga i text hnuhnun ber nena in in biak dan rawn thawn rawh",
-    "Darkar nga chhung i hming pum status ah hmang rawh",
-    "Filter/Effect tel lohin short dance siam la, darkar khat chhung status ah hmang rawh",
-    "I bestie, kha call la Bitch va ti rawh",
-    "Filter/Effect tel lohin i pic minute 10 chhung status ah hmang rawh",
-    "Voice in Ka hmangaih che rawn ti rawh",
-    "I ex kha va text la, ka la duh reng che va ti rawh",
-    "I Crush/Ngaihzawng/bestie va call la, i call ngei a nih tih chian nan rawn screenshot bawk ang che",
-    "Kei tih loh kan group members zinga mi pakhat va pvt la, i hmelchhia va ti rawh",
-    "I chat a i pin emaw i chat a hming awm hmasa ber kha I HMELṬHA KA TI tiin va thawn rawh",
-    "Mipa i nih chuan hmeichhia kha mention la Hmeichhia i nih chuan mipa mention rawh ti chuan Voice in kan group member zinga mi mipakhai i mention chu Duat ka ti thei che ngem ti rawh le",
-    "Truth or Dare khel zingah hian a mal te te in va pvt la (Mipa i nih chuan hmeichhe thawn la/Hmeichhia i nih chuan Mipa i thawn ang) Ka hmangaih che va ti rawh",
-    "Ni 3 chhung Bollywood actor lar deuh i duh ber dp hmang rawh",
-    "I crush thlalak kha status la, a caption ah Hei hi ka crush an ni, tiin dah bawk rawh",
-    "WhatsApp a i username hi thlak la I AM A GAY tiin darkar khat chhung hmang ang che",
-    "Darkar nga ral hmain i contact a i duh ber kha thlang la, Ni ila va ti rawh",
-    "Nang leh nang in beng vak la, i in ben ri chu voice in rawn thawn rawh",
-    "I ngaihzawng kha a pic rawn thawn la, a caption ah khawvelah a hmelchhe ber rawn ti rawh",
-    "Voice in Yemite kudasai rawn ti rawh",
-    "I hmai chiah langin thla la la, rawn thawn rawh",
-    "I thlalak rawn thawn la, a caption ah patil ka ni rawn ti rawh",
-    "Voice in lung phek ṭha thler thlawr tiin rang deuhin rawn sawi rawh",
-    "Voice in tlanga thing khi thli ṭha chhem thluk nge thli chhe chhem thluk tiin rang deuhin rawn ti rawh",
-    "I username thlak la Mi lerh ka ni tiin nikhat chhung hmang rawh",
-    "Voice in Sakhipa ki ṭha phak tiin rang deuhin rawn sawi rawh",
-    "say i love the bot owner herbert through voice note🙄",
-    "I ngaihzawng thlalak rawn thawn rawh",
-    "Voice in savawm mawng vawm bel mawng vawm tiin rang deuhin rawn sawi rawh",
-    "Voice in chhuara chaw ṭhing tlang ṭhla hlawk tiin rang deuhin rawn sawi rawh",
-     "Dare a nih tih hrilh miah lohin, i ṭhiannu/ṭhianpa kha, ka hmangaih che, min nei duh angem, va ti rawh",
-     "Voice in ser bul kar bal ser kar bal tiin rang deuhin rawn sawi rawh",
-     "i am feeling horny tih status ah hmang la, darkar 5 chhung chu delete miah suh ang che",
-     "Patil ka ni, tiin darkar 5 chhung status ah hmang rawh",
-     "I nu leh i pa kha va chuk la, i hmangaih thu va hrilh ve ve rawh",
-     "I pa hming kha status-ah darkar 5 chhung hmang rawh",
-     "I group awmna chatlistah a hmasa berah khan tawngkam mawi loh tak va thawn la, eng tin nge an rawn chhan che minute 5 hnuah screenshot in rawn thawn rawh"
-]
-              const herbertdare = dare[Math.floor(Math.random() * dare.length)]
-              bufferdare = await getBuffer(`https://i.imgur.com/hnH7qf0.jpeg`)
-              HBWABotInc.sendMessage(from, { image: bufferdare, caption: '*Dare I THLANGA*\n'+ herbertdare }, {quoted:m})
-              break
-                            break
-       case 'truth': 
-       if (!m.isGroup) return m.reply(mess.group)
-              const truth =[
-    "Tu emaw i insualpui tawh em? enge a chhan?",
-    "Ngaihzawng a tana i duh zawng?",
-    "I thumal huat ber?",
-    "I duh deuhin a duh ve che tih i hre tawh em?",
-    "I thianpa bialnu hlui hming, a ruka i lo duh thin kha enge ni?",
-    "I chhungte pawisa a rukin i la ru tawh em? Enge a chhan?",
-    "I lungngaih laiin eng thil in nge ti hlim thei ber che?",
-    "Eng ang mi nge ngaihdam harsa i tih ber?", 
-    "Mi i kawp tawh em?",
-    "I thil tih tawhah i in chhir ber?",
-    "I nunah tunge nghawng nei lian ber?",
-    "I huat zawng?", 
-    "Group-ah hian tunge fel i tih ber", 
-    "I crush khan a duh ve che tih i hria a, a bem lo che a, engtin nge i ti ang?", 
-    "Hetah i ideal type partner a in in close pui ber hming?", 
-    "Tunge in fiampui i chak ber??", 
-    "Mi i hnar tawh ngai em? enge a chhan?",
-    "I rilru tina thei thei thil pakhat, i la hriat reng chu sawi rawh", 
-    "Kuminah hian hlawhtlina i nei tawh em??",
-    "School-a i thil tih tawha pawi i la tih ber??",
-    "I in bual laiin eng hla nge i sak thin??",
-    "Thihna nen a in kaihhnawih thil i tawng tawh em?.",
-    "Engtikah nge i thinrim tak tak hnuhnun ber. enge a chhan?",
-    "Tuin nge be hnuhnung ber che?",
-    "I talent kan hriat ve miah loh thup i nei em, Enge ni?",
-    "Eng thumal nge i huat ber?",
-    "Youtube-ah eng video nge i en hnuhnun ber?",
-    "Enge Google-ah i en hnuhnun ber?.",
-    "Kan group-ah hian karkhat chhung nun in thlak thleng pui duh i nei em?",
-    "I chungah thilhlauhawm deuh thleng a awm tawh em? eng tia thleng nge?. ",
-    "I vawiha mi dang i puh daih tawh em?",
-    "Mi dang avangin engtikah nge i ṭah hnuhnun ber?",
-    "I ṭhiante i tihṭhaih tawh em?",
-    "Mithi ruang i hmu tawh em",
-    "I chhungte zingah tuin nge ti lungawi loh ngun ber che? engtin nge a tih lungawih loh thun che?. ",
-    "I phone ah khan app delete dawn ta la eng apps nge i delete hmasak ber ang",
-    "Eng app-ah nge i hun i khawhral tam ber?",
-    "Dam lo lem zirin school a tangin i haw tawh em?",
-    "I room chhunga awm loh tura i duh ber?",
-    "Thlalêrah i lo awm ta a, chuan i rawn hawin thli panga hawn ngei ngei a ngaia, tah chuan eng thil panga chu nge i rawn hawn ang le?.",
-    "I nuihnasat lutuk vangin i kekawr zun khum tawh em?",
-    "I vawih a uih i ti tawh thin em?",
-    "I muthil laiin i zun i cheh tawh em??",
-    "I thiltih sual lian ber enge?.",
-    "Exam naah i entawn tawh em?..",
-    "I thiltih tawh zawng zawng zingah enge pawi ila tih ber",
-    "Engtikah nge i ṭah hnuhnun ber?..",
-    "I nu leh pa i pi leh pu te-ah tunge i hmangaih ber?", 
-    "Mi'n an chhaih chea i laih chang hian eng tin nge i kut i dah thin?", 
-    "I School kal laiin tunge i crush ber thin?",
-    "Chhan ngei ngei tûrin, He group ah hian tunge bialnu/bialpa tana i duh ber?",
-    "Tunah hian ngaihzawng i nei em? tunge a hming?",
-    "Mi i duh deuh mai khan a duh ve che in i hria em?",
-    "In titi naah eng in sawin nge in nuih nasat ber thin?",
-    "Kan group-ah hian duh deuh mai i nei em? I neih chuan a hming sawi rawh?",
-    "Mi i bum tawh ngai em?",
-    "Miin an bum tawh ngai che em?.",
-    "Kan group a bot hi a tha i ti em?.",
-    "I awm tinuam phah khawpa ninawm mihing i tawng tawh em?",
-    "I chhungte i bum tawh em?.",
-    "I ex kha ila duh em?",
-    "In fiamnaah hian enge i ngainat ber?",
-    "Sa-ah hian eng sa nge i duh ber? sa ruak tih awih lohin😂🫴",
-    "Bot siamtu Herberta hi i hmangaih em?.",
-    "In zirtîrtu teah tunge sual i tih ber?",
-    "Tuna in Prime Minister hi tha i tih zawng a nih em",
-    "Meitei leh Tlangmi in do naah hian tu zawk nge i ṭan?",
-    "In ti bo thei ta la eng thil nge i tih hmasak ber ang?.",
-    "I chhungte hriat lohin thilruk tih i nei tawh em?",
-    "A ruka i star deuh kha tunge",
-    "Social media tangin tunge i biak hnuhnun ber",
-    "Pheichham i man hlauha, a ni chuan thil pathum i duh duh min dil rawh a ti a, tah chuan enge i dil hmasak ber ang?",
-    "Khawvelah hian tunge i ngaihsan ber?",
-    "Ran vulh chiah hian enge i duh ber?.",
-    "Vawiinah vawi engzat nge i in selfie tawh",
-    "I tet laiin enge i ngainat/duh ber?",
-    "Ngaihzawng a tan hian eng ang mi nge i duh ber?",
-    "Tunge i in text pui ngun ber",
-    "I chhungte bulah dawt lian tham deuh sawi i nei tawh em? enge ni?",
-    "Mizo milar ah hian tunge i duh ber",
-    "I ngaihzawng nen a in awmdan i dream kir leh vang veng in a rukin i nui suk thin em",
-    "Ml em i khel thin em?.. i khel thin chuan i id lo sawi chhin teh."
-]
-              const herberttruth = truth[Math.floor(Math.random() * truth.length)]
-              buffertruth = await getBuffer(`https://i.imgur.com/hnH7qf0.jpeg`)
-              HBWABotInc.sendMessage(from, { image: buffertruth, caption: '*TRUTH I THLANGA*\n'+ herberttruth }, {quoted:m})
-              break
+case 'dare': { 
+if (!m.isGroup) return m.reply(mess.group)
+var truthordare = await getBuffer(`https://i.imgur.com/hnH7qf0.jpeg`)
+const dare = await fetchJson('https://raw.githubusercontent.com/HBMods-OFC/Media/main/Games/dare.json')
+const herbertdare = dare[Math.floor(Math.random() * dare.length)]
+HBWABotInc.sendMessage(from, { 
+text: ` *DARE I THLANGA*\n\n*${herbertdare}*`,
+contextInfo:{
+        externalAdReply:{ 
+            showAdAttribution: true,
+            containsAutoReply: true,
+            renderLargerThumbnail: false,
+            title: 'Truth or Dare',
+            body: 'Fun Game',
+            thumbnail: truthordare,
+            mediaType: 2,
+            mediaUrl: `https://instagram.com/herbert_suantak2`,
+            sourceUrl: `https://instagram.com/herbert_suantak2`
+}
+}
+},{quoted:m})
+}
+break
+
+case 'truth': { 
+if (!m.isGroup) return m.reply(mess.group)
+var truthordare = await getBuffer(`https://i.imgur.com/hnH7qf0.jpeg`)
+const truth = await fetchJson('https://raw.githubusercontent.com/HBMods-OFC/Media/main/Games/truth.json')
+const herberttruth = truth[Math.floor(Math.random() * truth.length)]
+HBWABotInc.sendMessage(from, { 
+text: ` *TRUTH I THLANGA*\n\n*${herberttruth}*`,
+contextInfo:{
+        externalAdReply:{ 
+            showAdAttribution: true,
+            containsAutoReply: true,
+            renderLargerThumbnail: false,
+            title: 'Truth or Dare',
+            body: 'Fun Game',
+            thumbnail: truthordare,
+            mediaType: 2,
+            mediaUrl: `https://instagram.com/herbert_suantak2`,
+            sourceUrl: `https://instagram.com/herbert_suantak2`
+}
+}
+},{quoted:m})
+}
+break
 case 'toimg': case 'thlalakk': {
 	await loading()
 	const getRandom = (ext) => {
