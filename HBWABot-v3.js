@@ -1589,7 +1589,7 @@ contextInfo:{
 }
 break 
 case 'fm': case 'fmwhatsapp': { 
-var hbmodspng = await getBuffer(`https://i.imgur.com/3RAYRjk.png `)
+var hbmodspng = await getBuffer(`https://i.imgur.com/3RAYRjk.png`)
 HBWABotInc.sendMessage(from, { 
 text: ` *FMWhatsApp Latest Version*\nhttps://herbert70.blogspot.com/search/label/FMWhatsApp\nDeveloped by HBMods Apk Store`,
 contextInfo:{
@@ -2352,7 +2352,7 @@ var truthordare = await getBuffer(`https://i.imgur.com/hnH7qf0.jpeg`)
 const dare = await fetchJson('https://raw.githubusercontent.com/HBMods-OFC/Media/main/Games/dare.json')
 const herbertdare = dare[Math.floor(Math.random() * dare.length)]
 HBWABotInc.sendMessage(from, { 
-text: ` *DARE I THLANGA*\n\n*${herbertdare}*`,
+text: ` *DARE I THLANGA*\n${herbertdare}\n\n____________`,
 contextInfo:{
         externalAdReply:{ 
             showAdAttribution: true,
@@ -2376,7 +2376,7 @@ var truthordare = await getBuffer(`https://i.imgur.com/hnH7qf0.jpeg`)
 const truth = await fetchJson('https://raw.githubusercontent.com/HBMods-OFC/Media/main/Games/truth.json')
 const herberttruth = truth[Math.floor(Math.random() * truth.length)]
 HBWABotInc.sendMessage(from, { 
-text: ` *TRUTH I THLANGA*\n\n*${herberttruth}*`,
+text: ` *TRUTH I THLANGA*\n${herberttruth}\n\n____________`,
 contextInfo:{
         externalAdReply:{ 
             showAdAttribution: true,
