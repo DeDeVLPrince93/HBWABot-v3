@@ -5,6 +5,8 @@ const fs = require("fs")
 global.autoTyping = false
 global.autoRecord = false
 global.available = true
+global.autoread = true
+global.autoread_status = false
 
 global.APIs = { // API Prefix
   // name: 'https://website'
