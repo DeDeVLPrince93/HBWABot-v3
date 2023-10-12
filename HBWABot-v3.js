@@ -245,7 +245,7 @@ console.error(err)
 }
 
 if (!HBWABotInc.public) {
-if (!isCreator && !m.key.fromMe) return
+if (!HerbertTheCreator && !m.key.fromMe) return
         }
 if (autoread) {
             HBWABotInc.readMessages([m.key])
@@ -966,7 +966,7 @@ contacts: list }, mentions: [sender] }, { quoted: herbert })
 }
 break
 case 'autoread':
-                if (!isCreator) return replygcxeon(mess.owner)
+                if (!HerbertTheCreator) return replygcxeon(mess.owner)
                 if (args.length < 1) return replygcxeon(`I option duh thlang rawh, i tih dan tur chu\n${prefix + command} on/off\n\non chuan a activate ang\n off chuan deactivate na`)
                 if (q === 'on') {
                     autoread = true
@@ -977,7 +977,7 @@ case 'autoread':
                 }
                 break
 case 'autostview':
-                if (!isCreator) return replyherbertstyle(mess.owner)
+                if (!HerbertTheCreator) return replyherbertstyle(mess.owner)
                 if (args.length < 1) return replyherbertstyle(`I option duh thlang rawh, i tih dan tur chu\n${prefix + command} on/off\n\non chuan a activate ang\n off chuan deactivate na`)
                 if (q === 'on') {
                     autoread_status = true
@@ -3450,19 +3450,19 @@ case 'fbvideo': case 'fbvid':
   if (!text) return replyherbertstyle(`A link rawn dah tel rawh\n\nTiang hian: ${prefix + command} https://www.tiktok.com/@omagadsus/video/7025456384175017243?is_from_webapp=1&sender_device=pc&web_id6982004129280116226`)
   await loadingreact()
   const { ttdl } = require('btch-downloader') 
-        const url = args[0] 
-        const data = await ttdl(url) 
-        console.log(data)
-        await uploadreact()
+    const url = args[0] 
+    const data = await ttdl(url) 
+    console.log(data)
+    await uploadreact()
 await HBWABotInc.sendMessage(m.chat,{
-    video: data ,
-    caption: "Tiktok Videos download by HBWABot"
+video: data ,
+caption: "Tiktok Videos download by HBWABot"
 }, {quoted:m})
 await finishreact()
-  
-  }
-  break
-  case 'setppbot': case 'setbotpp': {
+
+}
+break
+case 'setppbot': case 'setbotpp': {
 if (!HerbertTheCreator) return m.reply(mess.owner)
 if (!quoted) return replyherbertstyle(`Send emaw reply in a caption ah tiang hian rawn dah rawh: ${prefix + command}`)
 if (!/image/.test(mime)) return replyherbertstyle(`Send emaw reply in a caption ah tiang hian rawn dah rawh : ${prefix + command}`)
