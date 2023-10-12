@@ -956,14 +956,14 @@ contacts: list }, mentions: [sender] }, { quoted: herbert })
 }
 break
 case 'autoread':
-                if (!HerbertTheCreator) return replygcxeon(mess.owner)
+                if (!HerbertTheCreator) return replyherbertstyle(mess.owner)
                 if (args.length < 1) return replygcxeon(`I option duh thlang rawh, i tih dan tur chu\n${prefix + command} on/off\n\non chuan a activate ang\n off chuan deactivate na`)
                 if (q === 'on') {
                     autoread = true
-                    replygcxeon(`Message autoread a dah a ni✓`)
+                    replyherbertstyle(`Message autoread a dah a ni✓`)
                 } else if (q === 'off') {
                     autoread = false
-                    replygcxeon(`Message autoread chu off a ni✓`)
+                    replyherbertstyle(`Message autoread chu off a ni✓`)
                 }
                 break
 case 'autostview':
