@@ -126,7 +126,7 @@ try{
 })
 
 await delay(5555) 
-start('2',colors.bold.white('\n\nMessage nghak mek a ni..'))
+start('2',colors.bold.white('\n\nMessage nghah mek a ni..'))
 
 HBWABotInc.ev.on('creds.update', await saveCreds)
 
@@ -149,16 +149,23 @@ HBWABotInc.ev.on('creds.update', await saveCreds)
     })
 
 HBWABotInc.ev.on('messages.upsert', async chatUpdate => {
-try {
-const kay = chatUpdate.messages[0]
-if (!kay.message) return
-kay.message = (Object.keys(kay.message)[0] === 'ephemeralMessage') ? kay.message.ephemeralMessage.message : kay.message
-if (!HBWABotInc.public && !kay.key.fromMe && chatUpdate.type === 'notify') return
-if (kay.key.id.startsWith('BAE5') && kay.key.id.length === 16) return
-const m = smsg(HBWABotInc, kay, store)
-require('./HBWABot-v3')(HBWABotInc, m, chatUpdate, store)
-} catch (err) {
-console.log(err)}})
+        try {
+            const mek = chatUpdate.messages[0]
+            if (!mek.message) return
+            mek.message = (Object.keys(mek.message)[0] === 'ephemeralMessage') ? mek.message.ephemeralMessage.message : mek.message
+            if (mek.key && mek.key.remoteJid === 'status@broadcast'){
+            if (autoread_status) {
+            await HBWABotInc.readMessages([mek.key]) 
+            }
+            } 
+            if (!HBWABotInc.public && !mek.key.fromMe && chatUpdate.type === 'notify') return
+            if (mek.key.id.startsWith('BAE5') && mek.key.id.length === 16) return
+            const m = smsg(HBWABotInc, mek, store)
+            require("./HBWABot-v3")(HBWABotInc, m, chatUpdate, store)
+        } catch (err) {
+            console.log(err)
+        }
+    })
 
 	// detect group update
 		HBWABotInc.ev.on("groups.update", async (json) => {

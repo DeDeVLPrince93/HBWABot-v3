@@ -245,22 +245,11 @@ console.error(err)
 }
 
 if (!HBWABotInc.public) {
-if (!m.key.fromMe) return
-}
-
-//chat counter (console log)
-        if (m.message && m.isGroup) {
-            HBWABotInc.readMessages([m.key])
-            console.log(color(`\n< ================================================== >\n`, 'cyan'))
-			console.log(color(`Group Chat:`, 'green'))
-            console.log(chalk.black(chalk.bgWhite('[ MESSAGE ]')), chalk.black(chalk.bgGreen(new Date)), chalk.black(chalk.bgBlue(budy || m.mtype)) + '\n' + chalk.magenta('=> From'), chalk.green(pushname), chalk.yellow(m.sender) + '\n' + chalk.blueBright('=> In'), chalk.green(groupName, m.chat))
-        } else {
-            HBWABotInc.readMessages([m.key])
-            console.log(color(`\n< ================================================== >\n`, 'cyan'))
-			console.log(color(`Private Chat:`, 'green'))
-            console.log(chalk.black(chalk.bgWhite('[ MESSAGE ]')), chalk.black(chalk.bgGreen(new Date)), chalk.black(chalk.bgBlue(budy || m.mtype)) + '\n' + chalk.magenta('=> From'), chalk.green(pushname), chalk.yellow(m.sender))
+if (!isCreator && !m.key.fromMe) return
         }
-
+if (autoread) {
+            HBWABotInc.readMessages([m.key])
+        }
 if (isCmd && !isUser) {
 herbertverifieduser.push(sender)
 fs.writeFileSync('./database/user.json', JSON.stringify(herbertverifieduser, null, 2))
@@ -976,8 +965,30 @@ displayName: `${list.length} Contact`,
 contacts: list }, mentions: [sender] }, { quoted: herbert })
 }
 break
+case 'autoread':
+                if (!isCreator) return replygcxeon(mess.owner)
+                if (args.length < 1) return replygcxeon(`I option duh thlang rawh, i tih dan tur chu\n${prefix + command} on/off\n\non chuan a activate ang\n off chuan deactivate na`)
+                if (q === 'on') {
+                    autoread = true
+                    replygcxeon(`Message autoread a dah a ni✓`)
+                } else if (q === 'off') {
+                    autoread = false
+                    replygcxeon(`Message autoread chu off a ni✓`)
+                }
+                break
+case 'autostview':
+                if (!isCreator) return replyherbertstyle(mess.owner)
+                if (args.length < 1) return replyherbertstyle(`I option duh thlang rawh, i tih dan tur chu\n${prefix + command} on/off\n\non chuan a activate ang\n off chuan deactivate na`)
+                if (q === 'on') {
+                    autoread_status = true
+                    replyherbertstyle(`Status/Stories auto view a dah a ni✓`)
+                } else if (q === 'off') {
+                    autoread_status = false
+                    replyherbertstyle(`Status/Stories auto view chu off a ni✓`)
+                }
+                break                
 
-case 'herbert': case 'hbwabot': case '/bot': { 
+case 'hbwabot': case '/bot': { 
         let audiobuffy = fs.readFileSync(`./HBMedia/audio/Herbert.mp3`)
 HBWABotInc.sendMessage(m.chat, { audio: audiobuffy, mimetype: 'audio/mp4', ptt: true }, { quoted: m })  
 }
@@ -1954,7 +1965,41 @@ await HBWABotInc.sendMessage(m.chat,{
 }, {quoted:m})
 await finishreact()
 }
-            break           
+            break  
+            case 'ytmp3x': {
+const herbertvideo = require('./lib/ytdl2')
+if (args.length < 1 || !isUrl(text) || !herbertvideo.isYTUrl(text)) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} https://youtube.com/watch?v=DA9gCKwaefg`)
+const vid=await herbertvideo.mp4(text)
+const ytc=`
+*Tittle:* ${vid.title}
+*Date:* ${vid.date}
+*Duration:* ${vid.duration}
+*Quality:* ${vid.quality}`
+await HBWABotInc.sendMessage(m.chat,{
+    video: {url:vid.videoUrl},
+    caption: ytc
+},{quoted:m})
+}
+break         
+            case 'dvideo': case 'ytvideo': {
+const herbertvideo = require('./lib/ytdl2')
+if (!text) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} K hminga siar lalnu`)
+            await loadingreact()
+let yts = require("youtube-yts")
+let search = await yts(text)
+let anup3k = search.videos[0]
+const pl= await herbertvideo.mp4(anup3k.url)
+const ytc=`
+*Tittle:* ${vid.title}
+*Date:* ${vid.date}
+*Duration:* ${vid.duration}
+*Quality:* ${vid.quality}`
+await HBWABotInc.sendMessage(m.chat,{
+    video: fs.readFileSync(pl.path),
+    caption: ytc
+},{quoted:m})
+}
+break
 case 'ytmp3':{
 //Credit by HBMods-OFC
 if (!args || !args[0]) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} https://youtube.com/watch?v=DA9gCKwaefg`)
