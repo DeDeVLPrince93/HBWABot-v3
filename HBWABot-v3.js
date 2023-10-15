@@ -3399,7 +3399,7 @@ HBWABotInc.sendMessage(m.chat, { video: { url: videoUrl }, caption: caption, mim
     console.log(data)
     await uploadreact()
 await HBWABotInc.sendMessage(m.chat,{
-video: data.url,
+video: {url: data.video},
 caption: "Tiktok Videos download by HBWABot"
 }, {quoted:m})
 await finishreact()
@@ -3415,7 +3415,7 @@ case 'fbvid' : case 'facebookvid':  {
     console.log(data)
     await uploadreact()
 await HBWABotInc.sendMessage(m.chat,{
-video: data.url,
+video: {url: data.Normal_video},
 caption: "Facebook Videos download by HBWABot"
 }, {quoted:m})
 await finishreact()
