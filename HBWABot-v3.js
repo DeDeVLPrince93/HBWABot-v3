@@ -3431,7 +3431,7 @@ case 'instavid' : case 'igvid':  {
     console.log(data)
     await uploadreact()
 await HBWABotInc.sendMessage(m.chat,{
-video: {url: data.url},
+video: data.url,
 caption: "Instagram Videos download by HBWABot"
 }, {quoted:m})
 await finishreact()
