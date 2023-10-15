@@ -3323,19 +3323,30 @@ break
 case "spotify":{
 if (!isPrem) return replyprem(mess.premium)
 if (!text) return replyherbertstyle(`A link rawn dah rawh..!`)
-await loading()
+await loadingreact()
         const Spotify = require('./lib/spotify')
         const spotify = new Spotify(text)
         const info = await spotify.getInfo()
-        if ((info).error) return replyherbertstyle(`I rawn dah hi Spotify link a ni lo`)
+        if ((info).error) return replyherbertstyle(`I rawn dah hi Spotify link a ni lo https://open.spotify.com/ he mi link ah hian lut la i hla duh link chu rawn copy paste rawh\nEntirnan : Spotify https://open.spotify.com/track/0nWK6VX7dzN2BgFoL3lmNv`)
         const { name, artists, album_name, release_date, cover_url } = info
-        const details = `${themeemoji} *Title:* ${name || ''}\n${themeemoji} *Artists:* ${(artists || []).join(
-            ','
-        )}\n${themeemoji} *Album:* ${album_name}\n${themeemoji} *Release Date:* ${release_date || ''}`
-       const response = await HBWABotInc.sendMessage(m.chat, { image: { url: cover_url }, caption: details }, { quoted: m })
+        await uploadreact()
         const bufferpotify = await spotify.download()
-        await HBWABotInc.sendMessage(m.chat,{document: bufferpotify , mimetype: 'audio/mpeg', fileName: `${name || ''}`, caption : details}, {quoted: m})
-        }
+await HBWABotInc.sendMessage(m.chat,{document: bufferpotify , mimetype: 'audio/mpeg', fileName: `${name || ''}`, caption : `*Title:* ${name || ''}\n*Album:* ${album_name}\n*Release Date:* ${release_date || ''}`},
+contextInfo:{
+        externalAdReply:{ 
+            showAdAttribution: true,
+            containsAutoReply: true,
+            renderLargerThumbnail: true,
+            title: `${name || ''}`,
+            body: 'Spotify',
+            thumbnail: {url: cover_url},
+            mediaType: 2,
+            mediaUrl: bufferpotify,
+            sourceUrl: bufferpotify
+}
+},{quoted:m})
+await finishreact()
+}
 break
 case 'bass': case 'blown': case 'deep': case 'earrape': case 'fast': case 'fat': case 'nightcore': case 'reverse': case 'robot': case 'slow': case 'smooth': case 'squirrel':
                 try {
@@ -3406,32 +3417,6 @@ HBWABotInc.sendMessage(m.chat, { video: { url: videoUrl }, caption: caption, mim
     }
 }
   break         
-  case 'igvideo': case 'instavid': case 'igvid': {
-			if (args.length == 0) return reply(`Example: ${prefix + command} https://www.instagram.com/tv/CXwPLSIFDW0/?igshid=NTc4MTIwNjQ2YQ==`)
-			await loadingreact()
-			let downloadrawh = await axios.get(`https://api.lolhuman.xyz/api/instagram?apikey=haikalgans&url=${args[0]}`)
-			await uploadreact()		
-HBWABotInc.sendMessage(from, { video: { url: downloadrawh.data.result }, mimetype: 'video/mp4', caption : `*I N S T A G R A M*`}, { quoted: m })
-await finishreact()
-}
-			break
-
-case 'fbvideo': case 'fbvid':
-			if (args.length == 0) return replyherbertstyle(`A link rawn dah tel rawh\n\nTiang hian: ${prefix + command} https://id-id.facebook.com/SamsungGulf/videos/video-bokeh/561108457758458/`)
-			await finishreact()
-			axios.get(`https://api.lolhuman.xyz/api/facebook?apikey=haikalgans&url=${args[0]}`).then(({ data }) => {
-				HBWABotInc.sendMessage(from, { video: { url: data.result.link[data.result.link.length - 1].link }, mimetype: 'video/mp4', caption : `*F A C E - B O O O K*` })
-			})
-			break
-			
-			case 'twitvideo': case 'twitvid': 
-			if (args.length == 0) return replyherbertstyle(`A link rawn dah tel rawh\n\nTiang hian: ${prefix + command} https://twitter.com/gofoodindonesia/status/1229369819511709697`)
-			await finishreact()
-			axios.get(`https://api.lolhuman.xyz/api/twitter?apikey=haikalgans&url=${args[0]}`).then(({ data }) => {
-				HBWABotInc.sendMessage(from, { video: { url: data.result.link[data.result.link.length - 1].link }, mimetype: 'video/mp4' })
-			})
-			break
-			
   
   case 'tiktokvid' : case 'ttvid':  {
   if (!text) return replyherbertstyle(`A link rawn dah tel rawh\n\nTiang hian: ${prefix + command} https://www.tiktok.com/@omagadsus/video/7025456384175017243?is_from_webapp=1&sender_device=pc&web_id6982004129280116226`)
@@ -3442,8 +3427,40 @@ case 'fbvideo': case 'fbvid':
     console.log(data)
     await uploadreact()
 await HBWABotInc.sendMessage(m.chat,{
-video: data ,
+video: {url: data},
 caption: "Tiktok Videos download by HBWABot"
+}, {quoted:m})
+await finishreact()
+
+}
+break
+case 'fbvid' : case 'facebookvid':  {
+  if (!text) return replyherbertstyle(`A link rawn dah tel rawh\n\nTiang hian: ${prefix + command} https://fb.watch/mcx9K6cb6t/?mibextid=8103lRmnirLUhozF`)
+  await loadingreact()
+  const { fbdown } = require('btch-downloader') 
+    const url = args[0] 
+    const data = await fbdown(url) 
+    console.log(data)
+    await uploadreact()
+await HBWABotInc.sendMessage(m.chat,{
+video: {url: data},
+caption: "Facebook Videos download by HBWABot"
+}, {quoted:m})
+await finishreact()
+
+}
+break 
+case 'instavid' : case 'igvid':  {
+  if (!text) return replyherbertstyle(`A link rawn dah tel rawh\n\nTiang hian: ${prefix + command} https://www.instagram.com/p/ByxKbUSnubS/?utm_source=ig_web_copy_link`)
+  await loadingreact()
+  const { igdl } = require('btch-downloader') 
+    const url = args[0] 
+    const data = await igdl(url) 
+    console.log(data)
+    await uploadreact()
+await HBWABotInc.sendMessage(m.chat,{
+video: {url: data},
+caption: "Instagram Videos download by HBWABot"
 }, {quoted:m})
 await finishreact()
 
