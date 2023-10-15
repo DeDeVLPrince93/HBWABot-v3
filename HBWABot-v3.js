@@ -3428,10 +3428,11 @@ case 'instavid' : case 'igvid':  {
   const instagramDl = require('@sasmeee/igdl') 
     const link = args[0] 
     const data = await instagramDl(link) 
-    console.log(data)
+    console.log(data)    
     await uploadreact()
+    let larawh = data.download_link
 await HBWABotInc.sendMessage(m.chat,{
-video: {url: data.download_link},
+video: larawh,
 caption: "Instagram Videos download by HBWABot"
 }, {quoted:m})
 await finishreact()
