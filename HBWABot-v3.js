@@ -3425,13 +3425,13 @@ break
 case 'instavid' : case 'igvid':  {
   if (!text) return replyherbertstyle(`A link rawn dah tel rawh\n\nTiang hian: ${prefix + command} https://www.instagram.com/p/ByxKbUSnubS/?utm_source=ig_web_copy_link`)
   await loadingreact()
-  const { igdl } = require('btch-downloader') 
+  const instagramDl = require('@sasmeee/igdl') 
     const link = args[0] 
-    const data = await igdl(link) 
+    const data = await instagramDl(link) 
     console.log(data)
     await uploadreact()
 await HBWABotInc.sendMessage(m.chat,{
-video: data.url,
+video: {url: data.download_link},
 caption: "Instagram Videos download by HBWABot"
 }, {quoted:m})
 await finishreact()
