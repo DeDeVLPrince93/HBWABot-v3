@@ -3320,34 +3320,6 @@ let regex1 = /(?:https|git)(?::\/\/|@)github\.com[\/:]([^\/:]+)\/(.+)/i
     let filename = (await fetch(url, {method: 'HEAD'})).headers.get('content-disposition').match(/attachment; filename=(.*)/)[1]
     HBWABotInc.sendMessage(m.chat, { document: { url: url }, fileName: filename, mimetype: 'application/zip' }, { quoted: m }).catch((err) => replyherbertstyle(mess.error))
 break
-case "spotify":{
-if (!isPrem) return replyprem(mess.premium)
-if (!text) return replyherbertstyle(`A link rawn dah rawh..!`)
-await loadingreact()
-        const Spotify = require('./lib/spotify')
-        const spotify = new Spotify(text)
-        const info = await spotify.getInfo()
-        if ((info).error) return replyherbertstyle(`I rawn dah hi Spotify link a ni lo https://open.spotify.com/ he mi link ah hian lut la i hla duh link chu rawn copy paste rawh\nEntirnan : Spotify https://open.spotify.com/track/0nWK6VX7dzN2BgFoL3lmNv`)
-        const { name, artists, album_name, release_date, cover_url } = info
-        await uploadreact()
-        const bufferpotify = await spotify.download()
-await HBWABotInc.sendMessage(m.chat,{document: bufferpotify , mimetype: 'audio/mpeg', fileName: `${name || ''}`, caption : `*Title:* ${name || ''}\n*Album:* ${album_name}\n*Release Date:* ${release_date || ''}`},
-contextInfo:{
-        externalAdReply:{ 
-            showAdAttribution: true,
-            containsAutoReply: true,
-            renderLargerThumbnail: true,
-            title: `${name || ''}`,
-            body: 'Spotify',
-            thumbnail: {url: cover_url},
-            mediaType: 2,
-            mediaUrl: bufferpotify,
-            sourceUrl: bufferpotify
-}
-},{quoted:m})
-await finishreact()
-}
-break
 case 'bass': case 'blown': case 'deep': case 'earrape': case 'fast': case 'fat': case 'nightcore': case 'reverse': case 'robot': case 'slow': case 'smooth': case 'squirrel':
                 try {
                 let set
