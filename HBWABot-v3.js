@@ -3399,7 +3399,7 @@ HBWABotInc.sendMessage(m.chat, { video: { url: videoUrl }, caption: caption, mim
     console.log(data)
     await uploadreact()
 await HBWABotInc.sendMessage(m.chat,{
-video: {url: data},
+video: data,
 caption: "Tiktok Videos download by HBWABot"
 }, {quoted:m})
 await finishreact()
@@ -3415,7 +3415,7 @@ case 'fbvid' : case 'facebookvid':  {
     console.log(data)
     await uploadreact()
 await HBWABotInc.sendMessage(m.chat,{
-video: {url: data},
+video: data,
 caption: "Facebook Videos download by HBWABot"
 }, {quoted:m})
 await finishreact()
@@ -3431,7 +3431,7 @@ case 'instavid' : case 'igvid':  {
     console.log(data)
     await uploadreact()
 await HBWABotInc.sendMessage(m.chat,{
-video: {url: data},
+video: data,
 caption: "Instagram Videos download by HBWABot"
 }, {quoted:m})
 await finishreact()
