@@ -3394,12 +3394,12 @@ HBWABotInc.sendMessage(m.chat, { video: { url: videoUrl }, caption: caption, mim
   if (!text) return replyherbertstyle(`A link rawn dah tel rawh\n\nTiang hian: ${prefix + command} https://www.tiktok.com/@omagadsus/video/7025456384175017243?is_from_webapp=1&sender_device=pc&web_id6982004129280116226`)
   await loadingreact()
   const { ttdl } = require('btch-downloader') 
-    const url = args[0] 
-    const data = await ttdl(url) 
+    const link = args[0] 
+    const data = await ttdl(link) 
     console.log(data)
     await uploadreact()
 await HBWABotInc.sendMessage(m.chat,{
-video: data,
+video: data.url,
 caption: "Tiktok Videos download by HBWABot"
 }, {quoted:m})
 await finishreact()
@@ -3410,12 +3410,12 @@ case 'fbvid' : case 'facebookvid':  {
   if (!text) return replyherbertstyle(`A link rawn dah tel rawh\n\nTiang hian: ${prefix + command} https://fb.watch/mcx9K6cb6t/?mibextid=8103lRmnirLUhozF`)
   await loadingreact()
   const { fbdown } = require('btch-downloader') 
-    const url = args[0] 
-    const data = await fbdown(url) 
+    const link = args[0] 
+    const data = await fbdown(link) 
     console.log(data)
     await uploadreact()
 await HBWABotInc.sendMessage(m.chat,{
-video: data,
+video: data.url,
 caption: "Facebook Videos download by HBWABot"
 }, {quoted:m})
 await finishreact()
@@ -3426,7 +3426,7 @@ case 'instavid' : case 'igvid':  {
   if (!text) return replyherbertstyle(`A link rawn dah tel rawh\n\nTiang hian: ${prefix + command} https://www.instagram.com/p/ByxKbUSnubS/?utm_source=ig_web_copy_link`)
   await loadingreact()
   const { igdl } = require('btch-downloader') 
-    const url = args[0] 
+    const link = args[0] 
     const data = await igdl(url) 
     console.log(data)
     await uploadreact()
