@@ -3389,7 +3389,22 @@ HBWABotInc.sendMessage(m.chat, { video: { url: videoUrl }, caption: caption, mim
     }
 }
   break         
-  
+  case 'instavid' : case 'igvid':  {
+  if (!text) return replyherbertstyle(`A link rawn dah tel rawh\n\nTiang hian: ${prefix + command} https://www.instagram.com/p/ByxKbUSnubS/?utm_source=ig_web_copy_link`)
+  await loadingreact()
+  const instagramDl = require('@sasmeee/igdl') 
+    const link = args[0] 
+    const data = await instagramDl(link) 
+    console.log(data)    
+    await uploadreact()
+await HBWABotInc.sendMessage(m.chat,{
+video: {url: data.download_link},
+caption: "Instagram Videos download by HBWABot"
+}, {quoted:m})
+await finishreact()
+
+}
+break
   case 'tiktokvid' : case 'ttvid':  {
   if (!text) return replyherbertstyle(`A link rawn dah tel rawh\n\nTiang hian: ${prefix + command} https://www.tiktok.com/@omagadsus/video/7025456384175017243?is_from_webapp=1&sender_device=pc&web_id6982004129280116226`)
   await loadingreact()
@@ -3422,23 +3437,6 @@ await finishreact()
 
 }
 break 
-case 'instavid' : case 'igvid':  {
-  if (!text) return replyherbertstyle(`A link rawn dah tel rawh\n\nTiang hian: ${prefix + command} https://www.instagram.com/p/ByxKbUSnubS/?utm_source=ig_web_copy_link`)
-  await loadingreact()
-  const instagramDl = require('@sasmeee/igdl') 
-    const link = args[0] 
-    const data = await instagramDl(link) 
-    console.log(data)    
-    await uploadreact()
-    let larawh = data.download_link
-await HBWABotInc.sendMessage(m.chat,{
-video: larawh,
-caption: "Instagram Videos download by HBWABot"
-}, {quoted:m})
-await finishreact()
-
-}
-break
 case 'setppbot': case 'setbotpp': {
 if (!HerbertTheCreator) return m.reply(mess.owner)
 if (!quoted) return replyherbertstyle(`Send emaw reply in a caption ah tiang hian rawn dah rawh: ${prefix + command}`)
