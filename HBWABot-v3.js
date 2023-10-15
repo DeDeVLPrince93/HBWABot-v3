@@ -3426,8 +3426,8 @@ case 'instavid' : case 'igvid':  {
   if (!text) return replyherbertstyle(`A link rawn dah tel rawh\n\nTiang hian: ${prefix + command} https://www.instagram.com/p/ByxKbUSnubS/?utm_source=ig_web_copy_link`)
   await loadingreact()
   const { igdl } = require('btch-downloader') 
-    const url = args[0] 
-    const data = await igdl(url) 
+    const link = args[0] 
+    const data = await igdl(link) 
     console.log(data)
     await uploadreact()
 await HBWABotInc.sendMessage(m.chat,{
