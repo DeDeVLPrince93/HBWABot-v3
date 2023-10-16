@@ -31,6 +31,7 @@ const npmstalk = require('./scrape/npmstalk')
 const mlstalk = require('./scrape/mlstalk')
 const textpro = require('./scrape/textpro')
 const textpro2 = require('./scrape/textpro2')
+const mumaker = require("mumaker")
 const photooxy = require('./scrape/photooxy')
 const yts = require('./scrape/yt-search')
 const vm = require('node:vm')
@@ -2659,7 +2660,7 @@ if (/sand/.test(command)) link = 'https://textpro.me/write-in-sand-summer-beach-
 if (/glue/.test(command)) link = 'https://textpro.me/create-3d-glue-text-effect-with-realistic-style-986.html'
 if (/1917/.test(command)) link = 'https://textpro.me/1917-style-text-effect-online-980.html'
 if (/leaves/.test(command)) link = 'https://textpro.me/natural-leaves-text-effect-931.html'
-let anu = await textpro.textpro(link, q)
+let anu = await mumaker.textpro(link, q)
 HBWABotInc.sendMessage(m.chat, { image: { url: anu }, caption: `${mess.success}` }, { quoted: m })
 }
 break
@@ -2800,7 +2801,7 @@ await loading()
 inilogo9 = args.join(" ")
    var logo4 = inilogo4.split('|')[0]
 var logo9 = inilogo9.split('|')[1]
-    let anuphub = await textpro2("https://textpro.me/pornhub-style-logo-online-generator-free-977.html", [`${logo4}`,`${logo9}`])
+    let anuphub = await mumaker.textpro("https://textpro.me/pornhub-style-logo-online-generator-free-977.html", [`${logo4}`,`${logo9}`])
 console.log(anuphub)
 HBWABotInc.sendMessage(from,{image:{url:anuphub}, caption:"Kha hei aw eki🌚🫴😂"},{quoted:m})
 }
@@ -2812,7 +2813,7 @@ await loading()
 inilogo9 = args.join(" ")
    var logo4 = inilogo4.split('|')[0]
 var logo9 = inilogo9.split('|')[1]
-    let anutro2 = await textpro2("https://textpro.me/create-3d-retro-text-effect-online-free-1065.html", [`${logo4}`,`${logo9}`])
+    let anutro2 = await mumaker.textpro("https://textpro.me/create-3d-retro-text-effect-online-free-1065.html", [`${logo4}`,`${logo9}`])
 console.log(anutro2)
 HBWABotInc.sendMessage(from,{image:{url:anutro2}, caption:"Kha hei aw eki🌚🫴😂"},{quoted:m})
 }
@@ -2824,13 +2825,13 @@ await loading()
 inilogo9 = args.join(" ")
    var logo4 = inilogo4.split('|')[0]
 var logo9 = inilogo9.split('|')[1]
-    let anubit8 = await textpro2("https://textpro.me/video-game-classic-8-bit-text-effect-1037.html", [`${logo4}`,`${logo9}`])
+    let anubit8 = await mumaker.textpro("https://textpro.me/video-game-classic-8-bit-text-effect-1037.html", [`${logo4}`,`${logo9}`])
 console.log(anubit8)
 HBWABotInc.sendMessage(from,{image:{url:anubit8}, caption:"Kha hei aw eki🌚🫴😂"},{quoted:m})
 }
 break
 case 'batman':
-if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} ajg`)
+if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Hello World`)
 await loading()
 maker.textpro("https://textpro.me/make-a-batman-logo-online-free-1066.html", [
     `${q}`,])
@@ -2846,25 +2847,25 @@ maker.textpro("https://textpro.me/3d-box-text-effect-online-880.html", [
 .catch((err) => console.log(err));
 break
 case 'lion':
-  if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} ajg`)
+  if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Hello World`)
 await loading()
-  maker.textpro("https://textpro.me/create-lion-logo-mascot-online-938.html", [
+  mumaker.textpro("https://textpro.me/create-lion-logo-mascot-online-938.html", [
       `${q}`,])
      .then((data) => HBWABotInc.sendMessage(m.chat, { image: { url: data }, caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
      .catch((err) => console.log(err));
      break
 case '3davengers':
-if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} ajg`)
+if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Hello World`)
 await loading()
-maker.textpro("https://textpro.me/create-3d-avengers-logo-online-974.html", [
+ mumaker.textpro("https://textpro.me/create-3d-avengers-logo-online-974.html", [
     `${q}`,])
   .then((data) => HBWABotInc.sendMessage(m.chat, { image: { url: data }, caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
   .catch((err) => console.log(err));
    break 
 case 'window':
-if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} ajg`)
+if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Hello World`)
 await loading()
-maker.textpro("https://textpro.me/write-text-on-foggy-window-online-free-1015.html", [
+ mumaker.textpro("https://textpro.me/write-text-on-foggy-window-online-free-1015.html", [
     `${q}`,])
   .then((data) => HBWABotInc.sendMessage(m.chat, { image: { url: data }, caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
   .catch((err) => console.log(err));
@@ -2874,87 +2875,87 @@ if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Herber
 await loading()
 teks1 = q.split("|")[0]
 teks2 = q.split("|")[1]
-maker.textpro("https://textpro.me/create-space-3d-text-effect-online-985.html", [
+ mumaker.textpro("https://textpro.me/create-space-3d-text-effect-online-985.html", [
     `${teks1}`,`${teks2}`])
   .then((data) => HBWABotInc.sendMessage(m.chat, { image: { url: data }, caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
   .catch((err) => console.log(err));
    break
 case 'bokeh':
-if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} ajg`)
+if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Hello World`)
 await loading()
-maker.textpro("https://textpro.me/bokeh-text-effect-876.html", [
+ mumaker.textpro("https://textpro.me/bokeh-text-effect-876.html", [
     `${q}`,])
   .then((data) => HBWABotInc.sendMessage(m.chat, { image: { url: data }, caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
   .catch((err) => console.log(err));
    break
 case 'holographic':
-if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} ajg`)
+if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Hello World`)
 await loading()
-maker.textpro("https://textpro.me/holographic-3d-text-effect-975.html", [
+ mumaker.textpro("https://textpro.me/holographic-3d-text-effect-975.html", [
     `${q}`,])
   .then((data) => HBWABotInc.sendMessage(m.chat, { image: { url: data }, caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
   .catch((err) => console.log(err));
    break
 case 'thewall':
-if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} ajg`)
+if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Hello World`)
 await loading()
-maker.textpro("https://textpro.me/break-wall-text-effect-871.html", [
+ mumaker.textpro("https://textpro.me/break-wall-text-effect-871.html", [
     `${q}`,])
   .then((data) => HBWABotInc.sendMessage(m.chat, { image: { url: data }, caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
   .catch((err) => console.log(err));
    break 
 case 'carbon':
-if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} ajg`)
+if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Hello World`)
 await loading()
-maker.textpro("https://textpro.me/carbon-text-effect-833.html", [
+ mumaker.textpro("https://textpro.me/carbon-text-effect-833.html", [
     `${q}`,])
   .then((data) => HBWABotInc.sendMessage(m.chat, { image: { url: data }, caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
   .catch((err) => console.log(err));
    break
 case 'whitebear':
-if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} ajg`)
+if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Hello World`)
 await loading()
-maker.textpro("https://textpro.me/online-black-and-white-bear-mascot-logo-creation-1012.html", [
+ mumaker.textpro("https://textpro.me/online-black-and-white-bear-mascot-logo-creation-1012.html", [
     `${q}`,])
   .then((data) => HBWABotInc.sendMessage(m.chat, { image: { url: data }, caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
   .catch((err) => console.log(err));
    break
 case 'metallic':
-if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} ajg`)
+if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Hello World`)
 await loading()
-maker.textpro("https://textpro.me/create-a-metallic-text-effect-free-online-1041.html", [
+ mumaker.textpro("https://textpro.me/create-a-metallic-text-effect-free-online-1041.html", [
     `${q}`,])
   .then((data) => HBWABotInc.sendMessage(m.chat, { image: { url: data }, caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
   .catch((err) => console.log(err));
    break
 case 'steel':
-if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} ajg`)
+if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Hello World`)
 await loading()
-maker.textpro("https://textpro.me/steel-text-effect-online-921.html", [
+ mumaker.textpro("https://textpro.me/steel-text-effect-online-921.html", [
     `${q}`,])
   .then((data) => HBWABotInc.sendMessage(m.chat, { image: { url: data }, caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
   .catch((err) => console.log(err));
    break
 case 'fabric':
-if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} ajg`)
+if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Hello World`)
 await loading()
-maker.textpro("https://textpro.me/fabric-text-effect-online-964.html", [
+ mumaker.textpro("https://textpro.me/fabric-text-effect-online-964.html", [
     `${q}`,])
   .then((data) => HBWABotInc.sendMessage(m.chat, { image: { url: data }, caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
   .catch((err) => console.log(err));
    break
 case 'ancient':
-if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} ajg`)
+if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Hello World`)
 await loading()
-maker.textpro("https://textpro.me/3d-golden-ancient-text-effect-online-free-1060.html", [
+ mumaker.textpro("https://textpro.me/3d-golden-ancient-text-effect-online-free-1060.html", [
     `${q}`,])
   .then((data) => HBWABotInc.sendMessage(m.chat, { image: { url: data }, caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
   .catch((err) => console.log(err));
    break
 case 'marvel':
-if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} ajg`)
+if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Hello World`)
 await loading()
-maker.textpro("https://textpro.me/create-logo-style-marvel-studios-ver-metal-972.html", [
+ mumaker.textpro("https://textpro.me/create-logo-style-marvel-studios-ver-metal-972.html", [
     `${q}`,])
   .then((data) => HBWABotInc.sendMessage(m.chat, { image: { url: data }, caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
   .catch((err) => console.log(err));
@@ -3389,7 +3390,14 @@ HBWABotInc.sendMessage(m.chat, { video: { url: videoUrl }, caption: caption, mim
     }
 }
   break         
-  case 'instavid' : case 'igvid':  {
+ case 'instavid' : case 'igvid': 
+if (!text) return replyherbertstyle(`A link rawn dah tel rawh\n\nTiang hian: ${prefix + command} https://www.instagram.com/p/ByxKbUSnubS/?utm_source=ig_web_copy_link`)
+await loading()
+ mumaker.instagram(`${args[0]}`)
+  .then((data) => HBWABotInc.sendMessage(m.chat, { video: { url: data }, caption: `Instagram Videos download by HBWABot` }, { quoted: m }))
+  .catch((err) => console.log(err));
+   break
+  case 'instavidxx' : case 'igvidxx':  {
   if (!text) return replyherbertstyle(`A link rawn dah tel rawh\n\nTiang hian: ${prefix + command} https://www.instagram.com/p/ByxKbUSnubS/?utm_source=ig_web_copy_link`)
   await loadingreact()
   const instagramDl = require('@sasmeee/igdl') 
