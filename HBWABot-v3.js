@@ -2835,7 +2835,7 @@ if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Hello 
 HBWABotInc.sendMessage(from, { react: { text: "🐢" , key: m.key }})
 maker.textpro("https://textpro.me/make-a-batman-logo-online-free-1066.html", [
     `${q}`,])
-  .then((data) => HBWABotInc.sendMessage(m.chat, { image: {url: anu.image},caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
+  .then((data) => HBWABotInc.sendMessage(m.chat, { image: {url: data.image},caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
   .catch((err) => console.log(err))
    break
 case '3dbox':
@@ -2843,7 +2843,7 @@ if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} ea`)
 HBWABotInc.sendMessage(from, { react: { text: "🐢" , key: m.key }})
 maker.textpro("https://textpro.me/3d-box-text-effect-online-880.html", [
     `${q}`,])
-.then((data) => HBWABotInc.sendMessage(m.chat, { image: {url: anu.image},caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
+.then((data) => HBWABotInc.sendMessage(m.chat, { image: {url: data.image},caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
 .catch((err) => console.log(err));
 break
 case 'lion':
@@ -2851,7 +2851,7 @@ case 'lion':
 HBWABotInc.sendMessage(from, { react: { text: "🐢" , key: m.key }})
   mumaker.textpro("https://textpro.me/create-lion-logo-mascot-online-938.html", [
       `${q}`,])
-     .then((data) => HBWABotInc.sendMessage(m.chat, { image: {url: anu.image},caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
+     .then((data) => HBWABotInc.sendMessage(m.chat, { image: {url: data.image},caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
      .catch((err) => console.log(err));
      break
 case '3davengers':
@@ -2859,7 +2859,7 @@ if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Hello 
 HBWABotInc.sendMessage(from, { react: { text: "🐢" , key: m.key }})
  mumaker.textpro("https://textpro.me/create-3d-avengers-logo-online-974.html", [
     `${q}`,])
-  .then((data) => HBWABotInc.sendMessage(m.chat, { image: {url: anu.image},caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
+  .then((data) => HBWABotInc.sendMessage(m.chat, { image: {url: data.image},caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
   .catch((err) => console.log(err));
    break 
 case 'window':
@@ -2867,7 +2867,7 @@ if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Hello 
 HBWABotInc.sendMessage(from, { react: { text: "🐢" , key: m.key }})
  mumaker.textpro("https://textpro.me/write-text-on-foggy-window-online-free-1015.html", [
     `${q}`,])
-  .then((data) => HBWABotInc.sendMessage(m.chat, { image: {url: anu.image},caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
+  .then((data) => HBWABotInc.sendMessage(m.chat, { image: {url: data.image},caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
   .catch((err) => console.log(err));
    break
 case '3dspace':
@@ -2877,7 +2877,7 @@ teks1 = q.split("|")[0]
 teks2 = q.split("|")[1]
  mumaker.textpro("https://textpro.me/create-space-3d-text-effect-online-985.html", [
     `${teks1}`,`${teks2}`])
-  .then((data) => HBWABotInc.sendMessage(m.chat, { image: {url: anu.image},caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
+  .then((data) => HBWABotInc.sendMessage(m.chat, { image: {url: data.image},caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
   .catch((err) => console.log(err));
    break
 case 'bokeh':
@@ -2885,7 +2885,7 @@ if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Hello 
 HBWABotInc.sendMessage(from, { react: { text: "🐢" , key: m.key }})
  mumaker.textpro("https://textpro.me/bokeh-text-effect-876.html", [
     `${q}`,])
-  .then((data) => HBWABotInc.sendMessage(m.chat, { image: {url: anu.image},caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
+  .then((data) => HBWABotInc.sendMessage(m.chat, { image: {url: data.image},caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
   .catch((err) => console.log(err));
    break
 case 'holographic':
@@ -2893,7 +2893,7 @@ if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Hello 
 HBWABotInc.sendMessage(from, { react: { text: "🐢" , key: m.key }})
  mumaker.textpro("https://textpro.me/holographic-3d-text-effect-975.html", [
     `${q}`,])
-  .then((data) => HBWABotInc.sendMessage(m.chat, { image: {url: anu.image},caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
+  .then((data) => HBWABotInc.sendMessage(m.chat, { image: {url: data.image},caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
   .catch((err) => console.log(err));
    break
 case 'thewall':
@@ -2901,7 +2901,7 @@ if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Hello 
 HBWABotInc.sendMessage(from, { react: { text: "🐢" , key: m.key }})
  mumaker.textpro("https://textpro.me/break-wall-text-effect-871.html", [
     `${q}`,])
-  .then((data) => HBWABotInc.sendMessage(m.chat, { image: {url: anu.image},caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
+  .then((data) => HBWABotInc.sendMessage(m.chat, { image: {url: data.image},caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
   .catch((err) => console.log(err));
    break 
 case 'carbon':
@@ -2909,7 +2909,7 @@ if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Hello 
 HBWABotInc.sendMessage(from, { react: { text: "🐢" , key: m.key }})
  mumaker.textpro("https://textpro.me/carbon-text-effect-833.html", [
     `${q}`,])
-  .then((data) => HBWABotInc.sendMessage(m.chat, { image: {url: anu.image},caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
+  .then((data) => HBWABotInc.sendMessage(m.chat, { image: {url: data.image},caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
   .catch((err) => console.log(err));
    break
 case 'whitebear':
@@ -2917,7 +2917,7 @@ if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Hello 
 HBWABotInc.sendMessage(from, { react: { text: "🐢" , key: m.key }})
  mumaker.textpro("https://textpro.me/online-black-and-white-bear-mascot-logo-creation-1012.html", [
     `${q}`,])
-  .then((data) => HBWABotInc.sendMessage(m.chat, { image: {url: anu.image},caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
+  .then((data) => HBWABotInc.sendMessage(m.chat, { image: {url: data.image},caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
   .catch((err) => console.log(err));
    break
 case 'metallic':
@@ -2925,7 +2925,7 @@ if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Hello 
 HBWABotInc.sendMessage(from, { react: { text: "🐢" , key: m.key }})
  mumaker.textpro("https://textpro.me/create-a-metallic-text-effect-free-online-1041.html", [
     `${q}`,])
-  .then((data) => HBWABotInc.sendMessage(m.chat, { image: {url: anu.image},caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
+  .then((data) => HBWABotInc.sendMessage(m.chat, { image: {url: data.image},caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
   .catch((err) => console.log(err));
    break
 case 'steel':
@@ -2933,7 +2933,7 @@ if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Hello 
 HBWABotInc.sendMessage(from, { react: { text: "🐢" , key: m.key }})
  mumaker.textpro("https://textpro.me/steel-text-effect-online-921.html", [
     `${q}`,])
-  .then((data) => HBWABotInc.sendMessage(m.chat, { image: {url: anu.image},caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
+  .then((data) => HBWABotInc.sendMessage(m.chat, { image: {url: data.image},caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
   .catch((err) => console.log(err));
    break
 case 'fabric':
@@ -2941,7 +2941,7 @@ if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Hello 
 HBWABotInc.sendMessage(from, { react: { text: "🐢" , key: m.key }})
  mumaker.textpro("https://textpro.me/fabric-text-effect-online-964.html", [
     `${q}`,])
-  .then((data) => HBWABotInc.sendMessage(m.chat, { image: {url: anu.image},caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
+  .then((data) => HBWABotInc.sendMessage(m.chat, { image: {url: data.image},caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
   .catch((err) => console.log(err));
    break
 case 'ancient':
@@ -2949,7 +2949,7 @@ if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Hello 
 HBWABotInc.sendMessage(from, { react: { text: "🐢" , key: m.key }})
  mumaker.textpro("https://textpro.me/3d-golden-ancient-text-effect-online-free-1060.html", [
     `${q}`,])
-  .then((data) => HBWABotInc.sendMessage(m.chat, { image: {url: anu.image},caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
+  .then((data) => HBWABotInc.sendMessage(m.chat, { image: {url: data.image},caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
   .catch((err) => console.log(err));
    break
 case 'marvel':
@@ -2957,7 +2957,7 @@ if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Hello 
 HBWABotInc.sendMessage(from, { react: { text: "🐢" , key: m.key }})
  mumaker.textpro("https://textpro.me/create-logo-style-marvel-studios-ver-metal-972.html", [
     `${q}`,])
-  .then((data) => HBWABotInc.sendMessage(m.chat, { image: {url: anu.image},caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
+  .then((data) => HBWABotInc.sendMessage(m.chat, { image: {url: data.image},caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
   .catch((err) => console.log(err));
    break
 
