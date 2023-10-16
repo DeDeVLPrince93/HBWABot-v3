@@ -2839,7 +2839,7 @@ maker.textpro("https://textpro.me/make-a-batman-logo-online-free-1066.html", [
   .catch((err) => console.log(err))
    break
 case '3dbox':
-if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} ea`)
+if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Hello World`)
 HBWABotInc.sendMessage(from, { react: { text: "🐢" , key: m.key }})
 maker.textpro("https://textpro.me/3d-box-text-effect-online-880.html", [
     `${q}`,])
@@ -2854,14 +2854,16 @@ HBWABotInc.sendMessage(from, { react: { text: "🐢" , key: m.key }})
      .then((data) => HBWABotInc.sendMessage(m.chat, { image: {url: data.image},caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
      .catch((err) => console.log(err));
      break
-case '3davengers':
-if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Hello World`)
+   case '3davengers':
+if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Herbert|Suantak`)
 HBWABotInc.sendMessage(from, { react: { text: "🐢" , key: m.key }})
+teks1 = q.split("|")[0]
+teks2 = q.split("|")[1]
  mumaker.textpro("https://textpro.me/create-3d-avengers-logo-online-974.html", [
-    `${q}`,])
+    `${teks1}`,`${teks2}`])
   .then((data) => HBWABotInc.sendMessage(m.chat, { image: {url: data.image},caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
   .catch((err) => console.log(err));
-   break 
+   break
 case 'window':
 if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Hello World`)
 HBWABotInc.sendMessage(from, { react: { text: "🐢" , key: m.key }})
@@ -2952,15 +2954,17 @@ HBWABotInc.sendMessage(from, { react: { text: "🐢" , key: m.key }})
   .then((data) => HBWABotInc.sendMessage(m.chat, { image: {url: data.image},caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
   .catch((err) => console.log(err));
    break
-case 'marvel':
-if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Hello World`)
+   
+   case 'marvel':
+if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Herbert|Suantak`)
 HBWABotInc.sendMessage(from, { react: { text: "🐢" , key: m.key }})
+teks1 = q.split("|")[0]
+teks2 = q.split("|")[1]
  mumaker.textpro("https://textpro.me/create-logo-style-marvel-studios-ver-metal-972.html", [
-    `${q}`,])
+    `${teks1}`,`${teks2}`])
   .then((data) => HBWABotInc.sendMessage(m.chat, { image: {url: data.image},caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
   .catch((err) => console.log(err));
    break
-
 case 'bible': case 'bq': case 'bible-quotes': 
 const bible = await fetchJson('https://raw.githubusercontent.com/HBMods-OFC/Media/main/QuotesMizo/BibleQuote.json')
 const mizo_bible = bible[Math.floor(Math.random() * bible.length)]
