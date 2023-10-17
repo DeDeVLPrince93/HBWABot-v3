@@ -3544,7 +3544,7 @@ if (!text) return replyherbertstyle('word rawn dah rawh')
             })
         }
         break
-        case 'codelang': {
+        case '/codelang': {
 replyherbertstyle(`
 
 
@@ -3617,7 +3617,7 @@ const jsGoogleTranslateFree = require("@kreisler/js-google-translate-free")
     const athu = `${text}`
     const mizotranslation = await jsGoogleTranslateFree.translate(source, target, athu)
     console.log(mizotranslation)
-    replyherbertstyle(`${mizotranslate}`)
+    replyherbertstyle(`${mizotranslation}`)
       }
         break
 case 'myip': {
