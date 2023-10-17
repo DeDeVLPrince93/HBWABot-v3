@@ -3526,15 +3526,26 @@ const fg = require('api-dylux')
 break
     case 'say': case 'tts': case 'gtts':{
 if (!text) return replyherbertstyle('word rawn dah rawh')
-let texttts = text
-const herbertrl = googleTTS.getAudioUrl(texttts, {lang: "en",
-slow: false,
-host: "https://translate.google.com",})return HBWABotInc.sendMessage(m.chat, {audio: {url: herbertrl,},mimetype: 'audio/mp4',ptt: true,fileName: `${text}.mp3`,
-}, {quoted: m,})
-}
+            let texttts = text
+            const herbertrl = googleTTS.getAudioUrl(texttts, {
+                lang: "en",
+                slow: false,
+                host: "https://translate.google.com",
+            })
+            return HBWABotInc.sendMessage(m.chat, {
+                audio: {
+                    url: herbertrl,
+                },
+                mimetype: 'audio/mp4',
+                ptt: true,
+                fileName: `${text}.mp3`,
+            }, {
+                quoted: m,
+            })
+        }
         break
         case 'translate': { 
-if (!text) return replyherbertstyle(`Language code rawn dah tel rawh:\nTiang hian : ${prifix + command} lus Hi Herbert, What do you want?`) throw replyherbertstyle("Language code i en duh chuan */translate codelang* tiin rawn type rawh️")
+if (!text) return replyherbertstyle(`Language code rawn dah tel rawh:\nTiang hian : ${prifix + command} lus Hi Herbert, What do you want?\n\nLanguage code i en duh chuan */translate codelang* tiin rawn type rawh`)
  if (text == 'codelang') return replyherbertstyle(`
 Amharic	am
 Arabic	ar
@@ -3571,7 +3582,7 @@ Lithuanian	lt
 Malay	ms
 Malayalam	ml
 Marathi	mr
-Mizo   lus
+Mizo lus
 Norwegian	no
 Polish	pl
 Portuguese (Portugal)	pt-PT
@@ -3592,7 +3603,7 @@ Turkish	tr
 Urdu	ur
 Ukrainian	uk
 Vietnamese	vi
-Welsh  cy`
+Welsh cy`
  if (args[0] == ' ')
  HBWABotInc.sendMessage(from, { react: { text: "⚙️", key: m.key } })
 const jsGoogleTranslateFree = require("@kreisler/js-google-translate-free")
