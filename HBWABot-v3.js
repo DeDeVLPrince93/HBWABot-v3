@@ -1796,13 +1796,24 @@ case 'remini': {
 			HBWABotInc.sendMessage(m.chat, { image: proses, caption: mess.success}, { quoted: m})
 			}
 			break
-case 'toanime2': {
+case 'toanime': case 'tocartoon': {
 if (!quoted) return replyherbertstyle(`Thlalak rawn dah rawh`)
 			if (!/image/.test(mime)) return replyherbertstyle(`Thlalak Send/Reply in a caption ah ${prefix + command} tih hi rawn dah rawh`)
 			await loading()
             const { toanime } = require('betabotz-tools')
             let downloadrawh = await quoted.download()
             let results = await toanime(downloadrawh)
+            console.log(results) //json
+            HBWABotInc.sendMessage(m.chat, { image: {url: results.image_data}, caption: mess.success}, { quoted: m})
+}
+break
+case 'removebg': case 'bgremove': {
+if (!quoted) return replyherbertstyle(`Thlalak rawn dah rawh`)
+			if (!/image/.test(mime)) return replyherbertstyle(`Thlalak Send/Reply in a caption ah ${prefix + command} tih hi rawn dah rawh`)
+			await loading()
+            const { removebg } = require('betabotz-tools')
+            let downloadrawh = await quoted.download()
+            let results = await removebg(downloadrawh)
             console.log(results) //json
             HBWABotInc.sendMessage(m.chat, { image: {url: results.image_data}, caption: mess.success}, { quoted: m})
 }
@@ -1819,19 +1830,6 @@ if (!quoted) return replyherbertstyle(`Thlalak rawn dah rawh`)
 }
 break
 
-case 'toanime': case 'tocartoon': {
-if (!quoted) return replyherbertstyle(`Thlalak rawn dah rawh`)
-			if (!/image/.test(mime)) return replyherbertstyle(`Thlalak Send/Reply in a caption ah ${prefix + command} tih hi rawn dah rawh`)
-await loading()
-let { UploadFileUgu, webp2mp4File, TelegraPh } = require('./lib/uploader')
-let media = await HBWABotInc.downloadAndSaveMediaMessage(quoted)
-let anu = await TelegraPh(media)
-let link = util.format(anu)
-let englo = await getBuffer(`https://api.lolhuman.xyz/api/imagetoanime?apikey=haikalgans&img=${link}`)
-HBWABotInc.sendMessage(from, { image : englo }, { quoted:m })
-}
-break
-
 case 'tozombie': {
 if (!quoted) return replyherbertstyle(`Thlalak rawn dah rawh`)
 			if (!/image/.test(mime)) return replyherbertstyle(`Thlalak Send/Reply in a caption ah ${prefix + command} tih hi rawn dah rawh`)
@@ -1843,7 +1841,16 @@ if (!quoted) return replyherbertstyle(`Thlalak rawn dah rawh`)
             HBWABotInc.sendMessage(m.chat, { image: {url: results.image_data}, caption: mess.success}, { quoted: m})
 }
 break 		
-
+case 'dlvid': case 'viddl'{
+if (!args || !args[0]) return replyherbertstyle(`Video link rawn dah tel rawh`)
+await loadingreact()
+const { aio } = require('betabotz-tools') 
+let url = args[0]
+const results = await aio(url)
+console.log(results) // JSON
+HBWABotInc.sendMessage(m.chat, { video: results.result.medias.url, caption: mess.success}, { quoted: m})
+}
+break
 			case 'gimage': {
                 if (!text) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Mizoram`)
                 await loading()
@@ -3416,10 +3423,11 @@ HBWABotInc.sendMessage(m.chat, { video: { url: videoUrl }, caption: caption, mim
   break         
  case 'instavid' : case 'igvid': 
 if (!text) return replyherbertstyle(`A link rawn dah tel rawh\n\nTiang hian: ${prefix + command} https://www.instagram.com/p/ByxKbUSnubS/?utm_source=ig_web_copy_link`)
-await loading()
+await loadingreact()
  mumaker.instagram(`${args[0]}`)
   .then((data) => HBWABotInc.sendMessage(m.chat, { video: { url: data }, caption: `Instagram Videos download by HBWABot` }, { quoted: m }))
-  .catch((err) => console.log(err));
+  .catch((err) => console.log(err))
+  await finishreact()
    break
   case 'instavidxx' : case 'igvidxx':  {
   if (!text) return replyherbertstyle(`A link rawn dah tel rawh\n\nTiang hian: ${prefix + command} https://www.instagram.com/p/ByxKbUSnubS/?utm_source=ig_web_copy_link`)
@@ -3437,7 +3445,15 @@ await finishreact()
 
 }
 break
-  case 'tiktokvid' : case 'ttvid':  {
+case 'tiktokvid' : case 'ttvid': 
+if (!text) return replyherbertstyle(`A link rawn dah tel rawh\n\nTiang hian: ${prefix + command} https://www.tiktok.com/@omagadsus/video/7025456384175017243?is_from_webapp=1&sender_device=pc&web_id6982004129280116226`)
+await loadingreact()
+ mumaker.tiktok(`${args[0]}`)
+  .then((data) => HBWABotInc.sendMessage(m.chat, { video: { url: data.media }, caption: `Tiktok Videos download by HBWABot` }, { quoted: m }))
+  .catch((err) => console.log(err))
+  await finishreact()
+   break
+  case 'tiktokvidxx' : case 'ttvidxx':  {
   if (!text) return replyherbertstyle(`A link rawn dah tel rawh\n\nTiang hian: ${prefix + command} https://www.tiktok.com/@omagadsus/video/7025456384175017243?is_from_webapp=1&sender_device=pc&web_id6982004129280116226`)
   await loadingreact()
   const { ttdl } = require('btch-downloader') 
@@ -3453,7 +3469,17 @@ await finishreact()
 
 }
 break
-case 'fbvid' : case 'facebookvid':  {
+
+case 'fbvid' : case 'facebookvid': 
+ if (!text) return replyherbertstyle(`A link rawn dah tel rawh\n\nTiang hian: ${prefix + command} https://fb.watch/mcx9K6cb6t/?mibextid=8103lRmnirLUhozF`)
+await loadingreact()
+ mumaker.facebook(`${args[0]}`)
+  .then((data) => HBWABotInc.sendMessage(m.chat, { video: { url: data.urls }, caption: `Facebook Videos download by HBWABot` }, { quoted: m }))
+  .catch((err) => console.log(err))
+  await finishreact()
+   break
+   
+case 'fbvidxx' : case 'facebookvidxx':  {
   if (!text) return replyherbertstyle(`A link rawn dah tel rawh\n\nTiang hian: ${prefix + command} https://fb.watch/mcx9K6cb6t/?mibextid=8103lRmnirLUhozF`)
   await loadingreact()
   const { fbdown } = require('btch-downloader') 
@@ -3548,63 +3574,63 @@ if (!text) return replyherbertstyle('word rawn dah rawh')
 replyherbertstyle(`
 
 
-Amharic	am
-Arabic	ar
-Basque	eu
-Bengali	bn
-English (UK)	en-GB
-Portuguese (Brazil)	pt-BR
-Bulgarian	bg
-Catalan	ca
-Cherokee	chr
-Croatian	hr
-Czech	cs
-Danish	da
-Dutch	nl
-English (US)	en
-Estonian	et
-Filipino	fil
-Finnish	fi
-French	fr
-German	de
-Greek	el
-Gujarati	gu
-Hebrew	iw
-Hindi	hi
-Hungarian	hu
-Icelandic	is
-Indonesian	id
-Italian	it
-Japanese	ja
-Kannada	kn
-Korean	ko
-Latvian	lv
-Lithuanian	lt
-Malay	ms
-Malayalam	ml
-Marathi	mr
-Mizo lus
-Norwegian	no
-Polish	pl
-Portuguese (Portugal)	pt-PT
-Romanian	ro
-Russian	ru
-Serbian	sr
-Chinese (PRC)	zh-CN
-Slovak	sk
-Slovenian	sl
-Spanish	es
-Swahili	sw
-Swedish	sv
-Tamil	ta
-Telugu	te
-Thai	th
-Chinese (Taiwan)	zh-TW
-Turkish	tr
-Urdu	ur
-Ukrainian	uk
-Vietnamese	vi
-Welsh cy `
+Amharic = am
+Arabic = ar
+Basque = eu
+Bengali = bn
+English (UK) = en-GB
+Portuguese (Brazil) = pt-BR
+Bulgarian = bg
+Catalan = ca
+Cherokee = chr
+Croatian = hr
+Czech = cs
+Danish = da
+Dutch = nl
+English (US) = en
+Estonian = et
+Filipino = fil
+Finnish = fi
+French = fr
+German = de
+Greek = el
+Gujarati = gu
+Hebrew = iw
+Hindi = hi
+Hungarian = hu
+Icelandic = is
+Indonesian = id
+Italian = it
+Japanese = ja
+Kannada = kn
+Korean = ko
+Latvian = lv
+Lithuanian = lt
+Malay = ms
+Malayalam = ml
+Marathi = mr
+Mizo = lus
+Norwegian = no
+Polish = pl
+Portuguese (Portugal) = pt-PT
+Romanian = ro
+Russian = ru
+Serbian = sr
+Chinese (PRC) = zh-CN
+Slovak = sk
+Slovenian = sl
+Spanish = es
+Swahili = sw
+Swedish = sv
+Tamil = ta
+Telugu = te
+Thai = th
+Chinese (Taiwan) = zh-TW
+Turkish = tr
+Urdu = ur
+Ukrainian = uk
+Vietnamese = vi
+Welsh = cy `
 )
         } break
         case 'translate': { 
@@ -3650,26 +3676,6 @@ case 'gdrive': {
    } catch {
 	replyherbertstyle('Error: Link dang rawn ti rawh') 
   }
-}
-break
-case 'ttp':
-case 'ttp2':
-case 'ttp3':
-case 'ttp4':
-case 'ttp5':
-case 'ttp6':
-case 'attp':
-case 'attp2': 
-if (args.length == 0) return replyherbertstyle(`Tiang hian tih tur: ${prefix + command} Hello World`)
-ini_txt = args.join(" ")
-ini_buffer = await getBuffer(`https://api.lolhuman.xyz/api/${command}?apikey=haikalgans&text=${ini_txt}`)
-HBWABotInc.sendMessage(from, { sticker : ini_buffer }, { quoted:m })
-break
-case 'toanime3': case 'tocartoon3': {
-if (args.length == 0) return replyherbertstyle(`Tiang hian hman tur toanime https://telegra.ph/file/d99a37f523f127a73065f.jpg`)
-await loading()
-let result = await getBuffer(`https://api.lolhuman.xyz/api/imagetoanime?apikey=haikalgans&img=${args[0]}`)
-HBWABotInc.sendMessage(m.chat, { image: result, caption: mess.success}, { quoted: m})
 }
 break
 case "xnxxdl": {
