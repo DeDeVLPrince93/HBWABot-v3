@@ -80,7 +80,7 @@
     "nodemon": "^2.0.20",
     "object-query-string": "^1.2.0",
     "openai": "^3.2.0",
-    "betabotz-tools": "*",
+    "betabotz-tools": "^0.0.3",
     "os": "^0.1.2",
     "parse-ms": "^2.1.0",
     "path": "^0.12.7",

@@ -1848,7 +1848,7 @@ const { aio } = require('betabotz-tools')
 let url = args[0]
 const results = await aio(url)
 console.log(results) // JSON
-HBWABotInc.sendMessage(m.chat, { video: results.result.medias.url, caption: mess.success}, { quoted: m})
+HBWABotInc.sendMessage(m.chat, { video: {url: results.result.medias.url}, caption: mess.success}, { quoted: m})
 }
 break
 			case 'gimage': {
@@ -3470,7 +3470,7 @@ await finishreact()
 }
 break
 
-case 'fbvid' : case 'facebookvid': 
+case 'fbvidxx' : case 'facebookvidxx': 
  if (!text) return replyherbertstyle(`A link rawn dah tel rawh\n\nTiang hian: ${prefix + command} https://fb.watch/mcx9K6cb6t/?mibextid=8103lRmnirLUhozF`)
 await loadingreact()
  mumaker.facebook(`${args[0]}`)
@@ -3479,7 +3479,7 @@ await loadingreact()
   await finishreact()
    break
    
-case 'fbvidxx' : case 'facebookvidxx':  {
+case 'fbvid' : case 'facebookvid':  {
   if (!text) return replyherbertstyle(`A link rawn dah tel rawh\n\nTiang hian: ${prefix + command} https://fb.watch/mcx9K6cb6t/?mibextid=8103lRmnirLUhozF`)
   await loadingreact()
   const { fbdown } = require('btch-downloader') 
