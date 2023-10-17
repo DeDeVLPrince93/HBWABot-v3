@@ -1841,7 +1841,7 @@ if (!quoted) return replyherbertstyle(`Thlalak rawn dah rawh`)
             HBWABotInc.sendMessage(m.chat, { image: {url: results.image_data}, caption: mess.success}, { quoted: m})
 }
 break 		
-case 'dlvid': case 'viddl'{
+case 'dlvid': case 'viddl': {
 if (!args || !args[0]) return replyherbertstyle(`Video link rawn dah tel rawh`)
 await loadingreact()
 const { aio } = require('betabotz-tools') 
