@@ -3545,7 +3545,7 @@ if (!text) return replyherbertstyle('word rawn dah rawh')
         }
         break
         case 'codelang': {
- HBWABotInc.sendMessage(from, { text:`
+replyherbertstyle(`
 Amharic	am
 Arabic	ar
 Basque	eu
@@ -3602,8 +3602,8 @@ Turkish	tr
 Urdu	ur
 Ukrainian	uk
 Vietnamese	vi
-Welsh cy`
-),{quoted:m}
+Welsh cy `
+)
         }
         case 'translate': { 
 if (!text) return replyherbertstyle(`Language code rawn dah tel rawh:\nTiang hian : ${prifix + command} lus Hi Herbert, What do you want?\n\nLanguage code i en duh chuan */codelang* tiin rawn type rawh`)
