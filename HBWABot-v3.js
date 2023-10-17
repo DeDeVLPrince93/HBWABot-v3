@@ -3546,6 +3546,8 @@ if (!text) return replyherbertstyle('word rawn dah rawh')
         break
         case 'codelang': {
 replyherbertstyle(`
+
+
 Amharic	am
 Arabic	ar
 Basque	eu
@@ -3604,7 +3606,7 @@ Ukrainian	uk
 Vietnamese	vi
 Welsh cy `
 )
-        }
+        } break
         case 'translate': { 
 if (!text) return replyherbertstyle(`Language code rawn dah tel rawh:\nTiang hian : ${prefix + command} lus Hi Herbert, What do you want?\n\nLanguage code i en duh chuan */codelang* tiin rawn type rawh`)
  if (args[0] == ' ')
@@ -3614,7 +3616,7 @@ const jsGoogleTranslateFree = require("@kreisler/js-google-translate-free")
     const target = `${args[0]}`
     const athu = `${text}`
     const mizotranslation = await jsGoogleTranslateFree.translate(source, target, athu)
-    console.log(translation)
+    console.log(mizotranslation)
     replyherbertstyle(`${mizotranslate}`)
       }
         break
