@@ -2846,14 +2846,24 @@ maker.textpro("https://textpro.me/3d-box-text-effect-online-880.html", [
 .then((data) => HBWABotInc.sendMessage(m.chat, { image: {url: data.image},caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
 .catch((err) => console.log(err));
 break
-case 'lion':
-  if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Hello World`)
+case 'letteringeffect':
+if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Hello World`)
 HBWABotInc.sendMessage(from, { react: { text: "🐢" , key: m.key }})
-  mumaker.textpro("https://textpro.me/create-lion-logo-mascot-online-938.html", [
-      `${q}`,])
-     .then((data) => HBWABotInc.sendMessage(m.chat, { image: {url: data.image},caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
-     .catch((err) => console.log(err));
-     break
+maker.ephoto("https://en.ephoto360.com/flame-lettering-effect-372.html", [
+    `${q}`,])
+.then((data) => HBWABotInc.sendMessage(m.chat, { image: {url: data.image},caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
+.catch((err) => console.log(err));
+break
+case 'lion':
+if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Herbert|Suantak`)
+HBWABotInc.sendMessage(from, { react: { text: "🐢" , key: m.key }})
+teks1 = q.split("|")[0]
+teks2 = q.split("|")[1]
+ mumaker.textpro("https://textpro.me/create-lion-logo-mascot-online-938.html", [
+    `${teks1}`,`${teks2}`])
+  .then((data) => HBWABotInc.sendMessage(m.chat, { image: {url: data.image},caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
+  .catch((err) => console.log(err));
+   break
    case '3davengers':
 if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Herbert|Suantak`)
 HBWABotInc.sendMessage(from, { react: { text: "🐢" , key: m.key }})
@@ -2954,7 +2964,16 @@ HBWABotInc.sendMessage(from, { react: { text: "🐢" , key: m.key }})
   .then((data) => HBWABotInc.sendMessage(m.chat, { image: {url: data.image},caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
   .catch((err) => console.log(err));
    break
-   
+   case 'marvelstd':
+if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Herbert|Suantak`)
+HBWABotInc.sendMessage(from, { react: { text: "🐢" , key: m.key }})
+teks1 = q.split("|")[0]
+teks2 = q.split("|")[1]
+ mumaker.textpro("https://textpro.me/create-logo-style-marvel-studios-online-971.html", [
+    `${teks1}`,`${teks2}`])
+  .then((data) => HBWABotInc.sendMessage(m.chat, { image: {url: data.image},caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
+  .catch((err) => console.log(err));
+   break
    case 'marvel':
 if(!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Herbert|Suantak`)
 HBWABotInc.sendMessage(from, { react: { text: "🐢" , key: m.key }})
@@ -2965,6 +2984,7 @@ teks2 = q.split("|")[1]
   .then((data) => HBWABotInc.sendMessage(m.chat, { image: {url: data.image},caption: `A genarate-tu hi ${global.botname} ka ni e.!! ` }, { quoted: m }))
   .catch((err) => console.log(err));
    break
+   
 case 'bible': case 'bq': case 'bible-quotes': 
 const bible = await fetchJson('https://raw.githubusercontent.com/HBMods-OFC/Media/main/QuotesMizo/BibleQuote.json')
 const mizo_bible = bible[Math.floor(Math.random() * bible.length)]
@@ -3506,23 +3526,83 @@ const fg = require('api-dylux')
 break
     case 'say': case 'tts': case 'gtts':{
 if (!text) return replyherbertstyle('word rawn dah rawh')
-            let texttts = text
-            const herbertrl = googleTTS.getAudioUrl(texttts, {
-                lang: "en",
-                slow: false,
-                host: "https://translate.google.com",
-            })
-            return HBWABotInc.sendMessage(m.chat, {
-                audio: {
-                    url: herbertrl,
-                },
-                mimetype: 'audio/mp4',
-                ptt: true,
-                fileName: `${text}.mp3`,
-            }, {
-                quoted: m,
-            })
-        }
+let texttts = text
+const herbertrl = googleTTS.getAudioUrl(texttts, {lang: "en",
+slow: false,
+host: "https://translate.google.com",})return HBWABotInc.sendMessage(m.chat, {audio: {url: herbertrl,},mimetype: 'audio/mp4',ptt: true,fileName: `${text}.mp3`,
+}, {quoted: m,})
+}
+        break
+        case 'translate': { 
+if (!text) return replyherbertstyle(`Language code rawn dah tel rawh:\nTiang hian : ${prifix + command} lus Hi Herbert, What do you want?`) throw replyherbertstyle("Language code i en duh chuan */translate codelang* tiin rawn type rawh️")
+ if (text == 'codelang') return replyherbertstyle(`
+Amharic	am
+Arabic	ar
+Basque	eu
+Bengali	bn
+English (UK)	en-GB
+Portuguese (Brazil)	pt-BR
+Bulgarian	bg
+Catalan	ca
+Cherokee	chr
+Croatian	hr
+Czech	cs
+Danish	da
+Dutch	nl
+English (US)	en
+Estonian	et
+Filipino	fil
+Finnish	fi
+French	fr
+German	de
+Greek	el
+Gujarati	gu
+Hebrew	iw
+Hindi	hi
+Hungarian	hu
+Icelandic	is
+Indonesian	id
+Italian	it
+Japanese	ja
+Kannada	kn
+Korean	ko
+Latvian	lv
+Lithuanian	lt
+Malay	ms
+Malayalam	ml
+Marathi	mr
+Mizo   lus
+Norwegian	no
+Polish	pl
+Portuguese (Portugal)	pt-PT
+Romanian	ro
+Russian	ru
+Serbian	sr
+Chinese (PRC)	zh-CN
+Slovak	sk
+Slovenian	sl
+Spanish	es
+Swahili	sw
+Swedish	sv
+Tamil	ta
+Telugu	te
+Thai	th
+Chinese (Taiwan)	zh-TW
+Turkish	tr
+Urdu	ur
+Ukrainian	uk
+Vietnamese	vi
+Welsh  cy`
+ if (args[0] == ' ')
+ HBWABotInc.sendMessage(from, { react: { text: "⚙️", key: m.key } })
+const jsGoogleTranslateFree = require("@kreisler/js-google-translate-free")
+    const source = "auto"
+    const target = `${args[0]}`
+    const athu = `${text}`
+    const mizotranslation = await jsGoogleTranslateFree.translate(source, target, athu)
+    console.log(translation)
+    replyherbertstyle(`${mizotranslate}`)
+      }
         break
 case 'myip': {
         if (!HerbertTheCreator) return m.reply(mess.owner)
