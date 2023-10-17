@@ -3544,9 +3544,8 @@ if (!text) return replyherbertstyle('word rawn dah rawh')
             })
         }
         break
-        case 'translate': { 
-if (!text) return replyherbertstyle(`Language code rawn dah tel rawh:\nTiang hian : ${prifix + command} lus Hi Herbert, What do you want?\n\nLanguage code i en duh chuan */translate codelang* tiin rawn type rawh`)
- if (text == 'codelang') return replyherbertstyle(`
+        case 'codelang': {
+ HBWABotInc.sendMessage(from, { text:`
 Amharic	am
 Arabic	ar
 Basque	eu
@@ -3604,6 +3603,10 @@ Urdu	ur
 Ukrainian	uk
 Vietnamese	vi
 Welsh cy`
+),{quoted:m}
+        }
+        case 'translate': { 
+if (!text) return replyherbertstyle(`Language code rawn dah tel rawh:\nTiang hian : ${prifix + command} lus Hi Herbert, What do you want?\n\nLanguage code i en duh chuan */codelang* tiin rawn type rawh`)
  if (args[0] == ' ')
  HBWABotInc.sendMessage(from, { react: { text: "⚙️", key: m.key } })
 const jsGoogleTranslateFree = require("@kreisler/js-google-translate-free")
