@@ -29,6 +29,7 @@
     "@bochilteam/scraper-sosmed": "^1.0.5",
     "@saipulanuar/jadianime-ts": "^2.0.0", 
     "@sasmeee/igdl": "^1.0.0", 
+    "@kreisler/js-google-translate-free": "^2.1.0", 
     "btch-downloader": "^2.2.9",
     "awesome-phonenumber": "^2.64.0",
     "anime-wallpaper": "^1.0.2",
