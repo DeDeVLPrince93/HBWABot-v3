@@ -3590,7 +3590,7 @@ Welsh = cy `
 )
         } break
       case 'translate':{
-await replyherbertstyle(`Language code rawn dah tel rawh\nTiang hian: translate-lus Hi Herbert, How are you?..\n\nLanguage code i en duh chuan */codelang* tiin rawn type rawh`}
+await replyherbertstyle(`Language code rawn dah tel rawh\nTiang hian: translate-lus Hi Herbert, How are you?..\n\nLanguage code i en duh chuan */codelang* tiin rawn type rawh`)
 }
 break
 
