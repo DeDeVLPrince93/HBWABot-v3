@@ -1938,7 +1938,7 @@ case 'yts': case 'hla':{
             })
             }
             break            
-            case 'ytmp4': {
+            case 'ytmp4xx': {
 //Credit by HBMods-OFC
 if (!args || !args[0]) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} https://youtube.com/watch?v=DA9gCKwaefg`)
 await loadingreact()
@@ -1964,7 +1964,7 @@ await HBWABotInc.sendMessage(m.chat,{
 await finishreact()
 }
             break  
-            case 'ytmp4x': {
+            case 'ytmp4xxx': {
 const herbertvideo = require('./lib/ytdl2')
 if (args.length < 1 || !isUrl(text) || !herbertvideo.isYTUrl(text)) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} https://youtube.com/watch?v=DA9gCKwaefg`)
 const vid=await herbertvideo.mp4(text)
@@ -1979,22 +1979,6 @@ await HBWABotInc.sendMessage(m.chat,{
 },{quoted:m})
 }
 break         
-            case 'dvideo': case 'ytvideo': {
-const herbertvideo = require('./lib/ytdl2')
-if (!text) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} K hminga siar lalnu`)
-            await loadingreact()
-let yts = require("youtube-yts")
-let search = await yts(text)
-let anup3k = search.videos[0]
-const pl= await herbertvideo.mp4(anup3k.url)
-const ytc=`
-*${anup3k.title}*`
-await HBWABotInc.sendMessage(m.chat,{
-    video: fs.readFileSync(pl.path),
-    caption: ytc
-},{quoted:m})
-}
-break
 case 'ytmp3':{
 //Credit by HBMods-OFC
 if (!args || !args[0]) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} https://youtube.com/watch?v=DA9gCKwaefg`)
@@ -2076,19 +2060,6 @@ HBWABotInc.sendMessage(m.chat, {document: {url: dl_url} ,mimetype: 'audio/mpeg',
 await finishreact()
 }
 break
-case 'dvid': case 'dvideo': case 'ytvideo': {
-if (!text) return replyherbertstyle(`Command zoah hian Youtube link emaw a title rawn dah tel rawh`)
-await loadingreact()
-        const YT = require('./lib/ytdl-core')
-        let yts = require("youtube-yts")
-        let search = await yts(text)
-        let anu = search.videos[0]
-        const downloadrawh = await YT.mp4(anu.url)
-        await uploadreact()
-        HBWABotInc.sendMessage(from, { video: { url: downloadrawh.videoUrl }, mimetype: "video/mp4", caption: `*${anu.title}*` }, { quoted: m })
-        await finishreact()
-      }
-break;
 case '/hla':  case 'songxx': {
 if (!text) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} K hminga siar lalnu`)
 await loading()
@@ -2115,7 +2086,7 @@ await HBWABotInc.sendMessage(m.chat,{
 await fs.unlinkSync(pl.path)
 }
 break 
-case 'dsongxx': {
+case 'dsong3': {
 if (!text) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} K hminga siar lalnu`)
 await loading()
 const herbertplaymp3 = require('./lib/ytdl2')
@@ -2162,7 +2133,7 @@ await HBWABotInc.sendMessage(m.chat,{
 },{quoted:m})
 await fs.unlinkSync(audio.path)
 break
-case 'ytmp4xx': case 'ytvideoxx': {
+case 'ytmp4': case 'ytvideo': {
 const herbertvidoh = require('./lib/ytdl2')
 if (args.length < 1 || !isUrl(text) || !herbertvidoh.isYTUrl(text)) replyherbertstyle(`Video link rawn dah rawh!!\n\nTiang hian tih tur : ${prefix + command} https://youtube.com/watch?v=DA9gCKwaefgs`)
 await loading()
@@ -2178,7 +2149,7 @@ await HBWABotInc.sendMessage(m.chat,{
 },{quoted:m})
 }
 break
-case 'videosxx':  case 'videoxx': {
+case 'dvideo':  case 'dvid': {
 if (!text) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} K hminga siar lalnu`)
 await loading()
 const herbertvidoh = require('./lib/ytdl2')
@@ -3634,9 +3605,8 @@ Welsh = cy `
 )
         } break
         case 'translate': { 
+        HBWABotInc.sendMessage(from, { react: { text: "⚙️", key: m.key } })
 if (!text) return replyherbertstyle(`Language code rawn dah tel rawh:\nTiang hian : ${prefix + command} lus Hi Herbert, What do you want?\n\nLanguage code i en duh chuan */codelang* tiin rawn type rawh`)
- if (args[0] == ' ')
- HBWABotInc.sendMessage(from, { react: { text: "⚙️", key: m.key } })
 const jsGoogleTranslateFree = require("@kreisler/js-google-translate-free")
     const source = "auto"
     const target = `${args[0]}`
