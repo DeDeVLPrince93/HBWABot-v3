@@ -3589,8 +3589,8 @@ Vietnamese = vi
 Welsh = cy `
 )
         } break
-        case 'translate':{
-await HBWABotInc.sendMessage(from, { text : `Language code rawn dah tel rawh\nTiang hian: translate-lus Hi Herbert, How are you?..\n\nLanguage code i en duh chuan */codelang* tiin rawn type rawh`}, { quoted: m })
+      case 'translate':{
+await replyherbertstyle(`Language code rawn dah tel rawh\nTiang hian: translate-lus Hi Herbert, How are you?..\n\nLanguage code i en duh chuan */codelang* tiin rawn type rawh`}
 }
 break
 
@@ -3599,63 +3599,63 @@ HBWABotInc.sendMessage(from, { react: { text: "⚙️", key: m.key } })
 if (!text) return replyherbertstyle(`Word rawn dah rawh`)
 const jsGoogleTranslateFree = require("@kreisler/js-google-translate-free")
 const source = "auto"
-let target
-if (/tanslate-fil/.test(command)) target = 'fil'
-if (/tanslate-sk/.test(command)) target = 'sk' 
-if (/tanslate-zh-cn/.test(command)) target = 'zh-cn' 
-if (/tanslate-sr/.test(command)) target = 'sr' 
-if (/tanslate-ru/.test(command)) target = 'ru' 
-if (/tanslate-it/.test(command)) target = 'it' 
-if (/tanslate-lv/.test(command)) target = 'lv' 
-if (/tanslate-ko/.test(command)) target = 'ko' 
-if (/tanslate-iw/.test(command)) target = 'iw' 
-if (/tanslate-gu/.test(command)) target = 'gu' 
-if (/tanslate-el/.test(command)) target = 'el' 
-if (/tanslate-de/.test(command)) target = 'de' 
-if (/tanslate-ms/.test(command)) target = 'ms' 
-if (/tanslate-en-gb/.test(command)) target = 'en-gb' 
-if (/tanslate-ja/.test(command)) target = 'ja' 
-if (/tanslate-is/.test(command)) target = 'is' 
-if (/tanslate-et/.test(command)) target = 'et' 
-if (/tanslate-en/.test(command)) target = 'en' 
-if (/tanslate-da/.test(command)) target = 'da' 
-if (/tanslate-fr/.test(command)) target = 'fr' 
-if (/tanslate-fi/.test(command)) target = 'fi' 
-if (/tanslate-chr/.test(command)) target = 'chr' 
-if (/tanslate-ca/.test(command)) target = 'ca' 
-if (/tanslate-pt-br/.test(command)) target = 'pt-br' 
-if (/tanslate-hr/.test(command)) target = 'hr' 
-if (/tanslate-am/.test(command)) target = 'am' 
-if (/tanslate-mr/.test(command)) target = 'mr' 
-if (/tanslate-ar/.test(command)) target = 'ar' 
-if (/tanslate-eu/.test(command)) target = 'eu' 
-if (/tanslate-uk/.test(command)) target = 'uk' 
-if (/tanslate-vi/.test(command)) target = 'vi' 
-if (/tanslate-cy/.test(command)) target = 'cy' 
-if (/tanslate-hi/.test(command)) target = 'hi' 
-if (/tanslate-tr/.test(command)) target = 'tr' 
-if (/tanslate-ur/.test(command)) target = 'ur' 
-if (/tanslate-zh-tw/.test(command)) target = 'zh-tw' 
-if (/tanslate-th/.test(command)) target = 'th' 
-if (/tanslate-sl/.test(command)) target = 'sl' 
-if (/tanslate-ta/.test(command)) target = 'ta' 
-if (/tanslate-te/.test(command)) target = 'te' 
-if (/tanslate-pt-pt/.test(command)) target = 'pt-pt' 
-if (/tanslate-es/.test(command)) target = 'es' 
-if (/tanslate-bn/.test(command)) target = 'bn' 
-if (/tanslate-no/.test(command)) target = 'no' 
-if (/tanslate-ro/.test(command)) target = 'ro' 
-if (/tanslate-sw/.test(command)) target = 'sw' 
-if (/tanslate-pl/.test(command)) target = 'pl' 
-if (/tanslate-es/.test(command)) target = 'es' 
-if (/tanslate-bg/.test(command)) target = 'bg' 
-if (/tanslate-ml/.test(command)) target = 'ml' 
-if (/tanslate-lus/.test(command)) target = 'lus' 
+const target
+if (/tanslate-fil/.test(command)) target = "fil"
+if (/tanslate-sk/.test(command)) target = "sk" 
+if (/tanslate-zh-cn/.test(command)) target = "zh-cn" 
+if (/tanslate-sr/.test(command)) target = "sr" 
+if (/tanslate-ru/.test(command)) target = "ru" 
+if (/tanslate-it/.test(command)) target = "it" 
+if (/tanslate-lv/.test(command)) target = "lv" 
+if (/tanslate-ko/.test(command)) target = "ko" 
+if (/tanslate-iw/.test(command)) target = "iw" 
+if (/tanslate-gu/.test(command)) target = "gu" 
+if (/tanslate-el/.test(command)) target = "el" 
+if (/tanslate-de/.test(command)) target = "de" 
+if (/tanslate-ms/.test(command)) target = "ms" 
+if (/tanslate-en-gb/.test(command)) target = "en-gb" 
+if (/tanslate-ja/.test(command)) target = "ja" 
+if (/tanslate-is/.test(command)) target = "is" 
+if (/tanslate-et/.test(command)) target = "et" 
+if (/tanslate-en/.test(command)) target = "en" 
+if (/tanslate-da/.test(command)) target = "da" 
+if (/tanslate-fr/.test(command)) target = "fr" 
+if (/tanslate-fi/.test(command)) target = "fi" 
+if (/tanslate-chr/.test(command)) target = "chr" 
+if (/tanslate-ca/.test(command)) target = "ca" 
+if (/tanslate-pt-br/.test(command)) target = "pt-br" 
+if (/tanslate-hr/.test(command)) target = "hr" 
+if (/tanslate-am/.test(command)) target = "am" 
+if (/tanslate-mr/.test(command)) target = "mr" 
+if (/tanslate-ar/.test(command)) target = "ar" 
+if (/tanslate-eu/.test(command)) target = "eu" 
+if (/tanslate-uk/.test(command)) target = "uk" 
+if (/tanslate-vi/.test(command)) target = "vi" 
+if (/tanslate-cy/.test(command)) target = "cy" 
+if (/tanslate-hi/.test(command)) target = "hi" 
+if (/tanslate-tr/.test(command)) target = "tr" 
+if (/tanslate-ur/.test(command)) target = "ur" 
+if (/tanslate-zh-tw/.test(command)) target = "zh-tw" 
+if (/tanslate-th/.test(command)) target = "th" 
+if (/tanslate-sl/.test(command)) target = "sl" 
+if (/tanslate-ta/.test(command)) target = "ta" 
+if (/tanslate-te/.test(command)) target = "te" 
+if (/tanslate-pt-pt/.test(command)) target = "pt-pt" 
+if (/tanslate-es/.test(command)) target = "es" 
+if (/tanslate-bn/.test(command)) target = "bn" 
+if (/tanslate-no/.test(command)) target = "no" 
+if (/tanslate-ro/.test(command)) target = "ro" 
+if (/tanslate-sw/.test(command)) target = "sw" 
+if (/tanslate-pl/.test(command)) target = "pl" 
+if (/tanslate-es/.test(command)) target = "es" 
+if (/tanslate-bg/.test(command)) target = "bg" 
+if (/tanslate-ml/.test(command)) target = "ml" 
+if (/tanslate-lus/.test(command)) target = "lus" 
     const athu = `${text}`
     const mizotranslation = await jsGoogleTranslateFree.translate(source, target, athu)
     console.log(mizotranslation)
-    replyherbertstyle(`${mizotranslation}`)
-      }
+await HBWABotInc.sendMessage(from, { text : `${mizotranslation}`}, { quoted: m })
+}
         break
 
 case 'myip': {
