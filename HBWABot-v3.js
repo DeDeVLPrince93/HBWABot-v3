@@ -3599,7 +3599,7 @@ HBWABotInc.sendMessage(from, { react: { text: "⚙️", key: m.key } })
 if (!text) return replyherbertstyle(`Word rawn dah rawh`)
 const jsGoogleTranslateFree = require("@kreisler/js-google-translate-free")
 const source = "auto"
-const target
+let target
 if (/tanslate-fil/.test(command)) target = "fil"
 if (/tanslate-sk/.test(command)) target = "sk" 
 if (/tanslate-zh-cn/.test(command)) target = "zh-cn" 
