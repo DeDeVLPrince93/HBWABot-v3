@@ -977,7 +977,7 @@ max_tokens: 2000,
 top_p: 1.0,
 frequency_penalty: 0.0,
 presence_penalty: 0.0,
-}
+})
 const source = 'auto'
 const target = 'lus'
 const athu = `${response.data.choices[0].text}`
