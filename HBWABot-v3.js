@@ -971,7 +971,7 @@ console.log(mizotranslation1)
 const openai = new OpenAIApi(configuration)
 const response = await openai.createCompletion({
 model: "text-davinci-003",
-prompt: `${mizotranslation1}`
+prompt: `${mizotranslation1}`,
 temperature: 0.3,
 max_tokens: 2000,
 top_p: 1.0,
