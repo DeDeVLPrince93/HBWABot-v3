@@ -3590,19 +3590,6 @@ Vietnamese = vi
 Welsh = cy `
 )
         } break
-      case 'translate':{
-if (!text) return replyherbertstyle(`Language code rawn dah tel rawh\nTiang hian: translate-lus Hi Herbert, How are you?..\n\nLanguage code i en duh chuan */codelang* tiin rawn type rawh`)
-HBWABotInc.sendMessage(from, { react: { text: "⚙️", key: m.key } })
-if (args[0] == ' ')
-    const source = 'auto'
-    const target = `${args[0]}`
-    const athu = `${text}`
-    const mizotranslation = await mizo_tawnga_translate_na.translate(source, target, athu)
-    console.log(mizotranslation)
-await HBWABotInc.sendMessage(from, { text : `${mizotranslation}`}, { quoted: m })
-}
-        break
-
 case 'myip': {
         if (!HerbertTheCreator) return m.reply(mess.owner)
         if (m.isGroup) return m.reply(mess.private)
