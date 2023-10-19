@@ -954,38 +954,6 @@ contacts: dev }, mentions: [sender] }, { quoted: m })
 HBWABotInc.sendMessage(from, { text : `Hi @${sender.split("@")[0]}, Hei hi bot developer number a ni`, mentions: [sender]}, { quoted: mola })
 }
 break
- case 'ai': case 'openai':{
-try {
-if (global.keyopenai === '') return replyherbertstyle("Api key a zo, bot siamtu hi a thar siam turin va dil rawh")
-if (!text) return replygcxeon(`Ai nen a in biakna\n\nTiang hian i hmang ang:\n${prefix + command} Tunge mizoram chief minister?`)
-const { Configuration, OpenAIApi } = require('openai')
-const jsGoogleTranslateFree = require("@kreisler/js-google-translate-free")
-const configuration = new Configuration({
-apiKey: global.keyopenai,
-})
-const source1 = 'auto'
-const target1 = 'en'
-const athu1 = `${text}`
-const mizotranslation1 = await jsGoogleTranslateFree.translate(source1, target1, athu1)
-console.log(mizotranslation1)
-const openai = new OpenAIApi(configuration)
-const response = await openai.createCompletion({
-model: "text-davinci-003",
-prompt: `${mizotranslation1}`,
-temperature: 0.3,
-max_tokens: 2000,
-top_p: 1.0,
-frequency_penalty: 0.0,
-presence_penalty: 0.0,
-})
-const source = 'auto'
-const target = 'lus'
-const athu = `${response.data.choices[0].text}`
-const mizotranslation = await jsGoogleTranslateFree.translate(source, target, athu)
-console.log(mizotranslation)
-await HBWABotInc.sendMessage(from, { text : `${mizotranslation}`}, { quoted: m })
-}}
-break
 case 'hi': case 'hii': case 'hiii': case 'helo': case 'hello': case 'hlo': case 'sir': case 'kapu': {
 if (m.isGroup) return m.reply(mess.Hello-Herbert)
 const herbert = await HBWABotInc.sendMessage(from, { text : `Hi @${sender.split("@")[0]}, Kei hi bot ka ni-a zawh duh i nei chuan owner hi va zawt rawh`, mentions: [sender]}, { quoted: m })
