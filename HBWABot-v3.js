@@ -940,23 +940,14 @@ HBWABotInc.ev.emit('messages.upsert', msg)
 
 switch (command) {
 case 'owner': {
-const repf = await HBWABotInc.sendMessage(from, { 
+const mawla = await HBWABotInc.sendMessage(from, { 
 contacts: { 
 displayName: `${list.length} Contact`, 
 contacts: list }, mentions: [sender] }, { quoted: m })
-HBWABotInc.sendMessage(from, { text : `Hi @${sender.split("@")[0]}, Hei aw ka owner hmelthapa chu😇`, mentions: [sender]}, { quoted: repf })
+HBWABotInc.sendMessage(from, { text : `Hi @${sender.split("@")[0]}, Hei aw ka owner hmelthapa chu😇`, mentions: [sender]}, { quoted: mawla })
 }
 break
-case 'developer': case 'dev': {
-const mola = await HBWABotInc.sendMessage(from, { 
-contacts: { 
-displayName: `${dev.length} Contact`, 
-contacts: dev }, mentions: [sender] }, { quoted: m })
-HBWABotInc.sendMessage(from, { text : `Hi @${sender.split("@")[0]}, Hei hi bot developer number a ni`, mentions: [sender]}, { quoted: mola })
-}
-break
-case 'hi': case 'hii': case 'hiii': case 'helo': case 'hello': case 'hlo': case 'sir': case 'kapu': {
-if (m.isGroup) return m.reply(mess.Hello-Herbert)
+case 'hi': case 'hii': case 'hiii': case 'helo': case 'hello': case 'hlo': case 'sir': case 'kapu': { (m.isGroup)
 const herbert = await HBWABotInc.sendMessage(from, { text : `Hi @${sender.split("@")[0]}, Kei hi bot ka ni-a zawh duh i nei chuan owner hi va zawt rawh`, mentions: [sender]}, { quoted: m })
 HBWABotInc.sendMessage(from, { contacts: { 
 displayName: `${list.length} Contact`, 
@@ -965,7 +956,7 @@ contacts: list }, mentions: [sender] }, { quoted: herbert })
 break
 case 'autoread':
                 if (!HerbertTheCreator) return replyherbertstyle(mess.owner)
-                if (args.length < 1) return replygcxeon(`I option duh thlang rawh, i tih dan tur chu\n${prefix + command} on/off\n\non chuan a activate ang\n off chuan deactivate na`)
+                if (args.length < 1) return replyherbertstyle(`I option duh thlang rawh, i tih dan tur chu\n${prefix + command} on/off\n\non chuan a activate ang\n off chuan deactivate na`)
                 if (q === 'on') {
                     autoread = true
                     replyherbertstyle(`Message autoread a dah a ni✓`)
@@ -1018,6 +1009,46 @@ replyherbertstyle('Nsfw chu he group-ah hian hman thei a ni tawh lo')
   }
   }
   break
+  //Open Ai
+   case 'ai': case 'openai': 
+try {
+if (global.keyopenai === '') return replyherbertstyle("Api key a zo, bot siamtu hi a thar siam turin va dil rawh")
+if (!text) return replygcxeon(`Ai nen a in biakna\n\nTiang hian i hmang ang:\n${prefix + command} Tunge mizoram chief minister?`)
+const source1 = 'auto'
+const target1 = 'en'
+const athu1 = `${text}`
+const mizotranslation1 = await mizo_tawnga_translate_na.translate(source1, target1, athu1)
+const heihi_ani = `${mizotranslation1}`
+const { Configuration, OpenAIApi } = require('openai')
+const configuration = new Configuration({
+apiKey: global.keyopenai,
+})
+const openai = new OpenAIApi(configuration)
+const response = await openai.createCompletion({
+model: "text-davinci-003",
+prompt: heihi_ani,
+temperature: 0,
+max_tokens: 2048,
+top_p: 1,
+frequency_penalty: 0.3,
+presence_penalty: 0
+})
+const source = 'auto'
+const target = 'lus'
+const athu = `${response.data.choices[0].text}`
+const mizotranslation = await mizo_tawnga_translate_na.translate(source, target, athu)
+replyherbertstyle(`${response.data.choices[0].text}`)
+} catch (error) {
+if (error.response) {
+console.log(error.response.status);
+console.log(error.response.data);
+console.log(`${error.response.status}\n\n${error.response.data}`)
+} else {
+console.log(error)
+replyherbertstype("Sorry, harstna eng emaw avangin open-ai hi hman thei a ni lo")
+}
+}
+break
 //game
 case 'suitpvp':case 'rps': case 'rockpaperscissors': case 'suit': {
             this.suit = this.suit ? this.suit : {}
