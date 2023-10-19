@@ -954,6 +954,38 @@ contacts: dev }, mentions: [sender] }, { quoted: m })
 HBWABotInc.sendMessage(from, { text : `Hi @${sender.split("@")[0]}, Hei hi bot developer number a ni`, mentions: [sender]}, { quoted: mola })
 }
 break
+ case 'ai': case 'openai':{
+try {
+if (global.keyopenai === '') return replyherbertstyle("Api key a zo, bot siamtu hi a thar siam turin va dil rawh")
+if (!text) return replygcxeon(`Ai nen a in biakna\n\nTiang hian i hmang ang:\n${prefix + command} Tunge mizoram chief minister?`)
+const { Configuration, OpenAIApi } = require('openai')
+const jsGoogleTranslateFree = require("@kreisler/js-google-translate-free")
+const configuration = new Configuration({
+apiKey: global.keyopenai,
+})
+const source1 = 'auto'
+const target1 = 'en'
+const athu1 = `${text}`
+const mizotranslation1 = await jsGoogleTranslateFree.translate(source1, target1, athu1)
+console.log(mizotranslation1)
+const openai = new OpenAIApi(configuration)
+const response = await openai.createCompletion({
+model: "text-davinci-003",
+prompt: `${mizotranslation1}`
+temperature: 0.3,
+max_tokens: 2000,
+top_p: 1.0,
+frequency_penalty: 0.0,
+presence_penalty: 0.0,
+}
+const source = 'auto'
+const target = 'lus'
+const athu = `${response.data.choices[0].text}`
+const mizotranslation = await jsGoogleTranslateFree.translate(source, target, athu)
+console.log(mizotranslation)
+await HBWABotInc.sendMessage(from, { text : `${mizotranslation}`}, { quoted: m })
+}}
+break
 case 'hi': case 'hii': case 'hiii': case 'helo': case 'hello': case 'hlo': case 'sir': case 'kapu': {
 if (m.isGroup) return m.reply(mess.Hello-Herbert)
 const herbert = await HBWABotInc.sendMessage(from, { text : `Hi @${sender.split("@")[0]}, Kei hi bot ka ni-a zawh duh i nei chuan owner hi va zawt rawh`, mentions: [sender]}, { quoted: m })
@@ -3590,67 +3622,62 @@ Welsh = cy `
 )
         } break
       case 'translate':{
-await replyherbertstyle(`Language code rawn dah tel rawh\nTiang hian: translate-lus Hi Herbert, How are you?..\n\nLanguage code i en duh chuan */codelang* tiin rawn type rawh`)
-}
-break
-
-case 'translate-fil': case 'translate-sk': case 'translate-zh-cn': case 'translate-sr': case 'translate-ru': case 'translate-it': case 'translate-lv': case 'translate-ko': case 'translate-iw': case 'translate-gu': case 'translate-el': case 'translate-de': case 'translate-ms': case 'translate-en-gb': case 'translate-ja': case 'translate-is': case 'translate-et': case 'translate-en': case 'translate-da': case 'translate-fr': case 'translate-fi': case 'translate-chr': case 'translate-ca': case 'translate-pt-br': case 'translate-hr': case 'translate-am': case 'translate-mr': case 'translate-ar': case 'translate-eu': case 'translate-uk': case 'translate-vi': case 'translate-cy': case 'translate-hi': case 'translate-tr': case 'translate-ur': case 'translate-zh-tw': case 'translate-th': case 'translate-sl': case 'translate-ta': case 'translate-te': case 'translate-pt-pt': case 'translate-es': case 'translate-bn': case 'translate-no': case 'translate-ro': case 'translate-sw': case 'translate-pl': case 'translate-es': case 'translate-bg': case 'translate-ml': case 'translate-lus': { 
+if (!text) return replyherbertstyle(`Language code rawn dah tel rawh\nTiang hian: translate-lus Hi Herbert, How are you?..\n\nLanguage code i en duh chuan */codelang* tiin rawn type rawh`)
 HBWABotInc.sendMessage(from, { react: { text: "⚙️", key: m.key } })
-if (!text) return replyherbertstyle(`Word rawn dah rawh`)
 const jsGoogleTranslateFree = require("@kreisler/js-google-translate-free")
-const source = "auto"
-let target
-if (/tanslate-fil/.test(command)) target = "fil"
-if (/tanslate-sk/.test(command)) target = "sk" 
-if (/tanslate-zh-cn/.test(command)) target = "zh-cn" 
-if (/tanslate-sr/.test(command)) target = "sr" 
-if (/tanslate-ru/.test(command)) target = "ru" 
-if (/tanslate-it/.test(command)) target = "it" 
-if (/tanslate-lv/.test(command)) target = "lv" 
-if (/tanslate-ko/.test(command)) target = "ko" 
-if (/tanslate-iw/.test(command)) target = "iw" 
-if (/tanslate-gu/.test(command)) target = "gu" 
-if (/tanslate-el/.test(command)) target = "el" 
-if (/tanslate-de/.test(command)) target = "de" 
-if (/tanslate-ms/.test(command)) target = "ms" 
-if (/tanslate-en-gb/.test(command)) target = "en-gb" 
-if (/tanslate-ja/.test(command)) target = "ja" 
-if (/tanslate-is/.test(command)) target = "is" 
-if (/tanslate-et/.test(command)) target = "et" 
-if (/tanslate-en/.test(command)) target = "en" 
-if (/tanslate-da/.test(command)) target = "da" 
-if (/tanslate-fr/.test(command)) target = "fr" 
-if (/tanslate-fi/.test(command)) target = "fi" 
-if (/tanslate-chr/.test(command)) target = "chr" 
-if (/tanslate-ca/.test(command)) target = "ca" 
-if (/tanslate-pt-br/.test(command)) target = "pt-br" 
-if (/tanslate-hr/.test(command)) target = "hr" 
-if (/tanslate-am/.test(command)) target = "am" 
-if (/tanslate-mr/.test(command)) target = "mr" 
-if (/tanslate-ar/.test(command)) target = "ar" 
-if (/tanslate-eu/.test(command)) target = "eu" 
-if (/tanslate-uk/.test(command)) target = "uk" 
-if (/tanslate-vi/.test(command)) target = "vi" 
-if (/tanslate-cy/.test(command)) target = "cy" 
-if (/tanslate-hi/.test(command)) target = "hi" 
-if (/tanslate-tr/.test(command)) target = "tr" 
-if (/tanslate-ur/.test(command)) target = "ur" 
-if (/tanslate-zh-tw/.test(command)) target = "zh-tw" 
-if (/tanslate-th/.test(command)) target = "th" 
-if (/tanslate-sl/.test(command)) target = "sl" 
-if (/tanslate-ta/.test(command)) target = "ta" 
-if (/tanslate-te/.test(command)) target = "te" 
-if (/tanslate-pt-pt/.test(command)) target = "pt-pt" 
-if (/tanslate-es/.test(command)) target = "es" 
-if (/tanslate-bn/.test(command)) target = "bn" 
-if (/tanslate-no/.test(command)) target = "no" 
-if (/tanslate-ro/.test(command)) target = "ro" 
-if (/tanslate-sw/.test(command)) target = "sw" 
-if (/tanslate-pl/.test(command)) target = "pl" 
-if (/tanslate-es/.test(command)) target = "es" 
-if (/tanslate-bg/.test(command)) target = "bg" 
-if (/tanslate-ml/.test(command)) target = "ml" 
-if (/tanslate-lus/.test(command)) target = "lus" 
+if (args[0] == 'fil')
+if (args[0] == 'sk')
+if (args[0] == 'zh-cn')
+if (args[0] == 'sr')
+if (args[0] == 'ru')
+if (args[0] == 'it')
+if (args[0] == 'lv')
+if (args[0] == 'ko')
+if (args[0] == 'iw')
+if (args[0] == 'gu')
+if (args[0] == 'el')
+if (args[0] == 'de')
+if (args[0] == 'ms')
+if (args[0] == 'en-gb')
+if (args[0] == 'ja')
+if (args[0] == 'is')
+if (args[0] == 'et')
+if (args[0] == 'en')
+if (args[0] == 'da')
+if (args[0] == 'fa')
+if (args[0] == 'fi')
+if (args[0] == 'chr')
+if (args[0] == 'ca')
+if (args[0] == 'pt-br')
+if (args[0] == 'hr')
+if (args[0] == 'am')
+if (args[0] == 'mr')
+if (args[0] == 'ar')
+if (args[0] == 'eu')
+if (args[0] == 'uk')
+if (args[0] == 'vi')
+if (args[0] == 'cy')
+if (args[0] == 'hi')
+if (args[0] == 'tr')
+if (args[0] == 'ur')
+if (args[0] == 'zh-tw')
+if (args[0] == 'th')
+if (args[0] == 'sl')
+if (args[0] == 'ta')
+if (args[0] == 'te')
+if (args[0] == 'pt-pt')
+if (args[0] == 'es')
+if (args[0] == 'bn')
+if (args[0] == 'no')
+if (args[0] == 'ro')
+if (args[0] == 'sw')
+if (args[0] == 'pl')
+if (args[0] == 'es')
+if (args[0] == 'bg')
+if (args[0] == 'ml')
+if (args[0] == 'lus')
+    const source = "auto"
+    const target = `${args[0]}`
     const athu = `${text}`
     const mizotranslation = await jsGoogleTranslateFree.translate(source, target, athu)
     console.log(mizotranslation)
