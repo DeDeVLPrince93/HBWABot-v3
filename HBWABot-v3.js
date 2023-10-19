@@ -947,7 +947,8 @@ contacts: list }, mentions: [sender] }, { quoted: m })
 HBWABotInc.sendMessage(from, { text : `Hi @${sender.split("@")[0]}, Hei aw ka owner hmelthapa chu😇`, mentions: [sender]}, { quoted: mawla })
 }
 break
-case 'hi': case 'hii': case 'hiii': case 'helo': case 'hello': case 'hlo': case 'sir': case 'kapu': { (m.isGroup)
+case 'hi': case 'hii': case 'hiii': case 'helo': case 'hello': case 'hlo': case 'sir': case 'kapu': { 
+if (m.isGroup) throw m.reply(mess.Hello-Herbert)
 const herbert = await HBWABotInc.sendMessage(from, { text : `Hi @${sender.split("@")[0]}, Kei hi bot ka ni-a zawh duh i nei chuan owner hi va zawt rawh`, mentions: [sender]}, { quoted: m })
 HBWABotInc.sendMessage(from, { contacts: { 
 displayName: `${list.length} Contact`, 
@@ -1010,10 +1011,10 @@ replyherbertstyle('Nsfw chu he group-ah hian hman thei a ni tawh lo')
   }
   break
   //Open Ai
-   case 'ai': case 'openai': 
+   case 'aimz': case 'openaimz': 
 try {
 if (global.keyopenai === '') return replyherbertstyle("Api key a zo, bot siamtu hi a thar siam turin va dil rawh")
-if (!text) return replygcxeon(`Ai nen a in biakna\n\nTiang hian i hmang ang:\n${prefix + command} Tunge mizoram chief minister?`)
+if (!text) return replyherbertstyle(`Ai nen a in biakna\n\nTiang hian i hmang ang:\n${prefix + command} Tunge mizoram chief minister?`)
 const source1 = 'auto'
 const target1 = 'en'
 const athu1 = `${text}`
@@ -1045,8 +1046,37 @@ console.log(error.response.data);
 console.log(`${error.response.status}\n\n${error.response.data}`)
 } else {
 console.log(error)
-replyherbertstype("Sorry, harstna eng emaw avangin open-ai hi hman thei a ni lo")
+replyherbertstyle("Sorry, harstna eng emaw avangin open-ai hi hman thei a ni lo")
 }
+}
+break
+case 'ai': case 'openai':
+try {
+if (global.keyopenai === '') return replyherbertstyle("Api key a zo, bot siamtu hi a thar siam turin va dil rawh")
+if (!text) return replyherbertstyle(`Ai nen a in biakna\n\nTiang hian i hmang ang:\n${prefix + command} Tunge mizoram chief minister?`)
+const { Configuration, OpenAIApi } = require('openai')
+const configuration = new Configuration({
+apiKey: global.keyopenai,
+});
+const openai = new OpenAIApi(configuration);
+const response = await openai.createCompletion({
+model: "text-davinci-003",
+prompt: q,
+temperature: 0.3,
+max_tokens: 2000,
+top_p: 1.0,
+frequency_penalty: 0.0,
+presence_penalty: 0.0,
+});
+replyherbertstyle(`${response.data.choices[0].text}`);
+} catch (error) {
+if (error.response) {
+console.log(error.response.status);
+console.log(error.response.data);
+console.log(`${error.response.status}\n\n${error.response.data}`);
+} else {
+console.log(error);
+replyherbertstyle("Sorry, harstna eng emaw avangin open-ai hi hman thei a ni lo")
 }
 break
 //game
