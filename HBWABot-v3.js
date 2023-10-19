@@ -1050,35 +1050,6 @@ replyherbertstyle("Sorry, harstna eng emaw avangin open-ai hi hman thei a ni lo"
 }
 }
 break
-case 'ai': case 'openai':
-try {
-if (global.keyopenai === '') return replyherbertstyle("Api key a zo, bot siamtu hi a thar siam turin va dil rawh")
-if (!text) return replyherbertstyle(`Ai nen a in biakna\n\nTiang hian i hmang ang:\n${prefix + command} Tunge mizoram chief minister?`)
-const { Configuration, OpenAIApi } = require('openai')
-const configuration = new Configuration({
-apiKey: global.keyopenai,
-});
-const openai = new OpenAIApi(configuration);
-const response = await openai.createCompletion({
-model: "text-davinci-003",
-prompt: q,
-temperature: 0.3,
-max_tokens: 2000,
-top_p: 1.0,
-frequency_penalty: 0.0,
-presence_penalty: 0.0,
-});
-replyherbertstyle(`${response.data.choices[0].text}`);
-} catch (error) {
-if (error.response) {
-console.log(error.response.status);
-console.log(error.response.data);
-console.log(`${error.response.status}\n\n${error.response.data}`);
-} else {
-console.log(error);
-replyherbertstyle("Sorry, harstna eng emaw avangin open-ai hi hman thei a ni lo")
-}
-break
 //game
 case 'suitpvp':case 'rps': case 'rockpaperscissors': case 'suit': {
             this.suit = this.suit ? this.suit : {}
