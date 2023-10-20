@@ -951,7 +951,7 @@ HBWABotInc.sendMessage(from, { text : `Hi @${sender.split("@")[0]}, Hei aw ka ow
 }
 break
 case 'hi': case 'hii': case 'hiii': case 'helo': case 'hello': case 'hlo': case 'sir': case 'kapu': { 
-if (m.isGroup) throw m.reply(mess.Hello-Herbert)
+if (m.isGroup) throw m.reply()
 const herbert = await HBWABotInc.sendMessage(from, { text : `Hi @${sender.split("@")[0]}, Kei hi bot ka ni-a zawh duh i nei chuan owner hi va zawt rawh`, mentions: [sender]}, { quoted: m })
 HBWABotInc.sendMessage(from, { contacts: { 
 displayName: `${list.length} Contact`, 
@@ -1013,65 +1013,6 @@ replyherbertstyle('Nsfw chu he group-ah hian hman thei a ni tawh lo')
   }
   }
   break
-  //betabotz ChatBot
-case 'ai': case 'openai': {
-if (!text) return replyherbertstyle(`Ai nen a in biakna\n\nTiang hian i hmang ang:\n${prefix + command} Tunge mizoram chief minister?`)
-await robotreact()
-const { openai } = require('betabotz-tools') 
-const source1 = 'auto'
-const target1 = 'en'
-const athu1 = `${text}`
-const mizotranslation1 = await mizo_tawnga_translate_na.translate(source1, target1, athu1)
-const heihi_ani = `${mizotranslation1}`
-const results = await openai(`${heihi_ani}`)
-console.log(results) // JSON
-const source = 'auto'
-const target = 'lus'
-const athu = `${results}`
-const mizotranslation = await mizo_tawnga_translate_na.translate(source, target, athu)
-replyherbertstyle(`${mizotranslation}`)
-}
-  break
-  //Open Ai
-   case 'aimz': case 'openaimz': 
-try {
-if (global.keyopenai === '') return replyherbertstyle("Api key a zo, bot siamtu hi a thar siam turin va dil rawh")
-if (!text) return replyherbertstyle(`Ai nen a in biakna\n\nTiang hian i hmang ang:\n${prefix + command} Tunge mizoram chief minister?`)
-const source1 = 'auto'
-const target1 = 'en'
-const athu1 = `${text}`
-const mizotranslation1 = await mizo_tawnga_translate_na.translate(source1, target1, athu1)
-const heihi_ani = `${mizotranslation1}`
-const { Configuration, OpenAIApi } = require('openai')
-const configuration = new Configuration({
-apiKey: global.keyopenai,
-})
-const openai = new OpenAIApi(configuration)
-const response = await openai.createCompletion({
-model: "text-davinci-003",
-prompt: heihi_ani,
-temperature: 0,
-max_tokens: 2048,
-top_p: 1,
-frequency_penalty: 0.3,
-presence_penalty: 0
-})
-const source = 'auto'
-const target = 'lus'
-const athu = `${response.data.choices[0].text}`
-const mizotranslation = await mizo_tawnga_translate_na.translate(source, target, athu)
-replyherbertstyle(`${mizotranslation}`)
-} catch (error) {
-if (error.response) {
-console.log(error.response.status);
-console.log(error.response.data);
-console.log(`${error.response.status}\n\n${error.response.data}`)
-} else {
-console.log(error)
-replyherbertstyle("Sorry, harstna eng emaw avangin open-ai hi hman thei a ni lo")
-}
-}
-break
 //game
 case 'suitpvp':case 'rps': case 'rockpaperscissors': case 'suit': {
             this.suit = this.suit ? this.suit : {}
@@ -1902,6 +1843,26 @@ if (!quoted) return replyherbertstyle(`Thlalak rawn dah rawh`)
             HBWABotInc.sendMessage(m.chat, { image: {url: results.image_data}, caption: mess.success}, { quoted: m})
 }
 break 		
+  //betabotz ChatBot
+case 'ai': case 'openai': {
+if (!text) return replyherbertstyle(`Ai nen a in biakna\n\nTiang hian i hmang ang:\n${prefix + command} Tunge mizoram chief minister?`)
+await robotreact()
+const { openai } = require('betabotz-tools') 
+const source1 = 'auto'
+const target1 = 'en'
+const athu1 = `${text}`
+const mizotranslation1 = await mizo_tawnga_translate_na.translate(source1, target1, athu1)
+const heihi_ani = `${mizotranslation1}`
+const heihian = await openai(`${heihi_ani}`)
+console.log(heihian)//JSON
+const chutin = `${heihian.result}`
+const source = 'auto'
+const target = 'lus'
+const athu = `${chutin}`
+const mizotranslation = await mizo_tawnga_translate_na.translate(source, target, athu)
+await HBWABotInc.sendMessage(from, { text: mizotranslation }, { quoted: m })
+}
+  break
 			case 'gimage': {
                 if (!text) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Mizoram`)
                 await loading()
