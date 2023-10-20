@@ -179,6 +179,9 @@ const finishreact = () => {
  const downloadreact = () => {
  HBWABotInc.sendMessage(from, { react: { text: "⬇️" , key: m.key }}) 
  }
+ const robotreact = () => {
+ HBWABotInc.sendMessage(from, { react: { text: "🤖️" , key: m.key }}) 
+ }
         //TIME
         const xtime = moment.tz('Asia/Kolkata').format('HH:mm:ss')
         const xdate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
@@ -1010,6 +1013,25 @@ replyherbertstyle('Nsfw chu he group-ah hian hman thei a ni tawh lo')
   }
   }
   break
+  //betabotz ChatBot
+case 'ai': case 'openai': {
+if (!text) return replyherbertstyle(`Ai nen a in biakna\n\nTiang hian i hmang ang:\n${prefix + command} Tunge mizoram chief minister?`)
+await robotreact()
+const { openai } = require('betabotz-tools') 
+const source1 = 'auto'
+const target1 = 'en'
+const athu1 = `${text}`
+const mizotranslation1 = await mizo_tawnga_translate_na.translate(source1, target1, athu1)
+const heihi_ani = `${mizotranslation1}`
+const results = await openai(`${heihi_ani}`)
+console.log(results) // JSON
+const source = 'auto'
+const target = 'lus'
+const athu = `${results}`
+const mizotranslation = await mizo_tawnga_translate_na.translate(source, target, athu)
+replyherbertstyle(`${mizotranslation}`)
+}
+  break
   //Open Ai
    case 'aimz': case 'openaimz': 
 try {
@@ -1038,7 +1060,7 @@ const source = 'auto'
 const target = 'lus'
 const athu = `${response.data.choices[0].text}`
 const mizotranslation = await mizo_tawnga_translate_na.translate(source, target, athu)
-replyherbertstyle(`${response.data.choices[0].text}`)
+replyherbertstyle(`${mizotranslation}`)
 } catch (error) {
 if (error.response) {
 console.log(error.response.status);
