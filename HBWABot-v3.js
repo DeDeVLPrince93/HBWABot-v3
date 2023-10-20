@@ -181,6 +181,9 @@ const finishreact = () => {
  }
  const robotreact = () => {
  HBWABotInc.sendMessage(from, { react: { text: "🤖️" , key: m.key }}) 
+ } 
+ const helloreact = () => {
+ HBWABotInc.sendMessage(from, { react: { text: "👋️" , key: m.key }}) 
  }
         //TIME
         const xtime = moment.tz('Asia/Kolkata').format('HH:mm:ss')
@@ -951,7 +954,7 @@ HBWABotInc.sendMessage(from, { text : `Hi @${sender.split("@")[0]}, Hei aw ka ow
 }
 break
 case 'hi': case 'hii': case 'hiii': case 'helo': case 'hello': case 'hlo': case 'sir': case 'kapu': { 
-if (m.isGroup) throw m.reply()
+if (m.isGroup) throw helloreact()
 const herbert = await HBWABotInc.sendMessage(from, { text : `Hi @${sender.split("@")[0]}, Kei hi bot ka ni-a zawh duh i nei chuan owner hi va zawt rawh`, mentions: [sender]}, { quoted: m })
 HBWABotInc.sendMessage(from, { contacts: { 
 displayName: `${list.length} Contact`, 
