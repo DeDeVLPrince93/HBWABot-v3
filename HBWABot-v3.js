@@ -1800,7 +1800,7 @@ break
   case 'ai3': case 'openai3': {
 if (!text) return replyherbertstyle(`Ai nen a in biakna\n\nTiang hian i hmang ang:\n${prefix + command} Tunge mizoram chief minister?`)
 await robotreact()
-const { Configuration, OpenAIApi } = requir ("openai")
+const { Configuration, OpenAIApi } = require("openai")
 const configuration = new Configuration({
 	apiKey: global.keyopenai,
 })
