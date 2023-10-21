@@ -1802,7 +1802,7 @@ if (!text) return replyherbertstyle(`Ai nen a in biakna\n\nTiang hian i hmang an
 await robotreact()
 const { Configuration, OpenAIApi } = require("openai")
 const configuration = new Configuration({
-apiKey: process.env.global.keyopenai,
+apiKey: global.keyopenai,
 })
 const source1 = 'auto'
 const target1 = 'en'
