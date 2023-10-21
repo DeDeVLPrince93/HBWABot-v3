@@ -1802,7 +1802,7 @@ if (!text) return replyherbertstyle(`Ai nen a in biakna\n\nTiang hian i hmang an
 await robotreact()
 const { Configuration, OpenAIApi } = require("openai")
 const configuration = new Configuration({
-	apiKey: global.keyopenai,
+apiKey: process.env.global.keyopenai,
 })
 const source1 = 'auto'
 const target1 = 'en'
@@ -1813,11 +1813,6 @@ const openai = new OpenAIApi(configuration)
 const response = await openai.createCompletion({
 	model: "text-davinci-003",
 	prompt: heihi_ani,
-	temperature: 0.7,
-	max_tokens: 4000,
-	top_p: 1,
-	frequency_penalty: 0,
-	presence_penalty: 0,
 })
 console.log(response.data.choices[0].text)
 const source = 'auto'
