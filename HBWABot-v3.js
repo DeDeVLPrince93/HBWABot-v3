@@ -540,56 +540,6 @@ const pickRandom = (arr) => {
 return arr[Math.floor(Math.random() * arr.length)]
 }
 
-const downloadMp4 = async (Link) => {
-let gHz = require("./scrape/savefrom")
-let Lehd = await gHz.savefrom(Link)
-let ghd = await reSize(Lehd.thumb, 300, 300)
-let ghed = await ytdl.getInfo(Link)
-let gdyr = await HBWABotInc.sendMessage(from, {image: { url: Lehd.thumb } , caption: `Channel Name : ${ghed.player_response.videoDetails.author}
-Channel Link : https://youtube.com/channel/${ghed.player_response.videoDetails.channelId}
-Title : ${Lehd.meta.title}
-Duration : ${Lehd.meta.duration}
-Desc : ${ghed.player_response.videoDetails.shortDescription}`}, { quoted : m })
-try {
-await ytdl.getInfo(Link)
-let mp4File = getRandom('.mp4')
-console.log(color('Download Video With ytdl-core'))
-let nana = ytdl(Link)
-.pipe(fs.createWriteStream(mp4File))
-.on('finish', async () => {
-await HBWABotInc.sendMessage(from, { video: fs.readFileSync(mp4File), caption: mess.succes, gifPlayback: false }, { quoted: gdyr })
-fs.unlinkSync(`./${mp4File}`)
-})
-} catch (err) {
-m.reply(`${err}`)
-}
-}
-
-const downloadMp3 = async (Link) => {
-let pNx = require("./scrape/savefrom")
-let Puxa = await pNx.savefrom(Link)
-let MlP = await reSize(Puxa.thumb, 300, 300)
-let PlXz = await ytdl.getInfo(Link)
-let gedeyeer = await HBWABotInc.sendMessage(from, { image: { url: Puxa.thumb } , caption: `Channel Name : ${PlXz.player_response.videoDetails.author}
-Channel Link : https://youtube.com/channel/${PlXz.player_response.videoDetails.channelId}
-Title : ${Puxa.meta.title}
-Duration : ${Puxa.meta.duration}
-Desc : ${PlXz.player_response.videoDetails.shortDescription}`}, { quoted : m })
-try {
-await ytdl.getInfo(Link)
-let mp3File = getRandom('.mp3')
-console.log(color('Download Audio With ytdl-core'))
-ytdl(Link, { filter: 'audioonly' })
-.pipe(fs.createWriteStream(mp3File))
-.on('finish', async () => {
-await HBWABotInc.sendMessage(from, { audio: fs.readFileSync(mp3File), mimetype: 'audio/mp4' }, { quoted: gedeyeer })
-fs.unlinkSync(mp3File)
-})
-} catch (err) {
-m.reply(`${err}`)
-}
-}
-
 async function sendPoll(jid, text, list) {
 HBWABotInc.relayMessage(jid, {
 "pollCreationMessage": {
@@ -1847,6 +1797,36 @@ if (!quoted) return replyherbertstyle(`Thlalak rawn dah rawh`)
 }
 break 		
   //betabotz ChatBot
+  case 'ai3': case 'openai3': {
+if (!text) return replyherbertstyle(`Ai nen a in biakna\n\nTiang hian i hmang ang:\n${prefix + command} Tunge mizoram chief minister?`)
+await robotreact()
+const { Configuration, OpenAIApi } = requir ("openai")
+const configuration = new Configuration({
+	apiKey: global.keyopenai,
+})
+const source1 = 'auto'
+const target1 = 'en'
+const athu1 = `${text}`
+const mizotranslation1 = await mizo_tawnga_translate_na.translate(source1, target1, athu1)
+const heihi_ani = `${mizotranslation1}`
+const openai = new OpenAIApi(configuration)
+const response = await openai.createCompletion({
+	model: "text-davinci-003",
+	prompt: heihi_ani,
+	temperature: 0.7,
+	max_tokens: 4000,
+	top_p: 1,
+	frequency_penalty: 0,
+	presence_penalty: 0,
+})
+console.log(response.data.choices[0].text)
+const source = 'auto'
+const target = 'lus'
+const athu = `${response.data.choices[0].text}`
+const mizotranslation = await mizo_tawnga_translate_na.translate(source, target, athu)
+await HBWABotInc.sendMessage(from, { text: mizotranslation }, { quoted: m })
+}
+break
 case 'ai': case 'openai': {
 if (!text) return replyherbertstyle(`Ai nen a in biakna\n\nTiang hian i hmang ang:\n${prefix + command} Tunge mizoram chief minister?`)
 await robotreact()
