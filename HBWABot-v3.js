@@ -1797,7 +1797,9 @@ if (!quoted) return replyherbertstyle(`Thlalak rawn dah rawh`)
 }
 break 		
   //betabotz ChatBot
-  case 'ai3': case 'openai3': {
+  case 'ai3': case 'openai3':
+   try {
+if (global.keyopenai === '') return reply("API hman zo a ni tawh a ai i hmang leh duh chuan a rang lamin owner va hriat tir ang che")
 if (!text) return replyherbertstyle(`Ai nen a in biakna\n\nTiang hian i hmang ang:\n${prefix + command} Tunge mizoram chief minister?`)
 await robotreact()
 const { Configuration, OpenAIApi } = require("openai")
@@ -1812,9 +1814,13 @@ const heihi_ani = `${mizotranslation1}`
 const openai = new OpenAIApi(configuration)
 const response = await openai.createCompletion({
 	model: "text-davinci-003",
-	prompt: heihi_ani,
+	prompt: heihi_ani, 
+	temperature: 0, 
+	max_tokens: 2048, 
+	top_p: 1, 
+	frequency_penalty: 0.3, 
+	presence_penalty: 0
 })
-console.log(response.data.choices[0].text)
 const source = 'auto'
 const target = 'lus'
 const athu = `${response.data.choices[0].text}`
