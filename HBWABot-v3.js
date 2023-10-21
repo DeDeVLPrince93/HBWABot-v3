@@ -954,7 +954,7 @@ HBWABotInc.sendMessage(from, { text : `Hi @${sender.split("@")[0]}, Hei aw ka ow
 }
 break
 case 'hi': case 'hii': case 'hiii': case 'helo': case 'hello': case 'hlo': case 'sir': case 'kapu': { 
-if (m.isGroup) throw HBWABotInc.sendMessage(from, { react: { text: "👋️" , key: m.key }})
+if (m.isGroup) return await HBWABotInc.sendMessage(from, { react: { text: "👋️" , key: m.key }})
 const herbert = await HBWABotInc.sendMessage(from, { text : `Hi @${sender.split("@")[0]}, Kei hi bot ka ni-a zawh duh i nei chuan owner hi va zawt rawh`, mentions: [sender]}, { quoted: m })
 HBWABotInc.sendMessage(from, { contacts: { 
 displayName: `${list.length} Contact`, 
@@ -1214,7 +1214,7 @@ const cara = 'cara'
           
   }
   break 
-  case 'transfer':  case 'pe': {
+  case 'transfer': {
 HBWABotInc.sendMessage(from, { react: { text: "🗿" , key: m.key }})
             let value = text.trim().split(" ")
             if (value[0] === "") return replyherbertstyle(`Tiang hian ti tawh : ${prefix}transfer 100 @user`)
@@ -1240,7 +1240,7 @@ HBWABotInc.sendMessage(from, { react: { text: "🗿" , key: m.key }})
                   
                   const deduct = await eco.deduct(user1, cara, value[0])
                   const give = await eco.give(user2, cara, value[0])
-                  replyherbertstyle(`📠 Transaction a ni e✓`)
+                  replyherbertstyle(`📠 transfer a ni e✓`)
           
           }
           break 
@@ -1866,6 +1866,28 @@ const mizotranslation = await mizo_tawnga_translate_na.translate(source, target,
 await HBWABotInc.sendMessage(from, { text: mizotranslation }, { quoted: m })
 }
   break
+  
+    //betabotz ChatBot
+case 'ai2': case 'openai2': {
+if (!text) return replyherbertstyle(`Ai nen a in biakna\n\nTiang hian i hmang ang:\n${prefix + command} Tunge mizoram chief minister?`)
+await robotreact()
+const { openai } = require('betabotz-tools') 
+const source1 = 'auto'
+const target1 = 'en'
+const athu1 = `${text}`
+const mizotranslation1 = await mizo_tawnga_translate_na.translate(source1, target1, athu1)
+const heihi_ani = `${mizotranslation1}`
+const heihian = await openai(`${heihi_ani}`)
+console.log(heihian)//JSON
+const chutin = `${heihian.result}`
+const source = 'auto'
+const target = 'en'
+const athu = `${chutin}`
+const mizotranslation = await mizo_tawnga_translate_na.translate(source, target, athu)
+await HBWABotInc.sendMessage(from, { text: mizotranslation }, { quoted: m })
+}
+  break
+			case 'gimage': {
 			case 'gimage': {
                 if (!text) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Mizoram`)
                 await loading()
