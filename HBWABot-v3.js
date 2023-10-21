@@ -1868,7 +1868,7 @@ await HBWABotInc.sendMessage(from, { text: mizotranslation }, { quoted: m })
   break
   
     //betabotz ChatBot
-case 'ai': case 'openai': {
+case 'ai2': case 'openai2': {
 if (!text) return replyherbertstyle(`Ai nen a in biakna\n\nTiang hian i hmang ang:\n${prefix + command} Tunge mizoram chief minister?`)
 await robotreact()
 const { openai } = require('betabotz-tools') 
@@ -1881,7 +1881,7 @@ const heihian = await openai(`${heihi_ani}`)
 console.log(heihian)//JSON
 const chutin = `${heihian.result}`
 const source = 'auto'
-const target = 'lus'
+const target = 'en'
 const athu = `${chutin}`
 const mizotranslation = await mizo_tawnga_translate_na.translate(source, target, athu)
 await HBWABotInc.sendMessage(from, { text: mizotranslation }, { quoted: m })
