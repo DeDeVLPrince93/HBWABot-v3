@@ -1796,44 +1796,6 @@ if (!quoted) return replyherbertstyle(`Thlalak rawn dah rawh`)
             HBWABotInc.sendMessage(m.chat, { image: {url: results.image_data}, caption: mess.success}, { quoted: m})
 }
 break 		
-case 'ai3': case 'openai3': {
-if (!text) return replyherbertstyle(`Ai nen a in biakna\n\nTiang hian i hmang ang:\n${prefix + command} Tunge mizoram chief minister?`)
-await robotreact()
-const { config } = require("dotenv")
-config()
-const { Configuration, OpenAIApi } = requir ("openai")
-const readline = "readline"
-const openAi = new OpenAIApi(
-  new Configuration({
-    apiKey: process.env.OPEN_AI_API_KEY,
-  })
-)
-const source1 = 'auto'
-const target1 = 'en'
-const athu1 = `${text}`
-const mizotranslation1 = await mizo_tawnga_translate_na.translate(source1, target1, athu1)
-const heihi_ani = `${mizotranslation1}`
-const userInterface = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-})
-
-userInterface.prompt()
-userInterface.on("line", async input => {
-const response = await openAi.createCompletion({
-	model: "gpt-3.5-turbo",
-	messages: [{ role: `${heihi_ani}`, content: input }],
-})
-console.log(response.data.choices[0].messages.content)
-userInterface.prompt()
-const source = 'auto'
-const target = 'lus'
-const athu = `${response.data.choices[0].messages.content}`
-const mizotranslation = await mizo_tawnga_translate_na.translate(source, target, athu)
-await HBWABotInc.sendMessage(from, { text: mizotranslation }, { quoted: m })
-}
-}
-break
 
 case 'ai': case 'openai': {
 if (!text) return replyherbertstyle(`Ai nen a in biakna\n\nTiang hian i hmang ang:\n${prefix + command} Tunge mizoram chief minister?`)
