@@ -1832,6 +1832,7 @@ const athu = `${response.data.choices[0].messages.content}`
 const mizotranslation = await mizo_tawnga_translate_na.translate(source, target, athu)
 await HBWABotInc.sendMessage(from, { text: mizotranslation }, { quoted: m })
 }
+}
 break
 
 case 'ai': case 'openai': {
