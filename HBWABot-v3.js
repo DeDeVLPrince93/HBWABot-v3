@@ -1808,7 +1808,6 @@ const openAi = new OpenAIApi(
     apiKey: process.env.OPEN_AI_API_KEY,
   })
 )
-})
 const source1 = 'auto'
 const target1 = 'en'
 const athu1 = `${text}`
