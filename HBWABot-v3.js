@@ -1796,38 +1796,7 @@ if (!quoted) return replyherbertstyle(`Thlalak rawn dah rawh`)
             HBWABotInc.sendMessage(m.chat, { image: {url: results.image_data}, caption: mess.success}, { quoted: m})
 }
 break 		
-  //betabotz ChatBot
-  case 'ai3': case 'openai3':
-   try {
-if (global.keyopenai === '') return reply("API hman zo a ni tawh a ai i hmang leh duh chuan a rang lamin owner va hriat tir ang che")
-if (!text) return replyherbertstyle(`Ai nen a in biakna\n\nTiang hian i hmang ang:\n${prefix + command} Tunge mizoram chief minister?`)
-await robotreact()
-const { Configuration, OpenAIApi } = require("openai")
-const configuration = new Configuration({
-apiKey: global.keyopenai,
-})
-const source1 = 'auto'
-const target1 = 'en'
-const athu1 = `${text}`
-const mizotranslation1 = await mizo_tawnga_translate_na.translate(source1, target1, athu1)
-const heihi_ani = `${mizotranslation1}`
-const openai = new OpenAIApi(configuration)
-const response = await openai.createCompletion({
-	model: "text-davinci-003",
-	prompt: heihi_ani, 
-	temperature: 0, 
-	max_tokens: 2048, 
-	top_p: 1, 
-	frequency_penalty: 0.3, 
-	presence_penalty: 0
-})
-const source = 'auto'
-const target = 'lus'
-const athu = `${response.data.choices[0].text}`
-const mizotranslation = await mizo_tawnga_translate_na.translate(source, target, athu)
-await HBWABotInc.sendMessage(from, { text: mizotranslation }, { quoted: m })
-}
-break
+
 case 'ai': case 'openai': {
 if (!text) return replyherbertstyle(`Ai nen a in biakna\n\nTiang hian i hmang ang:\n${prefix + command} Tunge mizoram chief minister?`)
 await robotreact()
