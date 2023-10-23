@@ -81,6 +81,7 @@
     "object-query-string": "^1.2.0",
     "dotenv": "^16.0.3",
     "openai": "^3.2.1",
+    "chatgpt": "^5.2.5",
     "betabotz-tools": "^0.0.3",
     "os": "^0.1.2",
     "parse-ms": "^2.1.0",

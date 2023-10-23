@@ -48,9 +48,10 @@ const StickerHerbert = JSON.parse(fs.readFileSync('./HBMedia/database/herbertsti
 const ImageHerbert = JSON.parse(fs.readFileSync('./HBMedia/database/herbertimage.json'))
 const VideoHerbert = JSON.parse(fs.readFileSync('./HBMedia/database/herbertvideo.json'))
 const BadHerbert = JSON.parse(fs.readFileSync('./database/bad.json'))
-
+const ZoHlaThuRss = 'https://www.blogger.com/feeds/690973182178026088/posts/default' 
 let autosticker = JSON.parse(fs.readFileSync('./database/autosticker.json'))
 let ntnsfw = JSON.parse(fs.readFileSync('./database/nsfw.json'))
+let ntrssfeed = JSON.parse(fs.readFileSync('./database/rssfeed.json'))
 let ntvirtex = JSON.parse(fs.readFileSync('./database/antivirus.json'))
 let nttoxic = JSON.parse(fs.readFileSync('./database/antitoxic.json'))
 let ntwame = JSON.parse(fs.readFileSync('./database/antiwame.json'))
@@ -139,7 +140,8 @@ try {
         const Input = mentionByTag[0] ? mentionByTag[0] : mentionByReply ? mentionByReply : q ? numberQuery : false
     	const isEval = body.startsWith('=>')
     
-        const AntiNsfw = m.isGroup ? ntnsfw.includes(from) : false
+        const AntiNsfw = m.isGroup ? ntnsfw.includes(from) : false 
+        const RSSFeed = m.isGroup ? ntrssfeed.includes(from) : false
         const isAutoSticker = m.isGroup ? autosticker.includes(from) : false
         const antiVirtex = m.isGroup ? ntvirtex.includes(from) : false
         const Antilinkgc = m.isGroup ? ntlinkgc.includes(m.chat) : false
@@ -539,7 +541,33 @@ HBWABotInc.sendPresenceUpdate('recording', from)
 const pickRandom = (arr) => {
 return arr[Math.floor(Math.random() * arr.length)]
 }
+//
+async function getRssFeed() {
+	if (!RSSFeed) return replyherbertstyle(mess.zohlathufeed)
+  try {
+    const response = await fetch(ZoHlaThuRss);
+    const data = await response.text();
+    const parser = new DOMParser();
+    const xmlData = parser.parseFromString(data, 'text/xml');
+    const entries = xmlData.querySelectorAll('entry');
+  
+entries.forEach((entry) => {
+      const title = entry.querySelector('title').textContent;
+      const link = entry.querySelector('link').getAttribute('href');
+      const publishedDate = entry.querySelector('published').textContent;
+      console.log('Title:', title);
+      console.log('Link:', link);
+      console.log('Published Date:', publishedDate);
+      console.log('--------------------');
+    });
+    HBWABotInc.sendMessage(from, { text: `*${title}*\n${link}`},{quoted:m});
+  } catch (error) {
+    console.error('RSS feed lak naah emaw parse-ah emaw error a awm: ', error);
+  }
+}
+getRssFeed();
 
+//
 async function sendPoll(jid, text, list) {
 HBWABotInc.relayMessage(jid, {
 "pollCreationMessage": {
@@ -961,6 +989,32 @@ let off = ntnsfw.indexOf(from)
 ntnsfw.splice(off, 1)
 fs.writeFileSync('./database/nsfw.json', JSON.stringify(ntnsfw))
 replyherbertstyle('Nsfw chu he group-ah hian hman thei a ni tawh lo')
+} else {
+  await replyherbertstyle(`Option ang hian tih tur\n\nEntirnan: ${prefix + command} on\nEntirnan: ${prefix + command} off\n\non chu enable-na\noff chu disable-na`)
+  }
+  }
+  break
+  case 'zohlathu': {
+if (!m.isGroup) return m.reply(mess.group)
+if (!isBotAdmins) return m.reply(mess.botAdmin)
+if (!isAdmins && !HerbertTheCreator) return m.reply(mess.admin)
+if (args[0] === "on") {
+if (!RSSFeed) return replyherbertstyle('Activate a ti tawh...')
+ntrssfeed.push(from)
+fs.writeFileSync('./database/rssfeed.json', JSON.stringify(ntrssfeed))
+replyherbertstyle('He group-ah hian Zo Hla Thu update post thei turin activate a ni')
+var groupe = await HBWABotInc.groupMetadata(from)
+var members = groupe['participants']
+var mems = []
+members.map(async adm => {
+mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
+})
+} else if (args[0] === "off") {
+if (!RSSFeed) return replyherbertstyle('Deactivate a ni tawh')
+let off = ntrssfeed.indexOf(from)
+ntrssfeed.splice(off, 1)
+fs.writeFileSync('./database/rssfeed.json', JSON.stringify(ntrssfeed))
+replyherbertstyle('*Zo Hla Thu* update hi he group nen hian activate a nih hma chuan post a ni tawh lovang')
 } else {
   await replyherbertstyle(`Option ang hian tih tur\n\nEntirnan: ${prefix + command} on\nEntirnan: ${prefix + command} off\n\non chu enable-na\noff chu disable-na`)
   }
@@ -1837,6 +1891,26 @@ const mizotranslation = await mizo_tawnga_translate_na.translate(source, target,
 await HBWABotInc.sendMessage(from, { text: mizotranslation }, { quoted: m })
 }
   break
+  case 'ai3': case 'openai3': {
+if (!q) return replyherbertstyle(`Ai nen a in biakna\n\nTiang hian i hmang ang:\n${prefix + command} Tunge mizoram chief minister?`)
+await robotreact()
+const { ChatGPTAPI } = require ('chatgpt')
+  const api = new ChatGPTAPI({
+    apiKey: global.keyopenai
+  })
+const source = 'auto'
+const target = 'lus'
+const athu = `${q}`
+const mizotranslation = await mizo_tawnga_translate_na.translate(source, target, athu)
+const heihi_ani = `${mizotranslation}`
+const ani_love_a = await api.sendMessage(`${heihi_ani}`)
+const source1 = 'auto'
+const target1 = 'en'
+const athu1 = `${ani_love_a.text}`
+const mizotranslation1 = await mizo_tawnga_translate_na.translate(source1, target1, athu1)
+await HBWABotInc.sendMessage(from, { text: mizotranslation1 }, { quoted: m })
+}
+break
 			case 'gimage': {
                 if (!text) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Mizoram`)
                 await loading()
