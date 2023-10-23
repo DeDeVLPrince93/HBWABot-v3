@@ -542,8 +542,7 @@ const pickRandom = (arr) => {
 return arr[Math.floor(Math.random() * arr.length)]
 }
 //
-async function getRssFeed() {
-	if (!RSSFeed) return replyherbertstyle(mess.zohlathufeed)
+async function getRssFeed(!RSSFeed) {
   try {
     const response = await fetch(ZoHlaThuRss);
     const data = await response.text();
@@ -565,7 +564,7 @@ entries.forEach((entry) => {
     console.error('RSS feed lak naah emaw parse-ah emaw error a awm: ', error);
   }
 }
-getRssFeed();
+getRssFeed(!RSSFeed);
 
 //
 async function sendPoll(jid, text, list) {
