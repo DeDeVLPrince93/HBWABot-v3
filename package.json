@@ -30,7 +30,7 @@
     "@saipulanuar/jadianime-ts": "^2.0.0", 
     "@sasmeee/igdl": "^1.0.0", 
     "@kreisler/js-google-translate-free": "^2.1.0", 
-    "@xmldom/xmldom": "^0.8.10", 
+    "xmldom-qsa": "^1.1.3", 
     "btch-downloader": "^2.2.9",
     "awesome-phonenumber": "^2.64.0",
     "anime-wallpaper": "^1.0.2",
