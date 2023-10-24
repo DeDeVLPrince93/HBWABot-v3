@@ -34,6 +34,7 @@ const textpro = require('./scrape/textpro')
 const textpro2 = require('./scrape/textpro2')
 const mumaker = require("mumaker")
 const photooxy = require('./scrape/photooxy')
+const { DOMParser, XMLSerializer } = require ('@xmldom/xmldom')
 const yts = require('./scrape/yt-search')
 const vm = require('node:vm')
 const { EmojiAPI } = require("emoji-api")
@@ -140,7 +141,6 @@ try {
     	const isEval = body.startsWith('=>')
     
         const AntiNsfw = m.isGroup ? ntnsfw.includes(from) : false 
-        const RSSFeed = m.isGroup ? ntrssfeed.includes(from) : false
         const isAutoSticker = m.isGroup ? autosticker.includes(from) : false
         const antiVirtex = m.isGroup ? ntvirtex.includes(from) : false
         const Antilinkgc = m.isGroup ? ntlinkgc.includes(m.chat) : false
@@ -541,37 +541,37 @@ const pickRandom = (arr) => {
 return arr[Math.floor(Math.random() * arr.length)]
 }
 
-let isRssFeedEnabled = m.isGroup ? ntrssfeed.includes(from) : false;
+let isRssFeedEnabled = m.isGroup ? ntrssfeed.includes(from) : false
 async function getRssFeed() {
   try {
-    const ZoHlaThuRss = 'https://www.blogger.com/feeds/690973182178026088/posts/default';
-    const response = await fetch(ZoHlaThuRss);
-    const data = await response.text();
-    const parser = new DOMParser();
-    const xmlData = parser.parseFromString(data, 'text/xml');
-    const entries = xmlData.querySelectorAll('entry');
+    const ZoHlaThuRss = 'https://www.blogger.com/feeds/690973182178026088/posts/default'
+    const response = await fetch(ZoHlaThuRss)
+    const data = await response.text()
+    const parser = new DOMParser()
+    const xmlData = parser.parseFromString(data, 'text/xml')
+    const entries = xmlData.querySelectorAll('entry')
     
     entries.forEach((entry) => {
-      const title = entry.querySelector('title').textContent;
-      const link = entry.querySelector('link').getAttribute('href');
-      const publishedDate = entry.querySelector('published').textContent;
+      const title = entry.querySelector('title').textContent
+      const link = entry.querySelector('link').getAttribute('href')
+      const publishedDate = entry.querySelector('published').textContent
       
-      console.log('Title:', title);
-      console.log('Link:', link);
-      console.log('Published Date:', publishedDate);
-      console.log('--------------------');
+      console.log('Title:', title)
+      console.log('Link:', link)
+      console.log('Published Date:', publishedDate)
+      console.log('--------------------')
       
       if (isRssFeedEnabled) {
-        HBWABotInc.sendMessage(from, { text: `*${title}*\n${link}` }, { quoted: m });
+        HBWABotInc.sendMessage(from, { text: `*${title}*\n${link}` }, { quoted: m })
       }
-    });
+    })
   } catch (error) {
-    console.error('RSS feed lak naah emaw parse-ah emaw error a awm: ', error);
+    console.error('RSS feed lak naah emaw parse-ah emaw error a awm: ', error)
   }
 }
 
 if (isRssFeedEnabled) {
-  getRssFeed();
+  getRssFeed()
 }
 //
 async function sendPoll(jid, text, list) {
@@ -1008,7 +1008,7 @@ if (args[0] === "on"){
 if (!isRssFeedEnabled) return replyherbertstyle('Activate a ti tawh...')
 ntrssfeed.push(from)
 fs.writeFileSync('./database/rssfeed.json', JSON.stringify(ntrssfeed))
-replyherbertstyle('He group-ah hian Zo Hla Thu update post thei turin activate a ni')
+replyherbertstyle('He group hi Zo Hla Thu update post thei turin activate a ni')
 var groupe = await HBWABotInc.groupMetadata(from)
 var members = groupe['participants']
 var mems = []
@@ -1020,9 +1020,9 @@ if (!isRssFeedEnabled) return replyherbertstyle('Deactivate a ni tawh')
 let off = ntrssfeed.indexOf(from)
 ntrssfeed.splice(off, 1)
 fs.writeFileSync('./database/rssfeed.json', JSON.stringify(ntrssfeed))
-replyherbertstyle('*Zo Hla Thu* update hi he group nen hian activate a nih hma chuan post a ni tawh lovang')
+replyherbertstyle('*Zo Hla Thu* update hi he group nen hian activate a nih leh hma chuan post a ni tawh lovang')
 } else {
-  await replyherbertstyle(`Option ang hian tih tur\n\nEntirnan: ${prefix + command} on\nEntirnan: ${prefix + command}off\n\non chu enable-na\noff chu disable-na`)
+  await replyherbertstyle(`*Option ka rawn dah hi i duh zawk zawk hmang rawh👇*\n\n*1. ${prefix + command} on*\n2. *${prefix + command} off*\n\n_*Note :*_ *~I on chuan Activate a ni anga i off chuan deactivate a ni ang~*`)
   }
   }
   break
