@@ -548,15 +548,17 @@ const isRssFeedEnabled = m.isGroup ? ntrssfeed.includes(from) : false;
 
 async function getRssFeed() {
   try {
-    const ZoHlaThuRss = await parser.parseURL('https://www.blogger.com/feeds/1306127641831115989/posts/default');
-    console.log(ZoHlaThuRss.title);
+  const ZoHlaThuRss = await parser.parseURL('https://www.blogger.com/feeds/1306127641831115989/posts/default');
+  console.log(ZoHlaThuRss.title);
     
-    ZoHlaThuRss.items.forEach(item => {
-      console.log(item.title + ' : ' + item.link);
+  ZoHlaThuRss.items.forEach(item => {
+  console.log(item.title + ' : ' + item.link);
       
-      if (isRssFeedEnabled) {
-       HBWABotInc.sendMessage(`*${item.title}*\n${item.link}`);
-  } catch (error) {
+  if (isRssFeedEnabled) {
+  HBWABotInc.sendMessage(`*${item.title}*\n${item.link}`),
+  }
+  });
+} catch (error) {
     console.error(error);
   }
 }
