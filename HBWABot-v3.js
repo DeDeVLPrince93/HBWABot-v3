@@ -548,7 +548,7 @@ async function getRssFeed() {
     const response = await fetch(ZoHlaThuRss)
     const data = await response.text()
     const parser = new DOMParser()
-    const xmlData = parser.parseFromString(data, 'text/xml')
+    const xmlData = parser.parseFromString(data, 'text/html')
     const entries = xmlData.querySelectorAll('entry')
     
     entries.forEach((entry) => {
