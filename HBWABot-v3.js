@@ -540,38 +540,30 @@ HBWABotInc.sendPresenceUpdate('recording', from)
 const pickRandom = (arr) => {
 return arr[Math.floor(Math.random() * arr.length)]
 }
+//
+const Parser = require('rss-parser');
+const parser = new Parser();
 
-let isRssFeedEnabled = m.isGroup ? ntrssfeed.includes(from) : false
+const isRssFeedEnabled = m.isGroup ? ntrssfeed.includes(from) : false;
+
 async function getRssFeed() {
   try {
-    const ZoHlaThuRss = 'https://www.blogger.com/feeds/690973182178026088/posts/default'
-    const response = await fetch(ZoHlaThuRss)
-    const data = await response.text()
-    const parser = new DOMParser()
-    const xmlData = parser.parseFromString(data, 'text/html')
-    const entries = xmlData.querySelectorAll('entry')
+    const ZoHlaThuRss = await parser.parseURL('https://www.blogger.com/feeds/690973182178026088/posts/default');
+    console.log(ZoHlaThuRss.title);
     
-    entries.forEach((entry) => {
-      const title = entry.querySelector('title').textContent
-      const link = entry.querySelector('link').getAttribute('href')
-      const publishedDate = entry.querySelector('published').textContent
-      
-      console.log('Title:', title)
-      console.log('Link:', link)
-      console.log('Published Date:', publishedDate)
-      console.log('--------------------')
+    ZoHlaThuRss.items.forEach(item => {
+      console.log(item.title + ' : ' + item.link);
       
       if (isRssFeedEnabled) {
-        HBWABotInc.sendMessage(from, { text: `*${title}*\n${link}` }, { quoted: m })
+        HBWABotInc.sendMessage(from, { text: `*${item.title}*\n${item.link}` }, { quoted: m });
       }
-    })
+    });
   } catch (error) {
-    console.error('RSS feed lak naah emaw parse-ah emaw error a awm: ', error)
+    console.error(error);
   }
 }
-
 if (isRssFeedEnabled) {
-  getRssFeed()
+  getRssFeed();
 }
 //
 async function sendPoll(jid, text, list) {
