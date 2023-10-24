@@ -48,7 +48,6 @@ const StickerHerbert = JSON.parse(fs.readFileSync('./HBMedia/database/herbertsti
 const ImageHerbert = JSON.parse(fs.readFileSync('./HBMedia/database/herbertimage.json'))
 const VideoHerbert = JSON.parse(fs.readFileSync('./HBMedia/database/herbertvideo.json'))
 const BadHerbert = JSON.parse(fs.readFileSync('./database/bad.json'))
-const ZoHlaThuRss = 'https://www.blogger.com/feeds/690973182178026088/posts/default' 
 let autosticker = JSON.parse(fs.readFileSync('./database/autosticker.json'))
 let ntnsfw = JSON.parse(fs.readFileSync('./database/nsfw.json'))
 let ntrssfeed = JSON.parse(fs.readFileSync('./database/rssfeed.json'))
@@ -541,31 +540,39 @@ HBWABotInc.sendPresenceUpdate('recording', from)
 const pickRandom = (arr) => {
 return arr[Math.floor(Math.random() * arr.length)]
 }
-//
-async function getRssFeed(RSSFeed) {
+
+let isRssFeedEnabled = m.isGroup ? ntrssfeed.includes(from) : false;
+async function getRssFeed() {
   try {
+    const ZoHlaThuRss = 'https://www.blogger.com/feeds/690973182178026088/posts/default';
     const response = await fetch(ZoHlaThuRss);
     const data = await response.text();
     const parser = new DOMParser();
     const xmlData = parser.parseFromString(data, 'text/xml');
     const entries = xmlData.querySelectorAll('entry');
-  
-entries.forEach((entry) => {
+    
+    entries.forEach((entry) => {
       const title = entry.querySelector('title').textContent;
       const link = entry.querySelector('link').getAttribute('href');
       const publishedDate = entry.querySelector('published').textContent;
+      
       console.log('Title:', title);
       console.log('Link:', link);
       console.log('Published Date:', publishedDate);
       console.log('--------------------');
+      
+      if (isRssFeedEnabled) {
+        HBWABotInc.sendMessage(from, { text: `*${title}*\n${link}` }, { quoted: m });
+      }
     });
-    HBWABotInc.sendMessage(from, { text: `*${title}*\n${link}`},{quoted:m});
   } catch (error) {
     console.error('RSS feed lak naah emaw parse-ah emaw error a awm: ', error);
   }
 }
-getRssFeed(RSSFeed);
 
+if (isRssFeedEnabled) {
+  getRssFeed();
+}
 //
 async function sendPoll(jid, text, list) {
 HBWABotInc.relayMessage(jid, {
@@ -959,7 +966,7 @@ case 'autostview':
                     autoread_status = false
                     replyherbertstyle(`Status/Stories auto view chu off a ni✓`)
                 }
-                break                
+                break 
 
 case 'hbwabot': case '/bot': { 
         let audiobuffy = fs.readFileSync(`./HBMedia/audio/Herbert.mp3`)
@@ -997,8 +1004,8 @@ replyherbertstyle('Nsfw chu he group-ah hian hman thei a ni tawh lo')
 if (!m.isGroup) return m.reply(mess.group)
 if (!isBotAdmins) return m.reply(mess.botAdmin)
 if (!isAdmins && !HerbertTheCreator) return m.reply(mess.admin)
-if (args[0] === "on") {
-if (!RSSFeed) return replyherbertstyle('Activate a ti tawh...')
+if (args[0] === "on"){
+if (!isRssFeedEnabled) return replyherbertstyle('Activate a ti tawh...')
 ntrssfeed.push(from)
 fs.writeFileSync('./database/rssfeed.json', JSON.stringify(ntrssfeed))
 replyherbertstyle('He group-ah hian Zo Hla Thu update post thei turin activate a ni')
@@ -1009,13 +1016,13 @@ members.map(async adm => {
 mems.push(adm.id.replace('c.us', 's.whatsapp.net'))
 })
 } else if (args[0] === "off") {
-if (!RSSFeed) return replyherbertstyle('Deactivate a ni tawh')
+if (!isRssFeedEnabled) return replyherbertstyle('Deactivate a ni tawh')
 let off = ntrssfeed.indexOf(from)
 ntrssfeed.splice(off, 1)
 fs.writeFileSync('./database/rssfeed.json', JSON.stringify(ntrssfeed))
 replyherbertstyle('*Zo Hla Thu* update hi he group nen hian activate a nih hma chuan post a ni tawh lovang')
 } else {
-  await replyherbertstyle(`Option ang hian tih tur\n\nEntirnan: ${prefix + command} on\nEntirnan: ${prefix + command} off\n\non chu enable-na\noff chu disable-na`)
+  await replyherbertstyle(`Option ang hian tih tur\n\nEntirnan: ${prefix + command} on\nEntirnan: ${prefix + command}off\n\non chu enable-na\noff chu disable-na`)
   }
   }
   break
