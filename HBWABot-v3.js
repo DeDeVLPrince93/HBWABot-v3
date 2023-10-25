@@ -1052,16 +1052,7 @@ case 'mlyrics': {
     khawnge.items.forEach(item => {
       console.log(item.title + ' : ' + item.link);
       const E_Hei_Hi = htmlToText.fromString(item.content)
-      if (E_Hei_Hi.length === 0) {
-        return replyherbertstyle("🧐 I lyrics duh hi ka zawng hmu zo lo. A spelling i ti dik lo a ni maithei...")
-      }
-      if (E_Hei_Hi.length > 5000) {
-        const KhaDoc = "mizo_lyrics.txt"
-        fs.writeFileSync(KhaDoc, E_Hei_Hi, 'utf8')
-        await HBWABotInc.sendMessage(m.chat, { document: KhaDoc, caption: "Lyrics a sei em avangin document file hian ka rawn dah mai"})
-      } else {
-        replyherbertstyle(`*${item.title}*\n\n${E_Hei_Hi}`)
-      }
+      replyherbertstyle(`*${item.title}*\n\n${E_Hei_Hi}`)
     });
   } catch (e) {
     console.log(e)
