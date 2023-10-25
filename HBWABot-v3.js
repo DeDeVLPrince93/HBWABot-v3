@@ -1050,19 +1050,42 @@ const rssFeedURL = `https://www.mizolyric.com/feeds/posts/default?q=${mizoly}`
       console.log('Title: ' + item.title)
       console.log('Link: ' + item.link)
       console.log('Published Date: ' + item.pubDate)
-      // Convert HTML content to plain text using html-to-text
       const plainTextContent = htmlToText(item.content)
       console.log('Content: ')
       console.log(plainTextContent)
       console.log('\n')
       replyherbertstyle(`*${item.title}*\n${plainTextContent}`)
-      // You can further process the plain text content as needed.
     })
   } catch (error) {
     console.error('Feed laknaah eroor a awm:', error)
   }
 }
 break
+case 'mlyrics2': {
+  if (!q) return replyherbertstyle(`Eng lyrics nge i zawn dawn?\nTiang hian hman tur: ${prefix}Mlyrics Saltang tawngtaina`);
+  const Parser = require('rss-parser');
+  const { htmlToText } = require('html-to-text');
+  const parser = new Parser();
+  const mizoly = args.join(" ");
+  const rssFeedURL = `https://www.mizolyric.com/feeds/posts/default?q=${mizoly}`;
+
+  try {
+    const feed = await parser.parseURL(rssFeedURL);
+    const lyricData = [];
+
+    await Promise.all(feed.items.map(async (item) => {
+      const plainTextContent = htmlToText(item.content);
+      lyricData.push(`*${item.title}*\n${plainTextContent}`);
+    });
+
+    // Send the collected lyric data in a single reply
+    replyherbertstyle(lyricData.join('\n\n'));
+  } catch (error) {
+    console.error('Feed laknaah eroor a awm:', error);
+  }
+}
+break;
+
 
             case 'dawntur': case'claim': case 'daily': {
       if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
