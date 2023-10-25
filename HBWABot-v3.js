@@ -1042,8 +1042,7 @@ case 'mlyrics': {
 const Parser = require('rss-parser')
 const { htmlToText } = require('html-to-text')
 const parser = new Parser()
-const thlaktur = q.split(' ').slice(1).join(' ')
-const mizoly = thlaktur.replace(' ', '+')
+const mizoly = args.join(" ")
 const rssFeedURL = `https://www.mizolyric.com/feeds/posts/default?q=${mizoly}`
   try {
     const feed = await parser.parseURL(rssFeedURL)
