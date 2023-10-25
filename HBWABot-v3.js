@@ -1038,34 +1038,33 @@ replyherbertstyle(`
 }
 break
 case 'mlyrics': {
-  if (!text) return replyherbertstyle(`Eng lyrics nge i zawn dawn?\nTiang hian hman tur: ${prefix}Mlyrics Saltang tawngtaina`)
-  const { htmlToText } = require('html-to-text')
-  const Parser = require('rss-parser')
-  const parser = new Parser()
+  if (!q) return replyherbertstyle(`Eng lyrics nge i zawn dawn?\nTiang hian hman tur: ${prefix}Mlyrics Saltang tawngtaina`)  
+const Parser = require('rss-parser')
+const { htmlToText } = require('html-to-text')
+const parser = new Parser()
+const thlaktur = q.split(' ').slice(1).join(' ')
+const mizoly = thlaktur.replace(' ', '+')
+const rssFeedURL = `https://www.mizolyric.com/feeds/posts/default?q=${mizoly}`
   try {
-    const mizoly = args.join(" ")
-    const mizl = `https://www.mizolyric.com/feeds/posts/default?q=${mizoly}`
-    const khawnge = await parser.parseURL(mizl)
-    if (khawnge.bozo || khawnge.status === 404) return replyherbertstyle("🧐 I lyrics duh hi ka zawng hmu zo lo. A spelling i ti dik lo a ni maithei...")
-    if (!khawnge.item || khawnge.item.length === 0 || !khawnge.version) return replyherbertstyle("🧐 I lyrics duh hi ka zawng hmu zo lo. A spelling i ti dik lo a ni maithei...")
-    for (const entry of khawnge.item) {
-      const E_Hei_Hi = htmlToText.fromString(entry.content[0]['value'])
-      if (E_Hei_Hi.length === 0) return replyherbertstyle("🧐 I lyrics duh hi ka zawng hmu zo lo. A spelling i ti dik lo a ni maithei...")
-      const ptitle = entry.title
-      const plink = entry.link
-      if (E_Hei_Hi.length > 5000) {
-        const hmmf = "mizo_lyrics.txt"
-        fs.writeFileSync(hmmf, E_Hei_Hi, 'utf8')
-        await HBWABotInc.sendMessage(m.chat, { document: hmmf }, { caption: "Lyrics a sei em avangin document file hian ka rawn dah mai" })
-      } else {
-        replyherbertstyle(`*${ptitle}*\n\n${E_Hei_Hi}`)
-      }
-    }
-  } catch (e) {
-    console.log(e)
+    const feed = await parser.parseURL(rssFeedURL)
+    feed.items.forEach(async (item) => {
+      console.log('Title: ' + item.title)
+      console.log('Link: ' + item.link)
+      console.log('Published Date: ' + item.pubDate)
+      // Convert HTML content to plain text using html-to-text
+      const plainTextContent = htmlToText(item.content)
+      console.log('Content: ')
+      console.log(plainTextContent)
+      console.log('\n')
+      replyherbertstyle(`*${item.tile}*\n${plainTextContent}`)
+      // You can further process the plain text content as needed.
+    })
+  } catch (error) {
+    console.error('Feed laknaah eroor a awm:', error)
   }
 }
 break
+
             case 'dawntur': case'claim': case 'daily': {
       if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
           HBWABotInc.sendMessage(from, { react: { text: "💰" , key: m.key }})  
@@ -1843,26 +1842,48 @@ const mizotranslation = await mizo_tawnga_translate_na.translate(source, target,
 await HBWABotInc.sendMessage(from, { text: mizotranslation }, { quoted: m })
 }
   break
-  case 'ai3': case 'openai3': {
-if (!q) return replyherbertstyle(`Ai nen a in biakna\n\nTiang hian i hmang ang:\n${prefix + command} Tunge mizoram chief minister?`)
-await robotreact()
-const { ChatGPTAPI } = require ('chatgpt')
-  const api = new ChatGPTAPI({
-    apiKey: global.keyopenai
-  })
-const source = 'auto'
-const target = 'lus'
-const athu = `${q}`
-const mizotranslation = await mizo_tawnga_translate_na.translate(source, target, athu)
-const heihi_ani = `${mizotranslation}`
-const ani_love_a = await api.sendMessage(`${heihi_ani}`)
-const source1 = 'auto'
-const target1 = 'en'
-const athu1 = `${ani_love_a.text}`
-const mizotranslation1 = await mizo_tawnga_translate_na.translate(source1, target1, athu1)
-await HBWABotInc.sendMessage(from, { text: mizotranslation1 }, { quoted: m })
+ case 'ai3':
+case 'openai3': {
+  if (!q) {
+    return replyherbertstyle(`Ai nen a in biakna\n\nTiang hian i hmang ang:\n${prefix + command} Tunge mizoram chief minister?`)
+  }
+  await robotreact();
+
+  const apiKey = global.keyopenai;
+  const apiEndpoint = 'https://api.openai.com/v1/engines/davinci/completions';
+  const source = 'auto';
+  const target = 'lus';
+  const inputText = `${q}`;
+
+  try {
+    const mizotranslation = await mizo_tawnga_translate_na.translate(source, target, inputText);
+    const prompt = `${mizotranslation}`;
+
+    const requestData = {
+      prompt: prompt,
+      max_tokens: 4000,
+    };
+
+    const headers = {
+      'Authorization': `Bearer ${apiKey}`,
+      'Content-Type': 'application/json',
+    };
+
+    const response = await axios.post(apiEndpoint, requestData, { headers });
+    const generatedText = response.data.choices[0].text;
+
+    console.log('Generated Text:');
+    console.log(generatedText);
+
+    const source1 = 'auto';
+    const target1 = 'lus';
+    const generatedTranslation = await mizo_tawnga_translate_na.translate(source1, target1, generatedText);
+
+    await HBWABotInc.sendMessage(from, { text: generatedTranslation }, { quoted: m });
+  }
 }
-break
+break;
+
 			case 'gimage': {
                 if (!text) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Mizoram`)
                 await loading()
