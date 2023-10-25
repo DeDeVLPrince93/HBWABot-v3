@@ -1055,7 +1055,7 @@ const rssFeedURL = `https://www.mizolyric.com/feeds/posts/default?q=${mizoly}`
       console.log('Content: ')
       console.log(plainTextContent)
       console.log('\n')
-      replyherbertstyle(`*${item.tile}*\n${plainTextContent}`)
+      replyherbertstyle(`*${item.title}*\n${plainTextContent}`)
       // You can further process the plain text content as needed.
     })
   } catch (error) {
@@ -1853,7 +1853,7 @@ await HBWABotInc.sendMessage(from, { text: mizotranslation }, { quoted: m })
     const prompt = `${mizotranslation}`;
     const requestData = {
       prompt: prompt,
-      max_tokens: 4000,
+      max_tokens: 2000,
     };
     const headers = {
       'Authorization': `Bearer ${apiKey}`,
