@@ -1037,6 +1037,36 @@ replyherbertstyle(`
 `.trim())
 }
 break
+case 'mlyrics': {
+  if (!text) return replyherbertstyle(`Eng lyrics nge i zawn dawn?\nTiang hian hman tur: ${prefix}Mlyrics Saltang tawngtaina`)
+  const { htmlToText } = require('html-to-text')
+  const Parser = require('rss-parser')
+  const parser = new Parser()
+  try {
+    const mzr = text.split(' ').slice(1).join(' ')
+    const mizoly = mzr.replace(' ', '+')
+    const mizl = `https://www.mizolyric.com/feeds/posts/default?q=${mizoly}`
+    const khawnge = await parser.parseURL(mizl)
+    if (khawnge.bozo || khawnge.status === 404) return replyherbertstyle("🧐 I lyrics duh hi ka zawng hmu zo lo. A spelling i ti dik lo a ni maithei...")
+    if (!khawnge.item || khawnge.item.length === 0 || !khawnge.version) return replyherbertstyle("🧐 I lyrics duh hi ka zawng hmu zo lo. A spelling i ti dik lo a ni maithei...")
+    for (const entry of khawnge.item) {
+      const E_Hei_Hi = htmlToText.fromString(entry.content[0]['value'])
+      if (E_Hei_Hi.length === 0) return replyherbertstyle("🧐 I lyrics duh hi ka zawng hmu zo lo. A spelling i ti dik lo a ni maithei...")
+      const ptitle = entry.title
+      const plink = entry.link
+      if (E_Hei_Hi.length > 5000) {
+        const hmmf = "mizo_lyrics.txt"
+        fs.writeFileSync(hmmf, E_Hei_Hi, 'utf8')
+        await HBWABotInc.sendMessage(m.chat, { document: hmmf }, { caption: "Lyrics a sei em avangin document file hian ka rawn dah mai" })
+      } else {
+        replyherbertstyle(`*${ptitle}*\n\n${E_Hei_Hi}`)
+      }
+    }
+  } catch (e) {
+    console.log(e)
+  }
+}
+break
             case 'dawntur': case'claim': case 'daily': {
       if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
           HBWABotInc.sendMessage(from, { react: { text: "💰" , key: m.key }})  
