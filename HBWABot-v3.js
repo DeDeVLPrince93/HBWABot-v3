@@ -1058,7 +1058,7 @@ case 'mlyrics': {
       if (E_Hei_Hi.length > 5000) {
         const KhaDoc = "mizo_lyrics.txt"
         fs.writeFileSync(KhaDoc, E_Hei_Hi, 'utf8')
-        await HBWABotInc.sendMessage(m.chat, { document: KhaDoc }, { caption: "Lyrics a sei em avangin document file hian ka rawn dah mai" })
+        await HBWABotInc.sendMessage(m.chat, { document: KhaDoc, caption: "Lyrics a sei em avangin document file hian ka rawn dah mai"})
       } else {
         replyherbertstyle(`*${item.title}*\n\n${E_Hei_Hi}`)
       }
