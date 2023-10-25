@@ -1842,45 +1842,32 @@ const mizotranslation = await mizo_tawnga_translate_na.translate(source, target,
 await HBWABotInc.sendMessage(from, { text: mizotranslation }, { quoted: m })
 }
   break
- case 'ai3':
-case 'openai3': {
-  if (!q) {
-    return replyherbertstyle(`Ai nen a in biakna\n\nTiang hian i hmang ang:\n${prefix + command} Tunge mizoram chief minister?`)
-  }
+ case 'ai3': case 'openai3': {
+ if (!q) return replyherbertstyle(`Ai nen a in biakna\n\nTiang hian i hmang ang:\n${prefix + command} Tunge mizoram chief minister?`)
   await robotreact();
-
   const apiKey = global.keyopenai;
   const apiEndpoint = 'https://api.openai.com/v1/engines/davinci/completions';
   const source = 'auto';
   const target = 'lus';
   const inputText = `${q}`;
-
-  try {
-    const mizotranslation = await mizo_tawnga_translate_na.translate(source, target, inputText);
+  const mizotranslation = await mizo_tawnga_translate_na.translate(source, target, inputText);
     const prompt = `${mizotranslation}`;
-
     const requestData = {
       prompt: prompt,
       max_tokens: 4000,
     };
-
     const headers = {
       'Authorization': `Bearer ${apiKey}`,
       'Content-Type': 'application/json',
     };
-
     const response = await axios.post(apiEndpoint, requestData, { headers });
     const generatedText = response.data.choices[0].text;
-
     console.log('Generated Text:');
     console.log(generatedText);
-
     const source1 = 'auto';
     const target1 = 'lus';
     const generatedTranslation = await mizo_tawnga_translate_na.translate(source1, target1, generatedText);
-
     await HBWABotInc.sendMessage(from, { text: generatedTranslation }, { quoted: m });
-  }
 }
 break;
 
