@@ -1053,9 +1053,7 @@ const rssFeedURL = `https://www.mizolyric.com/feeds/posts/default?q=${mizoly}`
       console.log('Title: ' + item.title)
       console.log('Link: ' + item.link)
       console.log('Published Date: ' + item.pubDate)
-       if (!feed.item || feed.item.length === 0 || !feed.version) return replyherbertstyle('🧐 I lyrics duh hi ka zawng hmu zo lo. A spelling i ti dik lo a ni maithei...');
       const plainTextContent = htmlToText(item.content)
-      if (plainTextContent.length === 0) return replyherbertstyle('🧐 I lyrics duh hi ka zawng hmu zo lo. A spelling i ti dik lo a ni maithei...');
       console.log('Content: ')
       console.log(plainTextContent)
       console.log('\n')
@@ -1090,14 +1088,11 @@ const mizoly = args.join(" ")
 const rssFeedURL = `https://www.mizolyric.com/feeds/posts/default?q=${mizoly}`
 try {
     const feed = await parser.parseURL(rssFeedURL)
-    if (feed.bozo || feed.status === 404) return replyherbertstyle('🧐 I lyrics duh hi ka zawng hmu zo lo. A spelling i ti dik lo a ni maithei...');   
     feed.items.forEach(async (item) => {
       console.log('Title: ' + item.title)
       console.log('Link: ' + item.link)
       console.log('Published Date: ' + item.pubDate)
-      if (!feed.item || feed.item.length === 0 || !feed.version) return replyherbertstyle('🧐 I lyrics duh hi ka zawng hmu zo lo. A spelling i ti dik lo a ni maithei...');
       const plainTextContent = htmlToText(item.content)
-      if (plainTextContent.length === 0) return replyherbertstyle('🧐 I lyrics duh hi ka zawng hmu zo lo. A spelling i ti dik lo a ni maithei...');
       console.log('Content: ')
       console.log(plainTextContent)
       console.log('\n')
