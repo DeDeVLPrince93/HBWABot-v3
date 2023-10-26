@@ -3459,19 +3459,19 @@ await loadingreact()
 case 'igvid' : case 'indtavid':  {
   if (!text) return replyherbertstyle(`A link rawn dah tel rawh\n\nTiang hian: ${prefix + command} https://www.instagram.com/reel/Cv83HHYtC-Y/?igshid=NTc4MTIwNjQ2YQ==`)
   await loadingreact()
-const { instagram } = require('betabotz-tools') 
-const url = args[0]
-const results = await instagram(url)
-console.log(results) // JSON
+const instagramGetUrl = require("instagram-get-url");
+let uite = args[0]
+let links = await instagramGetUrl(uite)
+console.log(links)
 await uploadreact()
 await HBWABotInc.sendMessage(m.chat,{
-video: {url: results.result._url},
+video: {url: links},
 caption: "Instagram Video download by HBWABot"
 }, {quoted:m})
 await finishreact()
 }
 break 
-  case 'instavidxx' : case 'igvidxx':  {
+  case 'instavidxxx' : case 'igvidxxx':  {
   if (!text) return replyherbertstyle(`A link rawn dah tel rawh\n\nTiang hian: ${prefix + command} https://www.instagram.com/p/ByxKbUSnubS/?utm_source=ig_web_copy_link`)
   await loadingreact()
   const instagramDl = require('@sasmeee/igdl') 

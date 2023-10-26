@@ -34,6 +34,7 @@
     "html-to-text": "^9.0.5", 
     "rss-parser": "^3.13.0",
     "btch-downloader": "^2.2.9",
+    "instagram-get-url": "^1.0.2",
     "awesome-phonenumber": "^2.64.0",
     "anime-wallpaper": "^1.0.2",
     "axios": "^0.24.0",
