@@ -23,7 +23,7 @@ global.APIKeys = { // APIKey Here
   'https://api-fgmods.ddns.net': 'fg-dylux',
   'https://api.betabotz.org': 'isi_dulu'
  }
-global.keyopenai = "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"
+global.keyopenai = "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"
 
 //documents variants
 global.doc1 = 'application/vnd.openxmlformats-officedocument.presentationml.presentation'

@@ -1876,7 +1876,37 @@ const athu = `${chutin}`
 const mizotranslation = await mizo_tawnga_translate_na.translate(source, target, athu)
 await HBWABotInc.sendMessage(from, { text: mizotranslation }, { quoted: m })
 }
-  break
+  break 
+  case 'aix': case 'openaix':
+try {
+if (global.keyopenai === '') return replyherbertstyle("Api key limi exceeded");
+if (!q) return dodoi(`Chat with AI.\n\nExample:\n${prefix + command} What is coding`)
+const { Configuration, OpenAIApi } = require('openai')
+const configuration = new Configuration({
+apiKey: global.keyopenai,
+});
+const openai = new OpenAIApi(configuration);
+const response = await openai.createCompletion({
+model: "text-davinci-003",
+prompt: q,
+temperature: 0.3,
+max_tokens: 2000,
+top_p: 1.0,
+frequency_penalty: 0.0,
+presence_penalty: 0.0,
+});
+dodoi(`${response.data.choices[0].text}`);
+} catch (error) {
+if (error.response) {
+console.log(error.response.status);
+console.log(error.response.data);
+console.log(`${error.response.status}\n\n${error.response.data}`);
+} else {
+console.log(error);
+dodoi("Sorry, there seems to be an error :"+ error.message);
+}
+}
+break
  case 'ai3': case 'openai3': {
  if (!q) return replyherbertstyle(`Ai nen a in biakna\n\nTiang hian i hmang ang:\n${prefix + command} Tunge mizoram chief minister?`)
   await robotreact();
@@ -3447,7 +3477,7 @@ case 'bass': case 'blown': case 'deep': case 'earrape': case 'fast': case 'fat':
                 HBWABotInc.sendMessage(m.chat, {caption: `${themeemoji} Title : ${result.title}\n${themeemoji} Category : ${result.type}\n${themeemoji} Detail : ${result.source}\n${themeemoji} Media Url : ${result.image[2] || result.image[1] || result.image[0]}`, image: { url: result.image[0] }} , { quoted: m })
             }
             break
- case 'instavidxx' : case 'igvidxx': 
+ case 'instavid' : case 'igvid': 
 if (!text) return replyherbertstyle(`A link rawn dah tel rawh\n\nTiang hian: ${prefix + command} https://www.instagram.com/p/ByxKbUSnubS/?utm_source=ig_web_copy_link`)
 await loadingreact()
  mumaker.instagram(`${args[0]}`)
@@ -3456,7 +3486,7 @@ await loadingreact()
   await finishreact()
    break
    
-case 'igvid' : case 'indtavid':  {
+case 'igvidxx' : case 'indtavidxx':  {
   if (!text) return replyherbertstyle(`A link rawn dah tel rawh\n\nTiang hian: ${prefix + command} https://www.instagram.com/reel/Cv83HHYtC-Y/?igshid=NTc4MTIwNjQ2YQ==`)
   await loadingreact()
 const { igdl } = require('btch-downloader')
