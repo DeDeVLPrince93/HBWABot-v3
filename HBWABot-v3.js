@@ -1038,46 +1038,6 @@ replyherbertstyle(`
 }
 break
 case 'mlyrics': {
-  if (!q) return replyherbertstyle(`Eng lyrics nge i zawn dawn?\nTiang hian hman tur: ${prefix}Mlyrics Zorema Khiangte Saltang tawngtaina`);
-  var fourbrother = await getBuffer(`https://i.imgur.com/tb7TQAh.jpg`);
-  HBWABotInc.sendMessage(from, { react: { text: "☢️", key: m.key });
-  
-  const Parser = require('rss-parser');
-  const { htmlToText } = require('html-to-text');
-  const parser = new Parser();
-  const mizoly = args.join(" ");
-  const rssFeedURL = `https://www.mizolyric.com/feeds/posts/default?q=${mizoly}`;
-  try {
-    const feed = await parser.parseURL(rssFeedURL);
-    if (feed.bozo || feed.status === 404) return replyherbertstyle('🧐 I lyrics duh hi ka zawng hmu zo lo. A spelling i ti dik lo a ni maithei...');
-    
-    if (feed.items.length === 0 || !feed.version) {
-      return replyherbertstyle('🧐 I lyrics duh hi ka zawng hmu zo lo. A spelling i ti dik lo a ni maithei...');
-    }
-    
-    feed.items.forEach(async (item) => {
-      console.log('Title: ' + item.title);
-      console.log('Link: ' + item.link);
-      console.log('Published Date: ' + item.pubDate);
-      const plainTextContent = htmlToText(item.content);
-      
-      if (plainTextContent.length === 0) {
-        return replyherbertstyle('🧐 I lyrics duh hi ka zawng hmu zo lo. A spelling i ti dik lo a ni maithei...');
-      }
-      
-      console.log('Content: ');
-      console.log(plainTextContent);
-      console.log('\n');
-      
-      await HBWABotInc.sendMessage(m.chat, { text: `͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏͏${plainTextContent}`, contextInfo: {"externalAdReply": {"showAdAttribution": true, "containsAutoReply": true, "title": `${item.title}`, "body": `Mizo Lyrics`, "previewType": "PHOTO", "thumbnailUrl": ``, "thumbnail": fourbrother, "sourceUrl": `${item.link}`}}, quoted: m });
-    });
-  } catch (error) {
-    console.error('Feed laknaah eroor a awm:', error);
-  }
-}
-break;
-
-case 'mlyricsxx': {
   if (!q) return replyherbertstyle(`Eng lyrics nge i zawn dawn?\nTiang hian hman tur: ${prefix}Mlyrics Zorema Khiangte Saltang tawngtaina`) 
   var fourbrother = await getBuffer(`https://i.imgur.com/tb7TQAh.jpg`)
   HBWABotInc.sendMessage(from, { react: { text: "☢️" , key: m.key }}) 
