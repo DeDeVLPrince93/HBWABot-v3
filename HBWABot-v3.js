@@ -3477,7 +3477,28 @@ case 'bass': case 'blown': case 'deep': case 'earrape': case 'fast': case 'fat':
                 HBWABotInc.sendMessage(m.chat, {caption: `${themeemoji} Title : ${result.title}\n${themeemoji} Category : ${result.type}\n${themeemoji} Detail : ${result.source}\n${themeemoji} Media Url : ${result.image[2] || result.image[1] || result.image[0]}`, image: { url: result.image[0] }} , { quoted: m })
             }
             break
- case 'instavid' : case 'igvid': 
+case 'igvid':
+case 'instavid': 
+case 'igstory':
+case 'igreels': {
+  // Credit by Betabotz-tools
+  if (!text) return replyherbertstyle(`A link rawn dah tel rawh\n\nTiang hian: ${prefix + command} https://www.instagram.com/reel/Cv83HHYtC-Y/?igshid=NTc4MTIwNjQ2YQ==`);
+  await loadingreact();
+  const { instagram } = require('betabotz-tools');
+  const url = args[0];
+  const results = await instagram(url);
+  console.log(results); // JSON
+  await uploadreact();
+  for (let i of results.result) {
+    await HBWABotInc.sendMessage(m.chat, {
+      video: { url: i._url },
+      caption: "Instagram download by HBWABot"
+    }, { quoted: m });
+  }
+  await finishreact();
+}
+break;
+ case 'instavidxxx' : case 'igvidxxx': 
 if (!text) return replyherbertstyle(`A link rawn dah tel rawh\n\nTiang hian: ${prefix + command} https://www.instagram.com/p/ByxKbUSnubS/?utm_source=ig_web_copy_link`)
 await loadingreact()
  mumaker.instagram(`${args[0]}`)
