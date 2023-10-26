@@ -1050,51 +1050,19 @@ const rssFeedURL = `https://www.mizolyric.com/feeds/posts/default?q=${mizoly}`
       console.log('Title: ' + item.title)
       console.log('Link: ' + item.link)
       console.log('Published Date: ' + item.pubDate)
+      if (feed.bozo || feed.status === 404) return replyherbertstyle('🧐 I lyrics duh hi ka zawng hmu zo lo. A spelling i ti dik lo a ni maithei...');
       const plainTextContent = htmlToText(item.content)
       console.log('Content: ')
       console.log(plainTextContent)
       console.log('\n')
-      replyherbertstyle(`*${item.title}*\n${plainTextContent}`)
+      if (plainTextContent.length === 0) return replyherbertstyle('🧐 I lyrics duh hi ka zawng hmu zo lo. A spelling i ti dik lo a ni maithei...');
+  await HBWABotInc.sendMessage(m.chat, { text: `${plainTextContent}`, contextInfo:{"externalAdReply": {"showAdAttribution": true, "containsAutoReply": true, "title": `${item.title}`,"body": `Mizo Lyrics`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`./HBWABot.png`),"sourceUrl": `${item.link}`}}}, { quoted: m})
     })
   } catch (error) {
     console.error('Feed laknaah eroor a awm:', error)
   }
 }
 break
-
-case 'lyrics2': {
-  if (!q) return replyherbertstyle(`Eng lyrics nge i zawn dawn?\nTiang hian hman tur: ${prefix}Mlyrics Saltang tawngtaina`)
-  const Parser = require('rss-parser');
-  const { htmlToText } = require('html-to-text');
-  const parser = new Parser();
-  const mizoly = args.join(" ");
-  const rssFeedURL = `https://www.mizolyric.com/feeds/posts/default?q=${mizoly}`;
-  
-  try {
-    const feed = await parser.parseURL(rssFeedURL);
-    const responses = [];
-
-    for (const item of feed.items) {
-      console.log('Title: ' + item.title);
-      console.log('Link: ' + item.link);
-      console.log('Published Date: ' + item.pubDate);
-      const plainTextContent = htmlToText(item.content);
-      console.log('Content: ');
-      console.log(plainTextContent);
-      console.log('\n');
-      responses.push(`*${item.title}*\n${plainTextContent}`);
-    }
-
-    // Reply to the user with all the responses
-    for (const response of responses) {
-      replyherbertstyle(response);
-    }
-  } catch (error) {
-    console.error('Feed laknaah eroor a awm:', error);
-    replyherbertstyle('🧐 I lyrics duh hi ka zawng hmu zo lo. A spelling i ti dik lo a ni maithei...');
-  }
-}
-break;
 
             case 'dawntur': case'claim': case 'daily': {
       if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
