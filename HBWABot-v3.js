@@ -3459,13 +3459,13 @@ await loadingreact()
 case 'igvid' : case 'indtavid':  {
   if (!text) return replyherbertstyle(`A link rawn dah tel rawh\n\nTiang hian: ${prefix + command} https://www.instagram.com/reel/Cv83HHYtC-Y/?igshid=NTc4MTIwNjQ2YQ==`)
   await loadingreact()
-const instagramGetUrl = require("instagram-get-url");
+const { snapsave } = require("snapsave-downloader-itj")
 let uite = args[0]
-let links = await instagramGetUrl(uite)
+let links = await snapsave(uite)
 console.log(links)
 await uploadreact()
 await HBWABotInc.sendMessage(m.chat,{
-video: {url: links},
+video: {url: links.data.url},
 caption: "Instagram Video download by HBWABot"
 }, {quoted:m})
 await finishreact()
