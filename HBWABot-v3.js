@@ -3465,7 +3465,7 @@ const uite = await igdl(url)
 console.log(uite) // JSON
 await uploadreact()
 await HBWABotInc.sendMessage(m.chat,{
-video: {url: uite},
+video: {url: uite.url},
 caption: "Instagram Video download by HBWABot"
 }, {quoted:m})
 await finishreact()
