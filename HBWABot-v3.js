@@ -1061,31 +1061,40 @@ const rssFeedURL = `https://www.mizolyric.com/feeds/posts/default?q=${mizoly}`
   }
 }
 break
-case 'mlyrics2': {
-  if (!q) return replyherbertstyle(`Eng lyrics nge i zawn dawn?\nTiang hian hman tur: ${prefix}Mlyrics Saltang tawngtaina`);
+
+case 'lyrics2': {
+  if (!q) return replyherbertstyle(`Eng lyrics nge i zawn dawn?\nTiang hian hman tur: ${prefix}Mlyrics Saltang tawngtaina`)
   const Parser = require('rss-parser');
   const { htmlToText } = require('html-to-text');
   const parser = new Parser();
   const mizoly = args.join(" ");
   const rssFeedURL = `https://www.mizolyric.com/feeds/posts/default?q=${mizoly}`;
-
+  
   try {
     const feed = await parser.parseURL(rssFeedURL);
-    const lyricData = [];
+    const responses = [];
 
-    await Promise.all(feed.items.map(async (item) => {
+    for (const item of feed.items) {
+      console.log('Title: ' + item.title);
+      console.log('Link: ' + item.link);
+      console.log('Published Date: ' + item.pubDate);
       const plainTextContent = htmlToText(item.content);
-      lyricData.push(`*${item.title}*\n${plainTextContent}`);
-    });
+      console.log('Content: ');
+      console.log(plainTextContent);
+      console.log('\n');
+      responses.push(`*${item.title}*\n${plainTextContent}`);
+    }
 
-    // Send the collected lyric data in a single reply
-    replyherbertstyle(lyricData.join('\n\n'));
+    // Reply to the user with all the responses
+    for (const response of responses) {
+      replyherbertstyle(response);
+    }
   } catch (error) {
     console.error('Feed laknaah eroor a awm:', error);
+    replyherbertstyle('🧐 I lyrics duh hi ka zawng hmu zo lo. A spelling i ti dik lo a ni maithei...');
   }
 }
 break;
-
 
             case 'dawntur': case'claim': case 'daily': {
       if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
