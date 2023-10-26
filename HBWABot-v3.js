@@ -3460,7 +3460,7 @@ case 'igvid' : case 'indtavid':  {
   if (!text) return replyherbertstyle(`A link rawn dah tel rawh\n\nTiang hian: ${prefix + command} https://www.instagram.com/reel/Cv83HHYtC-Y/?igshid=NTc4MTIwNjQ2YQ==`)
   await loadingreact()
 const { igdl } = require('btch-downloader')
-const url = ${args[0]}
+const url = args[0]
 const uite = await igdl(url)
 console.log(uite) // JSON
 await uploadreact()
