@@ -1756,7 +1756,6 @@ await loading()
 let { eBinary } = require('./scrape/binary')
 let eb = await eBinary(`${q}`)
 replyherbertstyle(eb)
-await delete.loading()
 }
 break
 case 'dbinary': {
@@ -1765,7 +1764,6 @@ await loading()
 let { dBinary } = require('./scrape/binary')
 let db = await dBinary(`${q}`)
 replyherbertstyle(db)
-await delete.loading()
 }
 break
 case 'remini': {
