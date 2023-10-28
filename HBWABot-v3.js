@@ -3179,10 +3179,6 @@ if (!AntiNsfw) return replyherbertstyle(mess.nsfw)
 await loading()
  waifudd = await axios.get(`https://nekos.life/api/v2/img/spank`)     
             await HBWABotInc.sendMessage(m.chat, { caption:  `\n*©HBWABot*`, image: {url:waifudd.data.url} },{ quoted:m })
-            
-            catch(err => {
-                    return('Error!')
-                })
 break
 case 'ahegao':
 if (!m.isGroup) return m.reply(mess.group)
