@@ -3537,7 +3537,7 @@ case 'igreels': {
   await finishreact();
 }
 break;
-case 'igvid2' : case 'indtavid2':  {
+case 'igvid3' : case 'indtavid3':  {
   if (!text) return replyherbertstyle(`A link rawn dah tel rawh\n\nTiang hian: ${prefix + command} https://www.instagram.com/reel/Cv83HHYtC-Y/?igshid=NTc4MTIwNjQ2YQ==`)
   await loadingreact()
 const { igdl } = require('btch-downloader')
@@ -3554,7 +3554,7 @@ for (let mimawl of uite.url) {
 await finishreact()
 }
 break 
- case 'instavid3' : case 'igvid3': 
+ case 'instavid2' : case 'igvid2': 
 if (!text) return replyherbertstyle(`A link rawn dah tel rawh\n\nTiang hian: ${prefix + command} https://www.instagram.com/p/ByxKbUSnubS/?utm_source=ig_web_copy_link`)
 await loadingreact()
  mumaker.instagram(`${args[0]}`)
