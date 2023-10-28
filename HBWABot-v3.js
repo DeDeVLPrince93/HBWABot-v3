@@ -1052,7 +1052,9 @@ const mizoly = args.join(" ")
 const rssFeedURL = `https://www.mizolyric.com/feeds/posts/default?q=${mizoly}`
   try {
     const feed = await parser.parseURL(rssFeedURL)
-    if (feed.bozo || feed.status === 404) return replyherbertstyle('🧐 I lyrics duh hi ka zawng hmu zo lo. A spelling i ti dik lo a ni maithei...');
+    if (feed.items.length === 0) {
+        return HBWABotInc.sendMessage(from, "🧐 I lyrics duh hi ka zawng hmu zo lo. A spelling i ti dik lo a ni maithei...")
+    }
     feed.items.forEach(async (item) => {
       console.log('Title: ' + item.title)
       console.log('Link: ' + item.link)
@@ -1092,6 +1094,9 @@ const mizoly = args.join(" ")
 const rssFeedURL = `https://www.mizolyric.com/feeds/posts/default?q=${mizoly}`
 try {
     const feed = await parser.parseURL(rssFeedURL)
+    if (feed.items.length === 0) {
+        return HBWABotInc.sendMessage(from, "🧐 I lyrics duh hi ka zawng hmu zo lo. A spelling i ti dik lo a ni maithei...")
+    }
     feed.items.forEach(async (item) => {
       console.log('Title: ' + item.title)
       console.log('Link: ' + item.link)
