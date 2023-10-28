@@ -1532,7 +1532,7 @@ var HBLoadingmenu = [
 `《███████▒▒▒▒▒》50%`,
 `《██████████▒▒》80%`,
 `《████████████》100%`,
-`Hi @${sender.split("@")[0]}\n\n${ephoto360menu(prefix)}`]
+`Hi @${sender.split("@")[0]}\n\n${stickermenu(prefix)}`]
 let ments = [ownernya, me, mark]       
 let { key } = await HBWABotInc.sendMessage(from, {text: '《▒▒▒▒▒▒▒▒▒▒▒▒》0%\n♻️ _Nghak lawk rawh.._'},{quoted:m})
 
@@ -1760,16 +1760,16 @@ HBWABotInc.sendMessage(m.chat, { text : q ? q : '' , mentions: participants.map(
 }
 break
 case 'ebinary': {
-if (!q) return replyherbertstyle(`Send/reply text with captions ${prefix + command}`)
-await loading()
+if (!q) return replyherbertstyle(`Message reply in emaw command zoah rawn dah rawh tiang hian: ${prefix + command} hello world`)
+let loadingMessage = await loading()
 let { eBinary } = require('./scrape/binary')
 let eb = await eBinary(`${q}`)
 replyherbertstyle(eb)
 }
 break
 case 'dbinary': {
-if (!q) return replyherbertstyle(`Send/reply text with captions ${prefix + command}`)
-await loading()
+if (!q) return replyherbertstyle(`Message reply in emaw command zoah rawn dah rawh tiang hian: ${prefix + command} hello world`)
+let loadingMessage = await loading()
 let { dBinary } = require('./scrape/binary')
 let db = await dBinary(`${q}`)
 replyherbertstyle(db)
@@ -1778,61 +1778,61 @@ break
 case 'remini': {
 			if (!quoted) return replyherbertstyle(`Thlalak rawn dah rawh`)
 			if (!/image/.test(mime)) return replyherbertstyle(`Thlalak Send/Reply in a caption ah ${prefix + command} tih hi rawn dah rawh`)
-			await loading()
+			let loadingMessage = await loading()
 			const { remini } = require('./lib/remini')
 			let media = await quoted.download()
 			let proses = await remini(media, "enhance")
 			HBWABotInc.sendMessage(m.chat, { image: proses, caption: "\n*©HBWABot*"}, { quoted: m})
-			
+HBWABotInc.deleteMessage(m.chat, loadingMessage.id)		
 			}
 			break
 case 'toanime': case 'tocartoon': {
 if (!quoted) return replyherbertstyle(`Thlalak rawn dah rawh`)
 			if (!/image/.test(mime)) return replyherbertstyle(`Thlalak Send/Reply in a caption ah ${prefix + command} tih hi rawn dah rawh`)
-			await loading()
+			let loadingMessage = await loading()
             const { toanime } = require('betabotz-tools')
             let downloadrawh = await quoted.download()
             let results = await toanime(downloadrawh)
             console.log(results) //json
             HBWABotInc.sendMessage(m.chat, { image: {url: results.image_data}, caption: "\n*©HBWABot*"}, { quoted: m})
-            
+            HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 }
 break
 case 'removebg': case 'bgremove': {
 if (!quoted) return replyherbertstyle(`Thlalak rawn dah rawh`)
 			if (!/image/.test(mime)) return replyherbertstyle(`Thlalak Send/Reply in a caption ah ${prefix + command} tih hi rawn dah rawh`)
-			await loading()
+			let loadingMessage = await loading()
             const { removebg } = require('betabotz-tools')
             let downloadrawh = await quoted.download()
             let results = await removebg(downloadrawh)
             console.log(results) //json
             HBWABotInc.sendMessage(m.chat, { image: {url: results.image_data}, caption: "\n*©HBWABot*"}, { quoted: m})
-            
+            HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 }
 break
 case 'remini2': case 'hd': {
 if (!quoted) return replyherbertstyle(`Thlalak rawn dah rawh`)
 			if (!/image/.test(mime)) return replyherbertstyle(`Thlalak Send/Reply in a caption ah ${prefix + command} tih hi rawn dah rawh`)
-			await loading()
+			let loadingMessage = await loading()
             const { remini } = require('betabotz-tools')
             let downloadrawh = await quoted.download()
             let results = await remini(downloadrawh)
             console.log(results) //json
             HBWABotInc.sendMessage(m.chat, { image: {url: results.image_data}, caption: "\n*©HBWABot*"}, { quoted: m})
-            
+            HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 }
 break
 
 case 'tozombie': {
 if (!quoted) return replyherbertstyle(`Thlalak rawn dah rawh`)
 			if (!/image/.test(mime)) return replyherbertstyle(`Thlalak Send/Reply in a caption ah ${prefix + command} tih hi rawn dah rawh`)
-			await loading()
+			let loadingMessage = await loading()
             const { tozombie } = require('betabotz-tools')
             let downloadrawh = await quoted.download()
             let results = await tozombie(downloadrawh)
             console.log(results) //json
             HBWABotInc.sendMessage(m.chat, { image: {url: results.image_data}, caption: "\n*©HBWABot*"}, { quoted: m})
-            
+            HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 }
 break 		
 
@@ -1937,13 +1937,13 @@ break;
 
 			case 'gimage': {
                 if (!text) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} Mizoram`)
-                await loading()
+                let loadingMessage = await loading()
                 let gis = require('g-i-s')
                 gis(text, async (error, result) => {
                     n = result
                     images = n[Math.floor(Math.random() * n.length)].url
                     HBWABotInc.sendMessage(m.chat, { image: { url: images}, caption: `*-------「 GIMAGE SEARCH 」-------*\n🤠 *Query* : ${text}\n🔗 *Media Url* : ${images}`}, { quoted: m })
-                    
+                    HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
                 })
             }
             case 'gimage': {
@@ -1981,7 +1981,7 @@ HBWABotInc.sendMessage(m.chat, { document : { url : baby1[0].link}, fileName : b
 break
 case 'google': {
 if (!q) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} ${botname}`)
-await loading()
+let loadingMessage = await loading()
 let google = require('google-it')
 google({'query': text}).then(res => {
 let teks = `Google Search From : ${text}\n\n`
@@ -1992,7 +1992,7 @@ teks += `⭔ *Link* : ${g.link}\n\n───────────────
 } 
 replyherbertstyle(teks)
 })
-
+HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 }
 break
 case 'yts': case 'hla':{
@@ -2149,7 +2149,7 @@ await finishreact()
 break
 case '/hla':  case 'songxx': {
 if (!text) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} K hminga siar lalnu`)
-await loading()
+let loadingMessage = await loading()
 const herbertplaymp3 = require('./lib/ytdl2')
 let yts = require("youtube-yts")
         let search = await yts(text)
@@ -2171,12 +2171,12 @@ await HBWABotInc.sendMessage(m.chat,{
     },
 },{quoted:m})
 await fs.unlinkSync(pl.path)
-
+HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 }
 break 
 case 'dsong3': {
 if (!text) return replyherbertstyle(`Tiang hian tih tur : ${prefix + command} K hminga siar lalnu`)
-await loading()
+let loadingMessage = await loading()
 const herbertplaymp3 = require('./lib/ytdl2')
 let yts = require("youtube-yts")
         let search = await yts(text)
@@ -2197,13 +2197,13 @@ await HBWABotInc.sendMessage(m.chat,{document: fs.readFileSync(pl.path),
     },
 },{quoted:m})
 await fs.unlinkSync(pl.path)
-
+HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 }
 break
 case "ytmp3xx": case "ytaudioxx": //credit: Ray Senpai â¤ï¸ https://github.com/EternityBots/Nezuko
 const herbertaudp3 = require('./lib/ytdl2')
 if (args.length < 1 || !isUrl(text) || !herbertaudp3.isYTUrl(text)) return replyherbertstyle(`Youtube link rawn dah rawh\nTiang hian tih tur : ${prefix + command} https://youtube.com/watch?v=DA9gCKwaefg`)
-await loading()
+let loadingMessage = await loading()
 const audio=await herbertaudp3.mp3(text)
 await HBWABotInc.sendMessage(m.chat,{
     audio: fs.readFileSync(audio.path),
@@ -2221,12 +2221,12 @@ await HBWABotInc.sendMessage(m.chat,{
     },
 },{quoted:m})
 await fs.unlinkSync(audio.path)
-
+HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 break
 case 'ytmp4': case 'ytvideo': {
 const herbertvidoh = require('./lib/ytdl2')
 if (args.length < 1 || !isUrl(text) || !herbertvidoh.isYTUrl(text)) replyherbertstyle(`Video link rawn dah rawh!!\n\nTiang hian tih tur : ${prefix + command} https://youtube.com/watch?v=DA9gCKwaefgs`)
-await loading()
+let loadingMessage = await loading()
 const vid=await herbertvidoh.mp4(text)
 const ytc=`
 *${themeemoji}Tittle:* ${vid.title}
@@ -2237,7 +2237,7 @@ await HBWABotInc.sendMessage(m.chat,{
     video: {url:vid.videoUrl},
     caption: ytc
 },{quoted:m})
-
+HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 }
 break
 case 'dvideo':  case 'dvid': {
@@ -2362,59 +2362,59 @@ break
 case 'tomp4': case 'tovideo': {
                 if (!quoted) return replyherbertstyle('Reply to Sticker')
                 if (!/webp/.test(mime)) return replyherbertstyle(`Sticker reply rawh tiang hian:  *${prefix + command}*`)
-                await loading()
+                let loadingMessage = await loading()
 		        let { webp2mp4File } = require('./lib/uploader')
                 let media = await HBWABotInc.downloadAndSaveMediaMessage(quoted)
                 let webpToMp4 = await webp2mp4File(media)
                 await HBWABotInc.sendMessage(m.chat, { video: { url: webpToMp4.result, caption: 'sticker a tang video ah convert a ni' } }, { quoted: m })
                 await fs.unlinkSync(media)
-                
+                HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
             }
             break
             case 'toaud': case 'toaudio': {
             if (!/video/.test(mime) && !/audio/.test(mime)) return replyherbertstyle(`Send/Reply in Video/Audio rawn thawn rawh tiang hian: ${prefix + command}`)
             if (!quoted) return replyherbertstyle(`Send/Reply in Video/Audio rawn thawn rawh tiang hian: ${prefix + command}`)
-            await loading()
+            let loadingMessage = await loading()
             let media = await quoted.download()
             let { toAudio } = require('./lib/converter')
             let audio = await toAudio(media, 'mp4')
             HBWABotInc.sendMessage(m.chat, {audio: audio, mimetype: 'audio/mpeg'}, { quoted : m })
-            
+            HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
             }
             break
             case 'tomp3': {
             if (/document/.test(mime)) return replyherbertstyle(`Send/Reply in Video/Audio rawn thawn rawh tiang hian: ${prefix + command}`)
             if (!/video/.test(mime) && !/audio/.test(mime)) return replyherbertstyle(`Send/Reply in Video/Audio rawn thawn rawh tiang hian: ${prefix + command}`)
             if (!quoted) return replyherbertstyle(`Send/Reply in Video/Audio rawn thawn rawh tiang hian: ${prefix + command}`)
-            await loading()
+            let loadingMessage = await loading()
             let media = await quoted.download()
             let { toAudio } = require('./lib/converter')
             let audio = await toAudio(media, 'mp4')
             HBWABotInc.sendMessage(m.chat, {document: audio, mimetype: 'audio/mpeg', fileName: `Convert By ${HBWABotInc.user.name}.mp3`}, { quoted : m })
-            
+            HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
             }
             break
             case 'tovn': case 'toptt': {
             if (!/video/.test(mime) && !/audio/.test(mime)) return replyherbertstyle(`Send/Reply in Video/Audio rawn thawn rawh tiang hian: ${prefix + command}`)
             if (!quoted) return replyherbertstyle(`Send/Reply in Video/Audio rawn thawn rawh tiang hian: ${prefix + command}`)
-            await loading()
+            let loadingMessage = await loading()
             let media = await quoted.download()
             let { toPTT } = require('./lib/converter')
             let audio = await toPTT(media, 'mp4')
             HBWABotInc.sendMessage(m.chat, {audio: audio, mimetype:'audio/mpeg', ptt:true }, {quoted:m})
-            
+            HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
             }
             break
             case 'togif': {
                 if (!quoted) return replyherbertstyle('Reply video')
                 if (!/webp/.test(mime)) return replyherbertstyle(`Sticker reply rawh tiang hian: *${prefix + command}*`)
-                await loading()
+                let loadingMessage = await loading()
 		let { webp2mp4File } = require('./lib/uploader')
                 let media = await HBWABotInc.downloadAndSaveMediaMessage(quoted)
                 let webpToMp4 = await webp2mp4File(media)
                 await HBWABotInc.sendMessage(m.chat, { video: { url: webpToMp4.result, caption: 'Convert Webp To Video' }, gifPlayback: true }, { quoted: m })
                 await fs.unlinkSync(media)
-                
+                HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
             }
             break
 
@@ -2500,7 +2500,7 @@ contextInfo:{
 }
 break
 case 'toimg': case 'thlalakk': {
-	await loading()
+	let loadingMessage = await loading()
 	const getRandom = (ext) => {
             return `${Math.floor(Math.random() * 10000)}${ext}`
         }
@@ -2513,7 +2513,8 @@ if (mime =="imageMessage" || mime =="stickerMessage")
         exec(`ffmpeg -i ${media} ${name}`, (err) => {
         	fs.unlinkSync(media)
             let buffer = fs.readFileSync(name)
-            HBWABotInc.sendMessage(m.chat, { image: buffer }, { quoted: m })      
+            HBWABotInc.sendMessage(m.chat, { image: buffer }, { quoted: m })
+            HBWABotInc.deleteMessage(m.chat, loadingMessage.id)      
 fs.unlinkSync(name)
 
         })
@@ -3095,12 +3096,12 @@ case 'thuril': {
             }
 	    break 
 case 'couplepp': case 'ppcouple': {
-                await loading()
+                let loadingMessage = await loading()
                 let anucpp = await fetchJson('https://raw.githubusercontent.com/HBMods-OFC/Media/main/couplepp/Inkawp.json')
                 let random = anucpp[Math.floor(Math.random() * anucpp.length)]
                 HBWABotInc.sendMessage(m.chat, { image: { url: random.male }, caption: `Mipa` }, { quoted: m })
                 HBWABotInc.sendMessage(m.chat, { image: { url: random.female }, caption: `Hmeichhia` }, { quoted: m })
-                
+                HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
             }
 	    break
 case 'description' : case 'gpdesc': case 'desc': {
@@ -3125,7 +3126,7 @@ break
 if (!m.isGroup) return m.reply(mess.group)
 
 if (!AntiNsfw) return replygherbert(mess.nsfw)
-await loading()
+let loadingMessage = await loading()
 sbe = await hentaivid()
 cejd = sbe[Math.floor(Math.random(), sbe.length)]
 HBWABotInc.sendMessage(m.chat, { video: { url: cejd.video_1 }, 
@@ -3136,27 +3137,27 @@ caption: `⭔ Title : ${cejd.title}
 ⭔ Shares : ${cejd.share_count}
 ⭔ Source : ${cejd.link}
 ⭔ Media Url : ${cejd.video_1}` }, { quoted: m })
-
+HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 }
 break
 	case 'hentaivid': case 'hentaivideo': {
 	if (!m.isGroup) return m.reply(mess.group)
 if (!AntiNsfw) return replyherbertstyle(mess.nsfw)
-                await loading()
+                let loadingMessage = await loading()
                 const { hentai } = require('./lib/scraper.js')
                 anu = await hentai()
                 result912 = anu[Math.floor(Math.random(), anu.length)]
                 HBWABotInc.sendMessage(m.chat, { video: { url: result912.video_1 }, caption: `${themeemoji} Title : ${result912.title}\n${themeemoji} Category : ${result912.category}\n${themeemoji} Mimetype : ${result912.type}\n${themeemoji} Views : ${result912.views_count}\n${themeemoji} Shares : ${result912.share_count}\n${themeemoji} Source : ${result912.link}\n${themeemoji} Media Url : ${result912.video_1}` }, { quoted: m })
-                
+             HBWABotInc.deleteMessage(m.chat, loadingMessage.id)   
             }
             break
 case 'trap' :
 if (!m.isGroup) return m.reply(mess.group)
 if (!AntiNsfw) return replyherbertstyle(mess.nsfw)
-await loading()
+let loadingMessage = await loading()
  waifudd = await axios.get(`https://waifu.pics/api/nsfw/${command}`)       
 HBWABotInc.sendMessage(m.chat, { caption: "\n*©HBWABot*", image: { url:waifudd.data.url } }, { quoted: m })
-
+HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 break
 case 'hentai-neko' :
 case 'hneko' :
@@ -3169,259 +3170,260 @@ case 'hentai-waifu' :
 case 'nwaifu' :
 if (!m.isGroup) return m.reply(mess.group)
 if (!AntiNsfw) return replyherbertstyle(mess.nsfw)
-await loading()
+let loadingMessage = await loading()
     waifudd = await axios.get(`https://waifu.pics/api/nsfw/waifu`)         
 HBWABotInc.sendMessage(m.chat, { caption: "\n*©HBWABot*", image: { url:waifudd.data.url } }, { quoted: m })
-
+HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 break
 case 'gasm':
 if (!m.isGroup) return m.reply(mess.group)
 	if (!AntiNsfw) return replyherbertstyle(mess.nsfw)
-await loading()						
+let loadingMessage = await loading()						
  waifudd = await axios.get(`https://nekos.life/api/v2/img/${command}`)
 HBWABotInc.sendMessage(m.chat, { caption: "\n*©HBWABot*", image: { url:waifudd.data.url } }, { quoted: m })
-
+HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 break  
 case 'animespank':
 if (!m.isGroup) return m.reply(mess.group)
 if (!AntiNsfw) return replyherbertstyle(mess.nsfw)
-await loading()
+let loadingMessage = await loading()
  waifudd = await axios.get(`https://nekos.life/api/v2/img/spank`)     
             await HBWABotInc.sendMessage(m.chat, { caption:  "\n*©HBWABot*", image: {url:waifudd.data.url} },{ quoted:m })
+            HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 break
 case 'ahegao':
 if (!m.isGroup) return m.reply(mess.group)
 	if (!AntiNsfw) return replyherbertstyle(mess.nsfw)
-await loading()
+let loadingMessage = await loading()
 var ahegaonsfw = JSON.parse(fs.readFileSync('./HostMedia/nsfw/ahegao.json'))
 var herbertyresult = pickRandom(ahegaonsfw)
 HBWABotInc.sendMessage(m.chat, { caption: "\n*©HBWABot*", image: { url: herbertyresult.url } }, { quoted: m })
-
+HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 break
 case 'ass':
 if (!m.isGroup) return m.reply(mess.group)
 	if (!AntiNsfw) return replyherbertstyle(mess.nsfw)
-await loading()
+let loadingMessage = await loading()
 var ahegaonsfw = JSON.parse(fs.readFileSync('./HostMedia/nsfw/ass.json'))
 var herbertyresult = pickRandom(ahegaonsfw)
 HBWABotInc.sendMessage(m.chat, { caption: "\n*©HBWABot*", image: { url: herbertyresult.url } }, { quoted: m })
-
+HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 break
 case 'bdsm':
 if (!m.isGroup) return m.reply(mess.group)
 	if (!AntiNsfw) return replyherbertstyle(mess.nsfw)
-await loading()
+let loadingMessage = await loading()
 var ahegaonsfw = JSON.parse(fs.readFileSync('./HostMedia/nsfw/bdsm.json'))
 var herbertyresult = pickRandom(ahegaonsfw)
 HBWABotInc.sendMessage(m.chat, { caption: "\n*©HBWABot*", image: { url: herbertyresult.url } }, { quoted: m })
-
+HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 break
 case 'blowjob':
 if (!m.isGroup) return m.reply(mess.group)
 	if (!AntiNsfw) return replyherbertstyle(mess.nsfw)
-await loading()
+let loadingMessage = await loading()
 var ahegaonsfw = JSON.parse(fs.readFileSync('./HostMedia/nsfw/blowjob.json'))
 var herbertyresult = pickRandom(ahegaonsfw)
 HBWABotInc.sendMessage(m.chat, { caption: "\n*©HBWABot*", image: { url: herbertyresult.url } }, { quoted: m })
-
+HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 break
 case 'cuckold':
 if (!m.isGroup) return m.reply(mess.group)
 	if (!AntiNsfw) return replyherbertstyle(mess.nsfw)
-await loading()
+let loadingMessage = await loading()
 var ahegaonsfw = JSON.parse(fs.readFileSync('./HostMedia/nsfw/cuckold.json'))
 var herbertyresult = pickRandom(ahegaonsfw)
 HBWABotInc.sendMessage(m.chat, { caption: "\n*©HBWABot*", image: { url: herbertyresult.url } }, { quoted: m })
-
+HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 break
 case 'cum':
 if (!m.isGroup) return m.reply(mess.group)
 	if (!AntiNsfw) return replyherbertstyle(mess.nsfw)
-await loading()
+let loadingMessage = await loading()
 var ahegaonsfw = JSON.parse(fs.readFileSync('./HostMedia/nsfw/cum.json'))
 var herbertyresult = pickRandom(ahegaonsfw)
 HBWABotInc.sendMessage(m.chat, { caption: "\n*©HBWABot*", image: { url: herbertyresult.url } }, { quoted: m })
-
+HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 break
 case 'eba':
 if (!m.isGroup) return m.reply(mess.group)
 	if (!AntiNsfw) return replyherbertstyle(mess.nsfw)
-await loading()
+let loadingMessage = await loading()
 var ahegaonsfw = JSON.parse(fs.readFileSync('./HostMedia/nsfw/eba.json'))
 var herbertyresult = pickRandom(ahegaonsfw)
 HBWABotInc.sendMessage(m.chat, { caption: "\n*©HBWABot*", image: { url: herbertyresult.url } }, { quoted: m })
-
+HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 break
 case 'ero':
 if (!m.isGroup) return m.reply(mess.group)
 	if (!AntiNsfw) return replyherbertstyle(mess.nsfw)
-await loading()
+let loadingMessage = await loading()
 var ahegaonsfw = JSON.parse(fs.readFileSync('./HostMedia/nsfw/ero.json'))
 var herbertyresult = pickRandom(ahegaonsfw)
 HBWABotInc.sendMessage(m.chat, { caption: "\n*©HBWABot*", image: { url: herbertyresult.url } }, { quoted: m })
-
+HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 break
 case 'femdom':
 if (!m.isGroup) return m.reply(mess.group)
 	if (!AntiNsfw) return replyherbertstyle(mess.nsfw)
-await loading()
+let loadingMessage = await loading()
 var ahegaonsfw = JSON.parse(fs.readFileSync('./HostMedia/nsfw/femdom.json'))
 var herbertyresult = pickRandom(ahegaonsfw)
 HBWABotInc.sendMessage(m.chat, { caption: "\n*©HBWABot*", image: { url: herbertyresult.url } }, { quoted: m })
-
+HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 break
 case 'foot':
 if (!m.isGroup) return m.reply(mess.group)
 	if (!AntiNsfw) return replyherbertstyle(mess.nsfw)
-await loading()
+let loadingMessage = await loading()
 var ahegaonsfw = JSON.parse(fs.readFileSync('./HostMedia/nsfw/foot.json'))
 var herbertyresult = pickRandom(ahegaonsfw)
 HBWABotInc.sendMessage(m.chat, { caption: "\n*©HBWABot*", image: { url: herbertyresult.url } }, { quoted: m })
-
+HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 break
 case 'gangbang':
 if (!m.isGroup) return m.reply(mess.group)
 	if (!AntiNsfw) return replyherbertstyle(mess.nsfw)
-await loading()
+let loadingMessage = await loading()
 var ahegaonsfw = JSON.parse(fs.readFileSync('./HostMedia/nsfw/gangbang.json'))
 var herbertyresult = pickRandom(ahegaonsfw)
 HBWABotInc.sendMessage(m.chat, { caption: "\n*©HBWABot*", image: { url: herbertyresult.url } }, { quoted: m })
-
+HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 break
 case 'glasses':
 if (!m.isGroup) return m.reply(mess.group)
 	if (!AntiNsfw) return replyherbertstyle(mess.nsfw)
-await loading()
+let loadingMessage = await loading()
 var ahegaonsfw = JSON.parse(fs.readFileSync('./HostMedia/nsfw/glasses.json'))
 var herbertyresult = pickRandom(ahegaonsfw)
 HBWABotInc.sendMessage(m.chat, { caption: "\n*©HBWABot*", image: { url: herbertyresult.url } }, { quoted: m })
-
+HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 break
 case 'hentai':
 if (!m.isGroup) return m.reply(mess.group)
 	if (!AntiNsfw) return replyherbertstyle(mess.nsfw)
-await loading()
+let loadingMessage = await loading()
 var ahegaonsfw = JSON.parse(fs.readFileSync('./HostMedia/nsfw/hentai.json'))
 var herbertyresult = pickRandom(ahegaonsfw)
 HBWABotInc.sendMessage(m.chat, { caption: "\n*©HBWABot*", image: { url: herbertyresult.url } }, { quoted: m })
-
+HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 break
 case 'jahy':
 if (!m.isGroup) return m.reply(mess.group)
 	if (!AntiNsfw) return replyherbertstyle(mess.nsfw)
-await loading()
+let loadingMessage = await loading()
 var ahegaonsfw = JSON.parse(fs.readFileSync('./HostMedia/nsfw/jahy.json'))
 var herbertyresult = pickRandom(ahegaonsfw)
 HBWABotInc.sendMessage(m.chat, { caption: "\n*©HBWABot*", image: { url: herbertyresult.url } }, { quoted: m })
-
+HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 break
 case 'manga':
 if (!m.isGroup) return m.reply(mess.group)
 	if (!AntiNsfw) return replyherbertstyle(mess.nsfw)
-await loading()
+let loadingMessage = await loading()
 var ahegaonsfw = JSON.parse(fs.readFileSync('./HostMedia/nsfw/manga.json'))
 var herbertyresult = pickRandom(ahegaonsfw)
 HBWABotInc.sendMessage(m.chat, { caption: "\n*©HBWABot*", image: { url: herbertyresult.url } }, { quoted: m })
-
+HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 break
 case 'masturbation':
 if (!m.isGroup) return m.reply(mess.group)
 	if (!AntiNsfw) return replyherbertstyle(mess.nsfw)
-await loading()
+let loadingMessage = await loading()
 var ahegaonsfw = JSON.parse(fs.readFileSync('./HostMedia/nsfw/masturbation.json'))
 var herbertyresult = pickRandom(ahegaonsfw)
 HBWABotInc.sendMessage(m.chat, { caption: "\n*©HBWABot*", image: { url: herbertyresult.url } }, { quoted: m })
-
+HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 break
 case 'neko-hentai':
 if (!m.isGroup) return m.reply(mess.group)
 	if (!AntiNsfw) return replyherbertstyle(mess.nsfw)
-await loading()
+let loadingMessage = await loading()
 var ahegaonsfw = JSON.parse(fs.readFileSync('./HostMedia/nsfw/neko.json'))
 var herbertyresult = pickRandom(ahegaonsfw)
 HBWABotInc.sendMessage(m.chat, { caption: "\n*©HBWABot*", image: { url: herbertyresult.url } }, { quoted: m })
-
+HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 break
 case 'neko-hentai2':
 if (!m.isGroup) return m.reply(mess.group)
 	if (!AntiNsfw) return replyherbertstyle(mess.nsfw)
-await loading()
+let loadingMessage = await loading()
 var ahegaonsfw = JSON.parse(fs.readFileSync('./HostMedia/nsfw/neko2.json'))
 var herbertyresult = pickRandom(ahegaonsfw)
 HBWABotInc.sendMessage(m.chat, { caption: "\n*©HBWABot*", image: { url: herbertyresult.url } }, { quoted: m })
-
+HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 break
 case 'nsfwloli':
 if (!m.isGroup) return m.reply(mess.group)
 	if (!AntiNsfw) return replyherbertstyle(mess.nsfw)
-await loading()
+let loadingMessage = await loading()
 var ahegaonsfw = JSON.parse(fs.readFileSync('./HostMedia/nsfw/nsfwloli.json'))
 var herbertyresult = pickRandom(ahegaonsfw)
 HBWABotInc.sendMessage(m.chat, { caption: "\n*©HBWABot*", image: { url: herbertyresult.url } }, { quoted: m })
-
+HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 break
 case 'orgy':
 if (!m.isGroup) return m.reply(mess.group)
 	if (!AntiNsfw) return replyherbertstyle(mess.nsfw)
-await loading()
+let loadingMessage = await loading()
 var ahegaonsfw = JSON.parse(fs.readFileSync('./HostMedia/nsfw/orgy.json'))
 var herbertyresult = pickRandom(ahegaonsfw)
 HBWABotInc.sendMessage(m.chat, { caption: "\n*©HBWABot*", image: { url: herbertyresult.url } }, { quoted: m })
-
+HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 break
 case 'panties':
 if (!m.isGroup) return m.reply(mess.group)
 	if (!AntiNsfw) return replyherbertstyle(mess.nsfw)
-await loading()
+let loadingMessage = await loading()
 var ahegaonsfw = JSON.parse(fs.readFileSync('./HostMedia/nsfw/panties.json'))
 var herbertyresult = pickRandom(ahegaonsfw)
 HBWABotInc.sendMessage(m.chat, { caption: "\n*©HBWABot*", image: { url: herbertyresult.url } }, { quoted: m })
-
+HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 break
 case 'pussy':
 if (!m.isGroup) return m.reply(mess.group)
 	if (!AntiNsfw) return replyherbertstyle(mess.nsfw)
-await loading()
+let loadingMessage = await loading()
 var ahegaonsfw = JSON.parse(fs.readFileSync('./HostMedia/nsfw/pussy.json'))
 var herbertyresult = pickRandom(ahegaonsfw)
 HBWABotInc.sendMessage(m.chat, { caption: "\n*©HBWABot*", image: { url: herbertyresult.url } }, { quoted: m })
-
+HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 break
 case 'tentacles':
 if (!m.isGroup) return m.reply(mess.group)
 	if (!AntiNsfw) return replyherbertstyle(mess.nsfw)
-await loading()
+let loadingMessage = await loading()
 var ahegaonsfw = JSON.parse(fs.readFileSync('./HostMedia/nsfw/tentacles.json'))
 var herbertyresult = pickRandom(ahegaonsfw)
 HBWABotInc.sendMessage(m.chat, { caption: "\n*©HBWABot*", image: { url: herbertyresult.url } }, { quoted: m })
-
+HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 break
 case 'thighs':
 if (!m.isGroup) return m.reply(mess.group)
 	if (!AntiNsfw) return replyherbertstyle(mess.nsfw)
-await loading()
+let loadingMessage = await loading()
 var ahegaonsfw = JSON.parse(fs.readFileSync('./HostMedia/nsfw/thighs.json'))
 var herbertyresult = pickRandom(ahegaonsfw)
 HBWABotInc.sendMessage(m.chat, { caption: "\n*©HBWABot*", image: { url: herbertyresult.url } }, { quoted: m })
-
+HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 break
 case 'yuri':
 if (!m.isGroup) return m.reply(mess.group)
 	if (!AntiNsfw) return replyherbertstyle(mess.nsfw)
-await loading()
+let loadingMessage = await loading()
 var ahegaonsfw = JSON.parse(fs.readFileSync('./HostMedia/nsfw/yuri.json'))
 var herbertyresult = pickRandom(ahegaonsfw)
 HBWABotInc.sendMessage(m.chat, { caption: "\n*©HBWABot*", image: { url: herbertyresult.url } }, { quoted: m })
-
+HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 break
 case 'zettai':
 if (!m.isGroup) return m.reply(mess.group)
 	if (!AntiNsfw) return replyherbertstyle(mess.nsfw)
-await loading()
+let loadingMessage = await loading()
 var ahegaonsfw = JSON.parse(fs.readFileSync('./HostMedia/nsfw/zettai.json'))
 var herbertyresult = pickRandom(ahegaonsfw)
 HBWABotInc.sendMessage(m.chat, { caption: "\n*©HBWABot*", image: { url: herbertyresult.url } }, { quoted: m })
-
+HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 break
 case 'gifblowjob':
 if (!m.isGroup) return m.reply(mess.group)
@@ -3485,7 +3487,7 @@ case 'bass': case 'blown': case 'deep': case 'earrape': case 'fast': case 'fat':
                 if (/smooth/.test(command)) set = '-filter:v "minterpolate=\'mi_mode=mci:mc_mode=aobmc:vsbmc=1:fps=120\'"'
                 if (/squirrel/.test(command)) set = '-filter:a "atempo=0.5,asetrate=65100"'
                 if (/audio/.test(mime)) {
-                await loading()
+                let loadingMessage = await loading()
                 let media = await HBWABotInc.downloadAndSaveMediaMessage(quoted)
                 let ran = getRandom('.mp3')
                 exec(`ffmpeg -i ${media} ${set} ${ran}`, (err, stderr, stdout) => {
@@ -3493,6 +3495,7 @@ case 'bass': case 'blown': case 'deep': case 'earrape': case 'fast': case 'fat':
                 if (err) return replyherbertstyle(err)
                 let buff = fs.readFileSync(ran)
                 HBWABotInc.sendMessage(m.chat, { audio: buff, mimetype: 'audio/mpeg' }, { quoted : m })
+                HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
                 fs.unlinkSync(ran)
                 
                 })
@@ -3508,12 +3511,12 @@ case 'bass': case 'blown': case 'deep': case 'earrape': case 'fast': case 'fat':
             break
             case 'wallpaper': {
                 if (!text) return replyherbertstyle('A title rawn dah rawh!..')
-                await loading()
+                let loadingMessage = await loading()
 		let { wallpaper } = require('./lib/scraper')
                 anuwallpep = await wallpaper(text)
                 result = anuwallpep[Math.floor(Math.random() * anuwallpep.length)]                
                 HBWABotInc.sendMessage(m.chat, {caption: `${themeemoji} Title : ${result.title}\n${themeemoji} Category : ${result.type}\n${themeemoji} Detail : ${result.source}\n${themeemoji} Media Url : ${result.image[2] || result.image[1] || result.image[0]}`, image: { url: result.image[0] }} , { quoted: m })
-                
+                HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
             }
             break
 case 'igvid':
@@ -3655,7 +3658,7 @@ break
   
 case 'igstalk': {
 if (!args[0]) return replyherbertstyle(`Instagram Username rawn dah rawh\n\nTiang hian: ${prefix + command} herbert_suantak2`)
-await loading()
+let loadingMessage = await loading()
 const fg = require('api-dylux')
     try {
     let res = await fg.igStalk(args[0])
@@ -3671,7 +3674,7 @@ const fg = require('api-dylux')
 └────────────`
      await HBWABotInc.sendMessage(m.chat, {image: { url: res.profilePic }, caption: te }, {quoted: m})
       } 
-
+HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 catch {
         replyherbertstyle(`A username a dik lo!. a username dik tak rawn dah rawh`)
       }
@@ -3775,7 +3778,7 @@ case 'myip': {
         break
 case 'gdrive': {
 		if (!args[0]) return replyherbertstyle(`Google Drive link rawn dah rawh`)
-	await loading()
+	let loadingMessage = await loading()
 	const fg = require('api-dylux')
 	try {
 	let res = await fg.GDriveDl(args[0])
@@ -3786,7 +3789,7 @@ case 'gdrive': {
 ▢ *Type:* ${res.mimetype}`)
 	HBWABotInc.sendMessage(m.chat, { document: { url: res.downloadUrl }, fileName: res.fileName, mimetype: res.mimetype }, { quoted: m })
    } 
-
+HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 catch {
 	replyherbertstyle('Error: Link dang rawn ti rawh') 
   }
@@ -3798,7 +3801,7 @@ case "xnxxdl": {
 	if (!AntiNsfw) return replyherbertstyle(mess.nsfw)
 	if (!text) return replyherbertstyle(`Enter Url`)
         if (!text.includes('xnxx.com')) return replyherbertstyle(`xnxx link rawn dah rawh`)
-        await loading()
+        let loadingMessage = await loading()
         const fg = require('api-dylux')
             let xn = await fg.xnxxdl(text)
 HBWABotInc.sendMessage(m.chat, { caption: `≡  *XNXX DL*
@@ -3806,7 +3809,7 @@ HBWABotInc.sendMessage(m.chat, { caption: `≡  *XNXX DL*
 ▢ *📌Title*: ${xn.result.title}
 ▢ *⌚Duration:* ${xn.result.duration}
 ▢ *🎞️Quality:* ${xn.result.quality}`, video: {url: xn.result.files.high} }, { quoted: m })
-
+HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 }
 break
 case 'xnxxsearch': {
@@ -3814,22 +3817,22 @@ case 'xnxxsearch': {
 	if (!m.isGroup) return m.reply(mess.group)
 	if (!AntiNsfw) return replyherbertstyle(mess.nsfw)
 	if (!text) return replyherbertstyle(`A title rawn dah rawh!..`)
-	await loading()
+	let loadingMessage = await loading()
 	const fg = require('api-dylux')
 	let res = await fg.xnxxSearch(text)
             let ff = res.result.map((v, i) => `${i + 1}┃ *Title* : ${v.title}\n*Link:* ${v.link}\n`).join('\n') 
               if (res.status) replyherbertstyle(ff)
-              
+              HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
               }
               break
               case 'pinterest': {
               	if (!text) return replyherbertstyle(`A title rawn dah rawh!..`)
-await loading()
+let loadingMessage = await loading()
 let { pinterest } = require('./lib/scraper')
 anutrest = await pinterest(text)
 result = anutrest[Math.floor(Math.random() * anutrest.length)]
 HBWABotInc.sendMessage(m.chat, { image: { url: result }, caption: '⭔ Media Url : '+result }, { quoted: m })
-
+HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 }
 break
 case 'ringtone': {
@@ -3838,6 +3841,7 @@ case 'ringtone': {
 		let anutone2 = await ringtone(text)
 		let result = anutone2[Math.floor(Math.random() * anutone2.length)]
 		HBWABotInc.sendMessage(m.chat, { audio: { url: result.audio }, fileName: result.title+'.mp3', mimetype: 'audio/mpeg' }, { quoted: m })
+HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 	    }
 	    break
            case 'wanumber': case 'searchno': case 'searchnumber':{
