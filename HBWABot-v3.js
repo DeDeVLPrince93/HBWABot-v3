@@ -552,24 +552,33 @@ HBWABotInc.relayMessage(jid, {
 }, {})
 }
 async function loading () {
-var HBLoading = [
-"《▒▒▒▒▒▒▒▒▒▒▒▒》0%",
-"《█▒▒▒▒▒▒▒▒▒▒▒》10%",
-"《█▒▒▒▒▒▒▒▒▒▒▒》10%",
-"《████▒▒▒▒▒▒▒▒》30%",
-"《████▒▒▒▒▒▒▒▒》30%",
-"《███████▒▒▒▒▒》50%",
-"《███████▒▒▒▒▒》50%",
-"《██████████▒▒》80%",
-"《██████████▒▒》80%",
-"《████████████》100%",
-"♻️ Reilo te min lo nghak rawh..."
-]
-let { key } = await HBWABotInc.sendMessage(from, {text: '《▒▒▒▒▒▒▒▒▒▒▒▒》0%\n♻️ _Nghak lawk rawh.._'},{quoted:m})
+  var HBLoading = [
+    "《▒▒▒▒▒▒▒▒▒▒▒▒》0%",
+    "《█▒▒▒▒▒▒▒▒▒▒▒》10%",
+    "《█▒▒▒▒▒▒▒▒▒▒▒》10%",
+    "《████▒▒▒▒▒▒▒▒》30%",
+    "《████▒▒▒▒▒▒▒▒》30%",
+    "《███████▒▒▒▒▒》50%",
+    "《███████▒▒▒▒▒》50%",
+    "《██████████▒▒》80%",
+    "《██████████▒▒》80%",
+    "《████████████》100%",
+    "♻️ Reilo te min lo nghak rawh..."
+  ]
+  let { key } = await HBWABotInc.sendMessage(from, {
+    text: '《▒▒▒▒▒▒▒▒▒▒▒▒》0%\n♻️ _Nghak lawk rawh.._'
+  }, { quoted: m })
 
-for (let i = 0; i < HBLoading.length; i++) {
- await HBWABotInc.sendMessage(from, {text: HBLoading[i], edit: key },{quoted:m})}
+  for (let i = 0; i < HBLoading.length; i++) {
+    // Edit the message with loading status
+    await HBWABotInc.sendMessage(from, { text: HBLoading[i], edit: key }, { quoted: m })
+    setTimeout(() => {
+      HBWABotInc.deleteMessage(from, { id: key.local })
+    }, 10000) // 60000 milliseconds (minutes khat)
+  }
 }
+
+
 
 async function rmbg(buffer) {
 let form = new FormData
@@ -1778,61 +1787,60 @@ break
 case 'remini': {
 			if (!quoted) return replyherbertstyle(`Thlalak rawn dah rawh`)
 			if (!/image/.test(mime)) return replyherbertstyle(`Thlalak Send/Reply in a caption ah ${prefix + command} tih hi rawn dah rawh`)
-			let loadingMessage = await loading()
+			await loading()
 			const { remini } = require('./lib/remini')
 			let media = await quoted.download()
 			let proses = await remini(media, "enhance")
 			HBWABotInc.sendMessage(m.chat, { image: proses, caption: "\n*©HBWABot*"}, { quoted: m})
-HBWABotInc.deleteMessage(m.chat, loadingMessage.id)		
 			}
 			break
 case 'toanime': case 'tocartoon': {
 if (!quoted) return replyherbertstyle(`Thlalak rawn dah rawh`)
 			if (!/image/.test(mime)) return replyherbertstyle(`Thlalak Send/Reply in a caption ah ${prefix + command} tih hi rawn dah rawh`)
-			let loadingMessage = await loading()
+			await loading()
             const { toanime } = require('betabotz-tools')
             let downloadrawh = await quoted.download()
             let results = await toanime(downloadrawh)
             console.log(results) //json
             HBWABotInc.sendMessage(m.chat, { image: {url: results.image_data}, caption: "\n*©HBWABot*"}, { quoted: m})
-            HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
+            
 }
 break
 case 'removebg': case 'bgremove': {
 if (!quoted) return replyherbertstyle(`Thlalak rawn dah rawh`)
 			if (!/image/.test(mime)) return replyherbertstyle(`Thlalak Send/Reply in a caption ah ${prefix + command} tih hi rawn dah rawh`)
-			let loadingMessage = await loading()
+			await loading()
             const { removebg } = require('betabotz-tools')
             let downloadrawh = await quoted.download()
             let results = await removebg(downloadrawh)
             console.log(results) //json
             HBWABotInc.sendMessage(m.chat, { image: {url: results.image_data}, caption: "\n*©HBWABot*"}, { quoted: m})
-            HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
+            
 }
 break
 case 'remini2': case 'hd': {
 if (!quoted) return replyherbertstyle(`Thlalak rawn dah rawh`)
 			if (!/image/.test(mime)) return replyherbertstyle(`Thlalak Send/Reply in a caption ah ${prefix + command} tih hi rawn dah rawh`)
-			let loadingMessage = await loading()
+			await loading()
             const { remini } = require('betabotz-tools')
             let downloadrawh = await quoted.download()
             let results = await remini(downloadrawh)
             console.log(results) //json
             HBWABotInc.sendMessage(m.chat, { image: {url: results.image_data}, caption: "\n*©HBWABot*"}, { quoted: m})
-            HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
+            
 }
 break
 
 case 'tozombie': {
 if (!quoted) return replyherbertstyle(`Thlalak rawn dah rawh`)
 			if (!/image/.test(mime)) return replyherbertstyle(`Thlalak Send/Reply in a caption ah ${prefix + command} tih hi rawn dah rawh`)
-			let loadingMessage = await loading()
+			await loading()
             const { tozombie } = require('betabotz-tools')
             let downloadrawh = await quoted.download()
             let results = await tozombie(downloadrawh)
             console.log(results) //json
             HBWABotInc.sendMessage(m.chat, { image: {url: results.image_data}, caption: "\n*©HBWABot*"}, { quoted: m})
-            HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
+            
 }
 break 		
 
