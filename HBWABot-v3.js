@@ -552,33 +552,24 @@ HBWABotInc.relayMessage(jid, {
 }, {})
 }
 async function loading () {
-  var HBLoading = [
-    "《▒▒▒▒▒▒▒▒▒▒▒▒》0%",
-    "《█▒▒▒▒▒▒▒▒▒▒▒》10%",
-    "《█▒▒▒▒▒▒▒▒▒▒▒》10%",
-    "《████▒▒▒▒▒▒▒▒》30%",
-    "《████▒▒▒▒▒▒▒▒》30%",
-    "《███████▒▒▒▒▒》50%",
-    "《███████▒▒▒▒▒》50%",
-    "《██████████▒▒》80%",
-    "《██████████▒▒》80%",
-    "《████████████》100%",
-    "♻️ Reilo te min lo nghak rawh..."
-  ]
-  let { key } = await HBWABotInc.sendMessage(from, {
-    text: '《▒▒▒▒▒▒▒▒▒▒▒▒》0%\n♻️ _Nghak lawk rawh.._'
-  }, { quoted: m })
+var HBLoading = [
+"《▒▒▒▒▒▒▒▒▒▒▒▒》0%",
+"《█▒▒▒▒▒▒▒▒▒▒▒》10%",
+"《█▒▒▒▒▒▒▒▒▒▒▒》10%",
+"《████▒▒▒▒▒▒▒▒》30%",
+"《████▒▒▒▒▒▒▒▒》30%",
+"《███████▒▒▒▒▒》50%",
+"《███████▒▒▒▒▒》50%",
+"《██████████▒▒》80%",
+"《██████████▒▒》80%",
+"《████████████》100%",
+"♻️ Reilo te min lo nghak rawh..."
+]
+let { key } = await HBWABotInc.sendMessage(from, {text: '《▒▒▒▒▒▒▒▒▒▒▒▒》0%\n♻️ _Nghak lawk rawh.._'},{quoted:m})
 
-  for (let i = 0; i < HBLoading.length; i++) {
-    // Edit the message with loading status
-    await HBWABotInc.sendMessage(from, { text: HBLoading[i], edit: key }, { quoted: m })
-    setTimeout(() => {
-      HBWABotInc.deleteMessage(from, { id: key.local })
-    }, 10000) // 60000 milliseconds (minutes khat)
-  }
+for (let i = 0; i < HBLoading.length; i++) {
+ await HBWABotInc.sendMessage(from, {text: HBLoading[i], edit: key },{quoted:m})}
 }
-
-
 
 async function rmbg(buffer) {
 let form = new FormData
