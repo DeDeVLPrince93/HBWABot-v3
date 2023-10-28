@@ -3154,10 +3154,8 @@ if (!AntiNsfw) return replyherbertstyle(mess.nsfw)
 case 'trap' :
 if (!m.isGroup) return m.reply(mess.group)
 if (!AntiNsfw) return replyherbertstyle(mess.nsfw)
-let loadingMessage = await loading()
  waifudd = await axios.get(`https://waifu.pics/api/nsfw/${command}`)       
 HBWABotInc.sendMessage(m.chat, { caption: "\n*©HBWABot*", image: { url:waifudd.data.url } }, { quoted: m })
-HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
 break
 case 'hentai-neko' :
 case 'hneko' :
@@ -3509,16 +3507,16 @@ case 'bass': case 'blown': case 'deep': case 'earrape': case 'fast': case 'fat':
                 replyherbertstyle(lowq)
             	}
             break
-//            case 'wallpaper': {
-//                if (!text) return replyherbertstyle('A title rawn dah rawh!..')
-     //           let loadingMessage = await loading()
-//		let { wallpaper } = require('./lib/scraper')
-             //   anuwallpep = await wallpaper(text)
-        //        result = anuwallpep[Math.floor(Math.random() * anuwallpep.length)]                
-                //HBWABotInc.sendMessage(m.chat, {caption: `${themeemoji} Title : ${result.title}\n${themeemoji} Category : ${result.type}\n${themeemoji} Detail : ${result.source}\n${themeemoji} Media Url : ${result.image[2] || result.image[1] || result.image[0]}`, image: { url: result.image[0] }} , { quoted: m })
-              //  HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
-        //    }
-  //          break
+            case 'wallpaper': {
+                if (!text) return replyherbertstyle('A title rawn dah rawh!..')
+                let loadingMessage = await loading()
+		let { wallpaper } = require('./lib/scraper')
+                anuwallpep = await wallpaper(text)
+                result = anuwallpep[Math.floor(Math.random() * anuwallpep.length)]                
+                HBWABotInc.sendMessage(m.chat, {caption: `${themeemoji} Title : ${result.title}\n${themeemoji} Category : ${result.type}\n${themeemoji} Detail : ${result.source}\n${themeemoji} Media Url : ${result.image[2] || result.image[1] || result.image[0]}`, image: { url: result.image[0] }} , { quoted: m })
+                HBWABotInc.deleteMessage(m.chat, loadingMessage.id)
+            }
+            break
 case 'igvid':
 case 'instavid': 
 case 'igstory':
