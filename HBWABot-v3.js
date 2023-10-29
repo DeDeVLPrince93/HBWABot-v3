@@ -1759,20 +1759,65 @@ if (!isBotAdmins) return m.reply(mess.botAdmin)
 HBWABotInc.sendMessage(m.chat, { text : q ? q : '' , mentions: participants.map(a => a.id)}, { quoted: m })
 }
 break
+
+case 'tourl': case 'tolink': {
+if (!quoted) return replyherbertstyle(`Thlalak a caption-ah *${prefix + command}* tih rawn dah rawh`)
+if (!/image/.test(mime)) return replyherbertstyle(`Thlalak rawn thawn la emaw reply la, a caption-ah ${prefix + command} tih hi rawn dah rawh`)
+let { UploadFileUgu, webp2mp4File, TelegraPh } = require('./lib/uploader')
+let media = await HBWABotInc.downloadAndSaveMediaMessage(quoted)
+let anu = await TelegraPh(media)
+let hmantur = util.format(anu)
+var HBLoadingmenu = [
+`《▒▒▒▒▒▒▒▒▒▒▒▒》0%`,
+`《█▒▒▒▒▒▒▒▒▒▒▒》10%`,
+`《████▒▒▒▒▒▒▒▒》30%`,
+`《███████▒▒▒▒▒》50%`,
+`《██████████▒▒》80%`,
+`《████████████》100%`,
+`Hei le\n${hmantur}`]
+
+let { key } = await HBWABotInc.sendMessage(from, {text: '《▒▒▒▒▒▒▒▒▒▒▒▒》0%\n♻️ _Nghak lawk rawh.._'},{quoted:m})
+
+for (let i = 0; i < HBLoadingmenu.length; i++) {await HBWABotInc.sendMessage(from, {text: HBLoadingmenu[i], edit: key },{quoted:m})}
+await fs.unlinkSync(media)
+}
+break
 case 'ebinary': {
-if (!q) return replyherbertstyle(`Message reply in emaw command zoah rawn dah rawh tiang hian: ${prefix + command} hello world`)
+if (!q) return replyherbertstyle(`Message reply in emaw command zoah rawn dah la Binary code ah a lo chang ang tiang hian hman tur: ${prefix + command} hello world`)
 await loading()
 let { eBinary } = require('./scrape/binary')
 let eb = await eBinary(`${q}`)
-replyherbertstyle(eb)
+var ebinaryloading = [
+`《▒▒▒▒▒▒▒▒▒▒▒▒》0%`,
+`《█▒▒▒▒▒▒▒▒▒▒▒》10%`,
+`《████▒▒▒▒▒▒▒▒》30%`,
+`《███████▒▒▒▒▒》50%`,
+`《██████████▒▒》80%`,
+`《████████████》100%`,
+`Hei le : \n${eb}`]
+
+let { key } = await HBWABotInc.sendMessage(from, {text: '《▒▒▒▒▒▒▒▒▒▒▒▒》0%\n♻️ _Nghak lawk rawh.._'},{quoted:m})
+
+for (let i = 0; i < ebinaryloading.length; i++) {await HBWABotInc.sendMessage(from, {text: ebinaryloading[i], edit: key },{quoted:m})}
 }
 break
 case 'dbinary': {
-if (!q) return replyherbertstyle(`Message reply in emaw command zoah rawn dah rawh tiang hian: ${prefix + command} hello world`)
+if (!q) return replyherbertstyle(`Binary code decode i duh chuan tian hian hman tur: ${prefix + command} 1101000 1100101 1101100 1101100 1101111`)
 await loading()
 let { dBinary } = require('./scrape/binary')
 let db = await dBinary(`${q}`)
-replyherbertstyle(db)
+var dbinaryloading = [
+`《▒▒▒▒▒▒▒▒▒▒▒▒》0%`,
+`《█▒▒▒▒▒▒▒▒▒▒▒》10%`,
+`《████▒▒▒▒▒▒▒▒》30%`,
+`《███████▒▒▒▒▒》50%`,
+`《██████████▒▒》80%`,
+`《████████████》100%`,
+`Hei le: \n${db}`]
+
+let { key } = await HBWABotInc.sendMessage(from, {text: '《▒▒▒▒▒▒▒▒▒▒▒▒》0%\n♻️ _Nghak lawk rawh.._'},{quoted:m})
+
+for (let i = 0; i < dbinaryloading.length; i++) {await HBWABotInc.sendMessage(from, {text: dbinaryloading[i], edit: key },{quoted:m})}
 }
 break
 case 'remini': {
