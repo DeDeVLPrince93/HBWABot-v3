@@ -587,6 +587,38 @@ let res = await axios({
 })
 return res.data
 }
+const Parser = require('rss-parser');
+const parser = new Parser();
+const isRssFeedEnabled = m.isGroup ? ntrssfeed.includes(from) : false 
+const rssFeedUrl = 'https://herbert70.blogspot.com/feeds/posts/default';
+const checkInterval = 30 * 60 * 1000; // 30 minutes in milliseconds
+let latestPostDate = null;
+async function checkForNewPosts() {
+  try {
+    const feed = await parser.parseURL(rssFeedUrl);
+    if (feed.items.length > 0) {
+      const newestPost = feed.items[0];
+      if (!latestPostDate || newestPost.isoDate > latestPostDate) {
+      displayNotification(newestPost.title, newestPost.link);
+        latestPostDate = newestPost.isoDate;
+      }
+    }
+  } catch (error) {
+    console.error('Feed lak naah error a awm a ni:', error);
+  }
+}
+
+function displayNotification(title, link) {
+  console.log('New post:', title);
+  console.log('Link:', link);
+  if (isRssFeedEnabled) {
+        HBWABotInc.sendMessage{from, text : `*${title}*\n${link}`}
+      }
+}
+checkForNewPosts();
+setInterval(checkForNewPosts, checkInterval);
+
+
 
 async function ephoto(url, texk) {
 let form = new FormData 
