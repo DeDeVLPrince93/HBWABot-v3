@@ -2039,6 +2039,18 @@ replyherbertstyle(teks)
 
 }
 break
+case 'mlstalk': {
+
+if (!q) return replyherbertstyle(`Tiang hian ti rawh :${prefix+command} 530793138|8129`)
+m.reply(mess.wait)
+let dat = await mlstalk.mlstalk(q.split("|")[0], q.split("|")[1])
+replyherbertstyle(`*/ Mobile Legend Stalker \\*
+
+Username : ${dat.userName}
+Id : ${q.split("|")[0]}
+ID Zone: ${q.split("|")[1]}`)
+}
+break
 case 'yts': case 'hla':{
         if (!text) return m.reply(`\n*Entir nan* : ${prefix + command} Hringnun Vanlalsailova`)
             let ytslagu = require("youtube-yts")
