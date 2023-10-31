@@ -612,7 +612,7 @@ function displayNotification(title, link) {
   console.log('New post:', title);
   console.log('Link:', link);
   if (isRssFeedEnabled) {
-        HBWABotInc.sendMessage{from, text : `*${title}*\n${link}`}
+        HBWABotInc.sendMessage(from, {text : `*${title}*\n${link}`})
       }
 }
 checkForNewPosts();
