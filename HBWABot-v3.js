@@ -611,7 +611,9 @@ async function checkForNewPosts() {
 function displayNotification(title, link) {
   console.log('New post:', title);
   console.log('Link:', link);
-  HBWABotInc.sendMessage(`120363176044043821@g.us`, {text : `*${title}*\n${link}`})
+  if (isRssFeedEnabled) {
+  throw (`*${title}*\n${link}`)
+  }  
 }
 checkForNewPosts();
 setInterval(checkForNewPosts, checkInterval);
