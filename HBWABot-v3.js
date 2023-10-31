@@ -1759,29 +1759,6 @@ if (!isBotAdmins) return m.reply(mess.botAdmin)
 HBWABotInc.sendMessage(m.chat, { text : q ? q : '' , mentions: participants.map(a => a.id)}, { quoted: m })
 }
 break
-
-case 'tourl': case 'tolink': {
-if (!quoted) return replyherbertstyle(`Thlalak a caption-ah *${prefix + command}* tih rawn dah rawh`)
-if (!/image/.test(mime)) return replyherbertstyle(`Thlalak rawn thawn la emaw reply la, a caption-ah ${prefix + command} tih hi rawn dah rawh`)
-let { UploadFileUgu, webp2mp4File, TelegraPh } = require('./lib/uploader')
-let media = await HBWABotInc.downloadAndSaveMediaMessage(quoted)
-let anu = await TelegraPh(media)
-let hmantur = util.format(anu)
-var HBLoadingmenu = [
-`《▒▒▒▒▒▒▒▒▒▒▒▒》0%`,
-`《█▒▒▒▒▒▒▒▒▒▒▒》10%`,
-`《████▒▒▒▒▒▒▒▒》30%`,
-`《███████▒▒▒▒▒》50%`,
-`《██████████▒▒》80%`,
-`《████████████》100%`,
-`Hei le\n${hmantur}`]
-
-let { key } = await HBWABotInc.sendMessage(from, {text: '《▒▒▒▒▒▒▒▒▒▒▒▒》0%\n♻️ _Nghak lawk rawh.._'},{quoted:m})
-
-for (let i = 0; i < HBLoadingmenu.length; i++) {await HBWABotInc.sendMessage(from, {text: HBLoadingmenu[i], edit: key },{quoted:m})}
-await fs.unlinkSync(media)
-}
-break
 case 'ebinary': {
 if (!q) return replyherbertstyle(`Message reply in emaw command zoah rawn dah la Binary code ah a lo chang ang tiang hian hman tur: ${prefix + command} hello world`)
 await loading()
@@ -1980,7 +1957,7 @@ break
 break;
 
 			case 'gimage': {
-                if (!text) return replyherbertstyle(`*👋Kha tiang ringawt loh khan, Entirnan a hnuaia ka type ang hian tih tur👇*\n\n${prefix + command} Mizoram`)
+                if (!text) return replyherbertstyle(`_🤖Kha tiang ringawt loh khan tiang hian type tur_\n*⟨Entir nan :* ${prefix + command} Mizoram`)
                 await loading()
                 let gis = require('g-i-s')
                 gis(text, async (error, result) => {
@@ -1992,7 +1969,7 @@ break;
             }
             case 'gimage': {
 
-       if (!text) return replyherbertstyle(`*👋Kha tiang ringawt loh khan, Entirnan a hnuaia ka type ang hian tih tur👇*\n\n${prefix + command} Mizoram`
+       if (!text) return replyherbertstyle(`_🤖Kha tiang ringawt loh khan tiang hian type tur_\n*⟨Entir nan :* ${prefix + command} Mizoram`
 )
         herbertezyanu = await fetchJson(`https://api.akuari.my.id/search/googleimage?query=${text}`)
 
@@ -2024,7 +2001,7 @@ HBWABotInc.sendMessage(m.chat, { document : { url : baby1[0].link}, fileName : b
 }
 break
 case 'google': {
-if (!q) return replyherbertstyle(`*👋Kha tiang ringawt loh khan, Entirnan a hnuaia ka type ang hian tih tur👇*\n\n${prefix + command} ${botname}`)
+if (!q) return replyherbertstyle(`_🤖Kha tiang ringawt loh khan tiang hian type tur_\n*⟨Entir nan :* ${prefix + command} ${botname}`)
 await loading()
 let google = require('google-it')
 google({'query': text}).then(res => {
@@ -2042,21 +2019,25 @@ break
 case 'mlstalk':
 {
     if (!q || !q.includes("|")) {
-        return replyherbertstyle(`*👋 Kha tiang ringawt loh khan, Entirnan a hnuaia ka type ang hian tih tur👇*\n\n${prefix + command} 530793138|8129 \n\nserver id rawn dah tel ang che!..`)
+        return replyherbertstyle(`_Kha tiang ringawt loh khan, tiang hian tyoe rawh_\n*⟨Entirnan:* ${prefix + command} 530793138|8129 \n\nserver id rawn dah tel ang che!..`)
     }
-    await loading()
     let dat = await mlstalk.mlstalk(q.split("|")[0], q.split("|")[1])
     if (!dat || Object.keys(dat).length === 0) {
         return replyherbertstyle("I id emaw service id hi a dik lo a ni mai thei.")
     }
-    replyherbertstyle(`*/ Mobile Legend Stalker \\*
+var MlLoading = [
+`《▒▒▒▒▒▒▒▒▒▒▒▒》0%`,
+`《█▒▒▒▒▒▒▒▒▒▒▒》10%`,
+`《████▒▒▒▒▒▒▒▒》30%`,
+`《███████▒▒▒▒▒》50%`,
+`《██████████▒▒》80%`,
+`《████████████》100%`,
+`*⟨⟨⟨Mobile Legend Stalker⟩⟩⟩*\nUsername : ${dat.userName}\nId : ${q.split("|")[0]}\nID Zone: ${q.split("|")[1]}`]
+let { key } = await HBWABotInc.sendMessage(from, {text: '《▒▒▒▒▒▒▒▒▒▒▒▒》0%\n♻️ _Nghak lawk rawh.._'},{quoted:m})
 
-Username : ${dat.userName}
-Id : ${q.split("|")[0]}
-ID Zone: ${q.split("|")[1]}`)
+for (let i = 0; i < MlLoading.length; i++) {await HBWABotInc.sendMessage(from, {text: MlLoading[i], edit: key },{quoted:m})}
 }
 break
-
 
 case 'yts': case 'hla':{
         if (!text) return m.reply(`\n*Entir nan* : ${prefix + command} Hringnun Vanlalsailova`)
@@ -2090,7 +2071,7 @@ case 'yts': case 'hla':{
             break            
             case 'ytmp4xx': {
 //Credit by HBMods-OFC
-if (!args || !args[0]) return replyherbertstyle(`*👋Kha tiang ringawt loh khan, Entirnan a hnuaia ka type ang hian tih tur👇*\n\n${prefix + command} https://youtube.com/watch?v=DA9gCKwaefg`)
+if (!args || !args[0]) return replyherbertstyle(`_🤖Kha tiang ringawt loh khan tiang hian type tur_\n*⟨Entir nan :* ${prefix + command} https://youtube.com/watch?v=DA9gCKwaefg`)
 await loadingreact()
 if (!args[0].match(/youtu/gi)) replyherbertstyle ('Youtube link dik tak chauh rawn dah rawh')
 let q = args[1] || '360p'
@@ -2116,7 +2097,7 @@ await finishreact()
             break  
             case 'ytmp4xxx': {
 const herbertvideo = require('./lib/ytdl2')
-if (args.length < 1 || !isUrl(text) || !herbertvideo.isYTUrl(text)) return replyherbertstyle(`*👋Kha tiang ringawt loh khan, Entirnan a hnuaia ka type ang hian tih tur👇*\n\n${prefix + command} https://youtube.com/watch?v=DA9gCKwaefg`)
+if (args.length < 1 || !isUrl(text) || !herbertvideo.isYTUrl(text)) return replyherbertstyle(`_🤖Kha tiang ringawt loh khan tiang hian type tur_\n*⟨Entir nan :* ${prefix + command} https://youtube.com/watch?v=DA9gCKwaefg`)
 const vid=await herbertvideo.mp4(text)
 const ytc=`
 *Tittle:* ${vid.title}
@@ -2131,7 +2112,7 @@ await HBWABotInc.sendMessage(m.chat,{
 break         
 case 'ytmp3':{
 //Credit by HBMods-OFC
-if (!args || !args[0]) return replyherbertstyle(`*👋Kha tiang ringawt loh khan, Entirnan a hnuaia ka type ang hian tih tur👇*\n\n${prefix + command} https://youtube.com/watch?v=DA9gCKwaefg`)
+if (!args || !args[0]) return replyherbertstyle(`_🤖Kha tiang ringawt loh khan tiang hian type tur_\n*⟨Entir nan :* ${prefix + command} https://youtube.com/watch?v=DA9gCKwaefg`)
 await loadingreact()
 if (!args[0].match(/youtu/gi)) replyherbertstyle ('Youtube link dik tak chauh rawn dah rawh')
 let q = '128kbps'
@@ -2153,7 +2134,7 @@ await finishreact()
 break
 case 'ytaudio':{
 //Credit by HBMods-OFC
-if (!args || !args[0]) return replyherbertstyle(`*👋Kha tiang ringawt loh khan, Entirnan a hnuaia ka type ang hian tih tur👇*\n\n${prefix + command} https://youtube.com/watch?v=DA9gCKwaefg`)
+if (!args || !args[0]) return replyherbertstyle(`_🤖Kha tiang ringawt loh khan tiang hian type tur_\n*⟨Entir nan :* ${prefix + command} https://youtube.com/watch?v=DA9gCKwaefg`)
 await loadingreact()
 if (!args[0].match(/youtu/gi)) replyherbertstyle ('Youtube link dik tak chauh rawn dah rawh')
 let q = '128kbps'
@@ -2169,7 +2150,7 @@ await finishreact()
 break 
 case 'dsong2': case 'song2': case 'play2': {
 //Credit by HBMods-OFC
-if (!text) return replyherbertstyle(`*👋Kha tiang ringawt loh khan, Entirnan a hnuaia ka type ang hian tih tur👇*\n\n${prefix + command} K hminga siar lalnu`)
+if (!text) return replyherbertstyle(`_🤖Kha tiang ringawt loh khan tiang hian type tur_\n*⟨Entir nan :* ${prefix + command} K hminga siar lalnu`)
             await loadingreact()
             let res = await yts2(text)
 let vid = res.videos[0]
@@ -2186,7 +2167,7 @@ await finishreact()
 break
     case 'dsong': case 'song': case 'play': {
 //Credit by HBMods-OFC
-if (!text) return replyherbertstyle(`*👋Kha tiang ringawt loh khan, Entirnan a hnuaia ka type ang hian tih tur👇*\n\n${prefix + command} K hminga siar lalnu`)
+if (!text) return replyherbertstyle(`_🤖Kha tiang ringawt loh khan tiang hian type tur_\n*⟨Entir nan :* ${prefix + command} K hminga siar lalnu`)
             await loadingreact()
             let res = await yts2(text)
 let vid = res.videos[0]
@@ -2211,7 +2192,7 @@ await finishreact()
 }
 break
 case '/hla':  case 'songxx': {
-if (!text) return replyherbertstyle(`*👋Kha tiang ringawt loh khan, Entirnan a hnuaia ka type ang hian tih tur👇*\n\n${prefix + command} K hminga siar lalnu`)
+if (!text) return replyherbertstyle(`_🤖Kha tiang ringawt loh khan tiang hian type tur_\n*⟨Entir nan :* ${prefix + command} K hminga siar lalnu`)
 await loading()
 const herbertplaymp3 = require('./lib/ytdl2')
 let yts = require("youtube-yts")
@@ -2238,7 +2219,7 @@ await fs.unlinkSync(pl.path)
 }
 break 
 case 'dsong3': {
-if (!text) return replyherbertstyle(`*👋Kha tiang ringawt loh khan, Entirnan a hnuaia ka type ang hian tih tur👇*\n\n${prefix + command} K hminga siar lalnu`)
+if (!text) return replyherbertstyle(`_🤖Kha tiang ringawt loh khan tiang hian type tur_\n*⟨Entir nan :* ${prefix + command} K hminga siar lalnu`)
 await loading()
 const herbertplaymp3 = require('./lib/ytdl2')
 let yts = require("youtube-yts")
@@ -2265,7 +2246,7 @@ await fs.unlinkSync(pl.path)
 break
 case "ytmp3xx": case "ytaudioxx": //credit: Ray Senpai â¤ï¸ https://github.com/EternityBots/Nezuko
 const herbertaudp3 = require('./lib/ytdl2')
-if (args.length < 1 || !isUrl(text) || !herbertaudp3.isYTUrl(text)) return replyherbertstyle(`Youtube link rawn dah rawh\n*👋Kha tiang ringawt loh khan, Entirnan a hnuaia ka type ang hian tih tur👇*\n\n${prefix + command} https://youtube.com/watch?v=DA9gCKwaefg`)
+if (args.length < 1 || !isUrl(text) || !herbertaudp3.isYTUrl(text)) return replyherbertstyle(`Youtube link rawn dah rawh\n_🤖Kha tiang ringawt loh khan tiang hian type tur_\n*⟨Entir nan :* ${prefix + command} https://youtube.com/watch?v=DA9gCKwaefg`)
 await loading()
 const audio=await herbertaudp3.mp3(text)
 await HBWABotInc.sendMessage(m.chat,{
@@ -2288,7 +2269,7 @@ await fs.unlinkSync(audio.path)
 break
 case 'ytmp4': case 'ytvideo': {
 const herbertvidoh = require('./lib/ytdl2')
-if (args.length < 1 || !isUrl(text) || !herbertvidoh.isYTUrl(text)) replyherbertstyle(`Video link rawn dah rawh!!\n\n*👋Kha tiang ringawt loh khan, Entirnan a hnuaia ka type ang hian tih tur👇*\n\n${prefix + command} https://youtube.com/watch?v=DA9gCKwaefgs`)
+if (args.length < 1 || !isUrl(text) || !herbertvidoh.isYTUrl(text)) replyherbertstyle(`Video link rawn dah rawh!!\n\n_🤖Kha tiang ringawt loh khan tiang hian type tur_\n*⟨Entir nan :* ${prefix + command} https://youtube.com/watch?v=DA9gCKwaefgs`)
 await loading()
 const vid=await herbertvidoh.mp4(text)
 const ytc=`
@@ -2304,7 +2285,7 @@ await HBWABotInc.sendMessage(m.chat,{
 }
 break
 case 'dvideo':  case 'dvid': {
-if (!text) return replyherbertstyle(`*👋Kha tiang ringawt loh khan, Entirnan a hnuaia ka type ang hian tih tur👇*\n\n${prefix + command} K hminga siar lalnu`)
+if (!text) return replyherbertstyle(`_🤖Kha tiang ringawt loh khan tiang hian type tur_\n*⟨Entir nan :* ${prefix + command} K hminga siar lalnu`)
 await loadingreact()
 const herbertvidoh = require('./lib/ytdl2')
 let yts = require("youtube-yts")
@@ -2936,7 +2917,7 @@ await finishreact()
 }
 break
 case 'pornhub':{
-if(!q) return replyherbertstyle(`*👋Kha tiang ringawt loh khan, Entirnan a hnuaia ka type ang hian tih tur👇*\n\n${prefix + command} Herbert|Suantak`)
+if(!q) return replyherbertstyle(`_🤖Kha tiang ringawt loh khan tiang hian type tur_\n*⟨Entir nan :* ${prefix + command} Herbert|Suantak`)
 await makerreact()
   inilogo4 = args.join(" ")
 inilogo9 = args.join(" ")
@@ -2949,7 +2930,7 @@ await finishreact()
 }
 break
 case 'retro':{
-if(!q) return replyherbertstyle(`*👋Kha tiang ringawt loh khan, Entirnan a hnuaia ka type ang hian tih tur👇*\n\n${prefix + command} Herbert|Suantak`)
+if(!q) return replyherbertstyle(`_🤖Kha tiang ringawt loh khan tiang hian type tur_\n*⟨Entir nan :* ${prefix + command} Herbert|Suantak`)
 await makerreact()
   inilogo4 = args.join(" ")
 inilogo9 = args.join(" ")
@@ -2962,7 +2943,7 @@ await finishreact()
 }
 break
 case '8bit':{
-if(!q) return replyherbertstyle(`*👋Kha tiang ringawt loh khan, Entirnan a hnuaia ka type ang hian tih tur👇*\n\n${prefix + command} Herbert|Suantak`)
+if(!q) return replyherbertstyle(`_🤖Kha tiang ringawt loh khan tiang hian type tur_\n*⟨Entir nan :* ${prefix + command} Herbert|Suantak`)
 await makerreact()
   inilogo4 = args.join(" ")
 inilogo9 = args.join(" ")
@@ -2975,7 +2956,7 @@ await finishreact()
 }
 break
 case 'batman':
-if(!q) return replyherbertstyle(`*👋Kha tiang ringawt loh khan, Entirnan a hnuaia ka type ang hian tih tur👇*\n\n${prefix + command} Hello World`)
+if(!q) return replyherbertstyle(`_🤖Kha tiang ringawt loh khan tiang hian type tur_\n*⟨Entir nan :* ${prefix + command} Hello World`)
 await makerreact()
 maker.textpro("https://textpro.me/make-a-batman-logo-online-free-1066.html", [
     `${q}`,])
@@ -2984,7 +2965,7 @@ maker.textpro("https://textpro.me/make-a-batman-logo-online-free-1066.html", [
   .catch((err) => console.log(err))
    break
 case '3dbox':
-if(!q) return replyherbertstyle(`*👋Kha tiang ringawt loh khan, Entirnan a hnuaia ka type ang hian tih tur👇*\n\n${prefix + command} Hello World`)
+if(!q) return replyherbertstyle(`_🤖Kha tiang ringawt loh khan tiang hian type tur_\n*⟨Entir nan :* ${prefix + command} Hello World`)
 await makerreact()
 maker.textpro("https://textpro.me/3d-box-text-effect-online-880.html", [
     `${q}`,])
@@ -2993,7 +2974,7 @@ await finishreact()
 .catch((err) => console.log(err));
 break
 case 'letteringeffect':
-if(!q) return replyherbertstyle(`*👋Kha tiang ringawt loh khan, Entirnan a hnuaia ka type ang hian tih tur👇*\n\n${prefix + command} Hello World`)
+if(!q) return replyherbertstyle(`_🤖Kha tiang ringawt loh khan tiang hian type tur_\n*⟨Entir nan :* ${prefix + command} Hello World`)
 await makerreact()
 maker.ephoto("https://en.ephoto360.com/flame-lettering-effect-372.html", [
     `${q}`,])
@@ -3002,7 +2983,7 @@ await finishreact()
 .catch((err) => console.log(err));
 break
 case 'lion':
-if(!q) return replyherbertstyle(`*👋Kha tiang ringawt loh khan, Entirnan a hnuaia ka type ang hian tih tur👇*\n\n${prefix + command} Herbert|Suantak`)
+if(!q) return replyherbertstyle(`_🤖Kha tiang ringawt loh khan tiang hian type tur_\n*⟨Entir nan :* ${prefix + command} Herbert|Suantak`)
 await makerreact()
 teks1 = q.split("|")[0]
 teks2 = q.split("|")[1]
@@ -3013,7 +2994,7 @@ teks2 = q.split("|")[1]
   .catch((err) => console.log(err));
    break
    case '3davengers':
-if(!q) return replyherbertstyle(`*👋Kha tiang ringawt loh khan, Entirnan a hnuaia ka type ang hian tih tur👇*\n\n${prefix + command} Herbert|Suantak`)
+if(!q) return replyherbertstyle(`_🤖Kha tiang ringawt loh khan tiang hian type tur_\n*⟨Entir nan :* ${prefix + command} Herbert|Suantak`)
 await makerreact()
 teks1 = q.split("|")[0]
 teks2 = q.split("|")[1]
@@ -3024,7 +3005,7 @@ teks2 = q.split("|")[1]
   .catch((err) => console.log(err));
    break
 case 'window':
-if(!q) return replyherbertstyle(`*👋Kha tiang ringawt loh khan, Entirnan a hnuaia ka type ang hian tih tur👇*\n\n${prefix + command} Hello World`)
+if(!q) return replyherbertstyle(`_🤖Kha tiang ringawt loh khan tiang hian type tur_\n*⟨Entir nan :* ${prefix + command} Hello World`)
 await makerreact()
  mumaker.textpro("https://textpro.me/write-text-on-foggy-window-online-free-1015.html", [
     `${q}`,])
@@ -3033,7 +3014,7 @@ await makerreact()
   .catch((err) => console.log(err));
    break
 case '3dspace':
-if(!q) return replyherbertstyle(`*👋Kha tiang ringawt loh khan, Entirnan a hnuaia ka type ang hian tih tur👇*\n\n${prefix + command} Herbert|Suantak`)
+if(!q) return replyherbertstyle(`_🤖Kha tiang ringawt loh khan tiang hian type tur_\n*⟨Entir nan :* ${prefix + command} Herbert|Suantak`)
 await makerreact()
 teks1 = q.split("|")[0]
 teks2 = q.split("|")[1]
@@ -3044,7 +3025,7 @@ teks2 = q.split("|")[1]
   .catch((err) => console.log(err));
    break
 case 'bokeh':
-if(!q) return replyherbertstyle(`*👋Kha tiang ringawt loh khan, Entirnan a hnuaia ka type ang hian tih tur👇*\n\n${prefix + command} Hello World`)
+if(!q) return replyherbertstyle(`_🤖Kha tiang ringawt loh khan tiang hian type tur_\n*⟨Entir nan :* ${prefix + command} Hello World`)
 await makerreact()
  mumaker.textpro("https://textpro.me/bokeh-text-effect-876.html", [
     `${q}`,])
@@ -3052,7 +3033,7 @@ await makerreact()
   .catch((err) => console.log(err));
    break
 case 'holographic':
-if(!q) return replyherbertstyle(`*👋Kha tiang ringawt loh khan, Entirnan a hnuaia ka type ang hian tih tur👇*\n\n${prefix + command} Hello World`)
+if(!q) return replyherbertstyle(`_🤖Kha tiang ringawt loh khan tiang hian type tur_\n*⟨Entir nan :* ${prefix + command} Hello World`)
 await makerreact()
  mumaker.textpro("https://textpro.me/holographic-3d-text-effect-975.html", [
     `${q}`,])
@@ -3061,7 +3042,7 @@ await makerreact()
   .catch((err) => console.log(err));
    break
 case 'thewall':
-if(!q) return replyherbertstyle(`*👋Kha tiang ringawt loh khan, Entirnan a hnuaia ka type ang hian tih tur👇*\n\n${prefix + command} Hello World`)
+if(!q) return replyherbertstyle(`_🤖Kha tiang ringawt loh khan tiang hian type tur_\n*⟨Entir nan :* ${prefix + command} Hello World`)
 await makerreact()
  mumaker.textpro("https://textpro.me/break-wall-text-effect-871.html", [
     `${q}`,])
@@ -3070,7 +3051,7 @@ await makerreact()
   .catch((err) => console.log(err));
    break 
 case 'carbon':
-if(!q) return replyherbertstyle(`*👋Kha tiang ringawt loh khan, Entirnan a hnuaia ka type ang hian tih tur👇*\n\n${prefix + command} Hello World`)
+if(!q) return replyherbertstyle(`_🤖Kha tiang ringawt loh khan tiang hian type tur_\n*⟨Entir nan :* ${prefix + command} Hello World`)
 await makerreact()
  mumaker.textpro("https://textpro.me/carbon-text-effect-833.html", [
     `${q}`,])
@@ -3079,7 +3060,7 @@ await makerreact()
   .catch((err) => console.log(err));
    break
 case 'whitebear':
-if(!q) return replyherbertstyle(`*👋Kha tiang ringawt loh khan, Entirnan a hnuaia ka type ang hian tih tur👇*\n\n${prefix + command} Hello World`)
+if(!q) return replyherbertstyle(`_🤖Kha tiang ringawt loh khan tiang hian type tur_\n*⟨Entir nan :* ${prefix + command} Hello World`)
 await makerreact()
  mumaker.textpro("https://textpro.me/online-black-and-white-bear-mascot-logo-creation-1012.html", [
     `${q}`,])
@@ -3088,7 +3069,7 @@ await makerreact()
   .catch((err) => console.log(err));
    break
 case 'metallic':
-if(!q) return replyherbertstyle(`*👋Kha tiang ringawt loh khan, Entirnan a hnuaia ka type ang hian tih tur👇*\n\n${prefix + command} Hello World`)
+if(!q) return replyherbertstyle(`_🤖Kha tiang ringawt loh khan tiang hian type tur_\n*⟨Entir nan :* ${prefix + command} Hello World`)
 await makerreact()
  mumaker.textpro("https://textpro.me/create-a-metallic-text-effect-free-online-1041.html", [
     `${q}`,])
@@ -3097,7 +3078,7 @@ await makerreact()
   .catch((err) => console.log(err));
    break
 case 'steel':
-if(!q) return replyherbertstyle(`*👋Kha tiang ringawt loh khan, Entirnan a hnuaia ka type ang hian tih tur👇*\n\n${prefix + command} Hello World`)
+if(!q) return replyherbertstyle(`_🤖Kha tiang ringawt loh khan tiang hian type tur_\n*⟨Entir nan :* ${prefix + command} Hello World`)
 await makerreact()
  mumaker.textpro("https://textpro.me/steel-text-effect-online-921.html", [
     `${q}`,])
@@ -3106,7 +3087,7 @@ await makerreact()
   .catch((err) => console.log(err));
    break
 case 'fabric':
-if(!q) return replyherbertstyle(`*👋Kha tiang ringawt loh khan, Entirnan a hnuaia ka type ang hian tih tur👇*\n\n${prefix + command} Hello World`)
+if(!q) return replyherbertstyle(`_🤖Kha tiang ringawt loh khan tiang hian type tur_\n*⟨Entir nan :* ${prefix + command} Hello World`)
 await makerreact()
  mumaker.textpro("https://textpro.me/fabric-text-effect-online-964.html", [
     `${q}`,])
@@ -3115,7 +3096,7 @@ await makerreact()
   .catch((err) => console.log(err));
    break
 case 'ancient':
-if(!q) return replyherbertstyle(`*👋Kha tiang ringawt loh khan, Entirnan a hnuaia ka type ang hian tih tur👇*\n\n${prefix + command} Hello World`)
+if(!q) return replyherbertstyle(`_🤖Kha tiang ringawt loh khan tiang hian type tur_\n*⟨Entir nan :* ${prefix + command} Hello World`)
 await makerreact()
  mumaker.textpro("https://textpro.me/3d-golden-ancient-text-effect-online-free-1060.html", [
     `${q}`,])
@@ -3124,7 +3105,7 @@ await makerreact()
   .catch((err) => console.log(err));
    break
    case 'marvelstd':
-if(!q) return replyherbertstyle(`*👋Kha tiang ringawt loh khan, Entirnan a hnuaia ka type ang hian tih tur👇*\n\n${prefix + command} Herbert|Suantak`)
+if(!q) return replyherbertstyle(`_🤖Kha tiang ringawt loh khan tiang hian type tur_\n*⟨Entir nan :* ${prefix + command} Herbert|Suantak`)
 await makerreact()
 teks1 = q.split("|")[0]
 teks2 = q.split("|")[1]
@@ -3135,7 +3116,7 @@ teks2 = q.split("|")[1]
   .catch((err) => console.log(err));
    break
    case 'marvel':
-if(!q) return replyherbertstyle(`*👋Kha tiang ringawt loh khan, Entirnan a hnuaia ka type ang hian tih tur👇*\n\n${prefix + command} Herbert|Suantak`)
+if(!q) return replyherbertstyle(`_🤖Kha tiang ringawt loh khan tiang hian type tur_\n*⟨Entir nan :* ${prefix + command} Herbert|Suantak`)
 await makerreact()
 teks1 = q.split("|")[0]
 teks2 = q.split("|")[1]
@@ -3176,8 +3157,8 @@ HBWABotInc.sendMessage(from, { text : `*${metadata.subject}\n\n*Group Descriptio
 break
           case 'emojimix': {
 		let [emoji1, emoji2] = text.split`+`
-		if (!emoji1) return replyherbertstyle(`*👋Kha tiang ringawt loh khan, Entirnan a hnuaia ka type ang hian tih tur👇*\n\n${prefix + command} 😅+🤔`)
-		if (!emoji2) return replyherbertstyle(`*👋Kha tiang ringawt loh khan, Entirnan a hnuaia ka type ang hian tih tur👇*\n\n${prefix + command} 😅+🤔`)
+		if (!emoji1) return replyherbertstyle(`_🤖Kha tiang ringawt loh khan tiang hian type tur_\n*⟨Entir nan :* ${prefix + command} 😅+🤔`)
+		if (!emoji2) return replyherbertstyle(`_🤖Kha tiang ringawt loh khan tiang hian type tur_\n*⟨Entir nan :* ${prefix + command} 😅+🤔`)
 		let anumojimix = await fetchJson(`https://tenor.googleapis.com/v2/featured?key=AIzaSyAyimkuYQYF_FXVALexPuGQctUWRURdCYQ&contentfilter=high&media_filter=png_transparent&component=proactive&collection=emoji_kitchen_v5&q=${encodeURIComponent(emoji1)}_${encodeURIComponent(emoji2)}`)
 		for (let res of anumojimix.results) {
 		    let encmedia = await HBWABotInc.sendImageAsSticker(m.chat, res.url, m, { packname: global.packname, author: global.author, categories: res.tags })
@@ -3880,7 +3861,7 @@ HBWABotInc.sendMessage(m.chat, { image: { url: result }, caption: '⭔ Media Url
 }
 break
 case 'ringtone': {
-		if (!text) return replyherbertstyle(`*👋Kha tiang ringawt loh khan, Entirnan a hnuaia ka type ang hian tih tur👇*\n\n${prefix + command} black rover`)
+		if (!text) return replyherbertstyle(`_🤖Kha tiang ringawt loh khan tiang hian type tur_\n*⟨Entir nan :* ${prefix + command} black rover`)
         let { ringtone } = require('./lib/scraper')
 		let anutone2 = await ringtone(text)
 		let result = anutone2[Math.floor(Math.random() * anutone2.length)]
