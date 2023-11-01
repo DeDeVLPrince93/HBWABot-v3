@@ -1028,7 +1028,7 @@ case 'suitpvp':case 'rps': case 'rockpaperscissors': case 'suit': {
             }
             }
             break 
-            case 'lyrics': {
+case 'lyrics': {
 if (!text) return replyherbertstyle(`Eng lyrics nge i zawn dawn?\nTiang hian hman tur: ${prefix}lyrics Thunder`)
 const { lyrics, lyricsv2 } = require('@bochilteam/scraper')
 const result = await lyricsv2(text).catch(async _ => await lyrics(text))
@@ -1074,16 +1074,16 @@ const rssFeedURL = `https://www.mizolyric.com/feeds/posts/default?q=${mizoly}`
 }
 break
 
-            case 'dawntur': case'claim': case 'daily': {
+case 'dawntur': case'claim': case 'daily': {
       if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
           HBWABotInc.sendMessage(from, { react: { text: "💰" , key: m.key }})  
-            let user = m.sender
-      const cara = "cara"
-      const daily  = await eco.daily(user, cara, 10000); //give 999 for daily, can be changed
+let user = m.sender
+      const currency = "₹"
+      const daily  = await eco.daily(user, currency, 10000); //give 999 for daily, can be changed
       
-              if (daily.cd) return replyherbertstyle(`I claim tawh, ${daily.cdL} a ral hunah i claim leh thei chauh ang`); //cdL is already formatted cooldown Left
+  if (daily.cd) return replyherbertstyle(`I claim tawh, ${daily.cdL} a ral hunah i claim leh thei chauh ang`); //cdL is already formatted cooldown Left
       
-                replyherbertstyle(`Vawiin a tan ₹${daily.amount} i claim e, darkar 24 ral hunah i claim leh thei ang!!!`);        
+    replyherbertstyle(`Vawiin a tan ₹${daily.amount} i claim e, darkar 24 ral hunah i claim leh thei ang!!!`);        
     }
     break
 case 'mzly': case 'hlaly': {
@@ -1135,9 +1135,9 @@ if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
 
   const user = m.sender
 
-  const cara = "cara"
+  const currency = "₹"
 
-  const balance = await eco.balance(user, cara); //Returns wallet, bank, and bankCapacity. Also creates a USer if it doesn't exist.
+  const balance = await eco.balance(user, currency); //Returns wallet, bank, and bankCapacity. Also creates a USer if it doesn't exist.
 
   await replyherbertstyle(`💳 ${pushname} I wallet ah pawisa awm zat:\n\n_₹${balance.wallet}_`);
 
@@ -1160,9 +1160,9 @@ if (today.getDay() == 6 || today.getDay() == 5 || today.getDay() == 0){
   const near = ['*Wow, Grape pahnih leh apple pakhat😂*\n\n_--> 🍎-🍇+🍇_', '*Hehe, Apple pahnih leh Grape pakhat*\n\n_--> 🍎+🍎-🍇_']          
   const jack = ['*🥳 JackPot 🤑*\n\n_--> 🍇×🍇×🍇×🍇_', '*🎉 JaaackPooot!*\n\n_--> 🥥×🥥×🥥×🥥_', '*🎊I JackPot e ₹1000 i dawng e✓*']
   const user = m.sender
-  const cara = "cara"
+  const currency = "₹"
   const k = 100
-  const balance1  = await eco.balance(user, cara)
+  const balance1  = await eco.balance(user, currency)
   
   if (k > balance1.wallet) return replyherbertstyle(`I wallet ah ₹100 tal i neih a ngai\nI bank a tangin ₹100 aia tlemlo withdraw ang che`);
   const f1 = fruit1[Math.floor(Math.random() * fruit1.length)];
@@ -1176,27 +1176,27 @@ if (today.getDay() == 6 || today.getDay() == 5 || today.getDay() == 0){
   const mess5 = smallLose[Math.floor(Math.random() * smallLose.length)];
   
   if ((f1 !== f2) && f2 !== f3){
-     const deduct1 = await eco.deduct(user, cara, 50);
-            replyherbertstyle(`${mess1}\n\n*Big Lose -->* _₹50 i chan_`)
+     const deduct1 = await eco.deduct(user, currency, 50);
+replyherbertstyle(`${mess1}\n\n*Big Lose -->* _₹50 i chan_`)
   }
   else if ((f1 == f2) && f2 == f3){
-     const give1 = await eco.give(user, cara, 100); 
+     const give1 = await eco.give(user, currency, 100); 
            replyherbertstyle(`${mess2}\n*_Big Win -->* _₹100 i dawng e_`)
   }
   else if ((f1 == f2) && f2 !== f3){
-     const give2 = await eco.give(user, cara, 20);
+     const give2 = await eco.give(user, currency, 20);
            replyherbertstyle(`${mess3}\n*Small Win -->* _₹20 i dawng e_`)
   }
   else if ((f1 !== f2) && f1 == f3){
-     const deduct2 = await eco.deduct(user, cara, 20);
+     const deduct2 = await eco.deduct(user, currency, 20);
            replyherbertstyle(`${mess5}\n\n*Small Lose -->* _₹20 i chan_`)
   }
   else if ((f1 !== f2) && f2 == f3){
-     const give4 = eco.give(user, cara, 20); 
+     const give4 = eco.give(user, currency, 20); 
            replyherbertstyle(`${mess3}\n\n*Small Win -->* _₹20 i dawng e_`)
   }
   else if (((f1 == f2) && f2 == f3) && f3 == f4){
-     const give5 = eco.give(user, cara, 1000);
+     const give5 = eco.give(user, currency, 1000);
           replyherbertstyle(`${mess4}\n\n_🎊 JackPot --> _₹1000 tawp mai i dawng e🤩_`)
   }
   else { 
@@ -1214,8 +1214,8 @@ case 'bank':  case 'levee': {
 HBWABotInc.sendMessage(from, { react: { text: "💳" , key: m.key }})
 		
     const user = m.sender
-    const cara = "cara"
-    const balance = await eco.balance(user, cara); //Returns wallet, bank, and bankCapacity. Also creates a USer if it doesn't exist.
+    const currency = "₹"
+    const balance = await eco.balance(user, currency); //Returns wallet, bank, and bankCapacity. Also creates a USer if it doesn't exist.
     await replyherbertstyle(`🏦 ${pushname}'I Bank a pawisa awm zat:\n_₹${balance.bank}_\nPawisa awm thei zat: _₹${balance.bankCapacity}_`); 
 }
 break
@@ -1226,32 +1226,32 @@ break
 	if (!text) return replyherbertstyle(`💴 Bank-capacity 💳\n\n1 | 1000 sp = ₹100\n\n2 | 10000 sp = ₹1000\n\n3 | 100000 sp = ₹10000\n\nTiang hian ti la ${prefix}capacity 1 In emaw ${prefix}bankupgrade 1000`)	
 	if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
         const user = m.mentionedJid[0] ? m.mentionedJid[0] : m.sender
-	const cara = "cara"
+	const currency = "₹"
 	let value = text.trim()
 	let k = parseInt(value)
-	const balance  = await eco.balance(user, cara) 
+	const balance  = await eco.balance(user, currency) 
   switch (value) {
           case '1000':
           case '1':
           if (k > balance.wallet ) return replyherbertstyle(`I bank capacity hi 1000-sp ah a pun dawn chuan ₹100(za) i sen a ngai`)
-            const deduct1 = await eco.deduct(user, cara, 100)
-            const add1 = eco.giveCapacity(user, cara, 1000) 
-                await replyherbertstyle(`${pushname} i bank I bank capacity hi ₹1000(sangkhat) dah belh theiha upgrade a ni`)
+const deduct1 = await eco.deduct(user, currency, 100)
+const add1 = eco.giveCapacity(user, currency, 1000) 
+    await replyherbertstyle(`${pushname} i bank I bank capacity hi ₹1000(sangkhat) dah belh theiha upgrade a ni`)
          case '10000':
           case '2':
           if (k > balance.wallet ) return replyherbertstyle(`I bank capacity hi 10000-sp ah a pun dawn chuan ₹1000(sangkhat) i sen a ngai`)
-            const deduct2 = await eco.deduct(user, cara, 1000)
-            const add2 = eco.giveCapacity(user, cara, 10000) 
-                await replyherbertstyle(`${pushname} i bank capacity hi ₹10000(singkhat) dah belh theiha upgrade a ni`)
+const deduct2 = await eco.deduct(user, currency, 1000)
+const add2 = eco.giveCapacity(user, currency, 10000) 
+    await replyherbertstyle(`${pushname} i bank capacity hi ₹10000(singkhat) dah belh theiha upgrade a ni`)
          case '100000':
           case '3':
           if (k > balance.wallet ) return replyherbertstyle(`I bank capacity hi 100000-sp ah a pun dawn chuan ₹10000(singkhat) i sen a ngai`)
-            const deduct3 = await eco.deduct(user, cara, 10000)
-            const add3 = eco.giveCapacity(user, cara, 100000) 
-                await replyherbertstyle(`${pushname} i bank capacity hi ₹100000(nuaikhat) dah belh theiha upgrade a ni`)
+const deduct3 = await eco.deduct(user, currency, 10000)
+const add3 = eco.giveCapacity(user, currency, 100000) 
+    await replyherbertstyle(`${pushname} i bank capacity hi ₹100000(nuaikhat) dah belh theiha upgrade a ni`)
           }
-            }
-                break
+}
+    break
 
           
 	case 'deposit':  case 'pay-in': {
@@ -1261,12 +1261,31 @@ HBWABotInc.sendMessage(from, { react: { text: "📥" , key: m.key }})
 if (!text) return replyherbertstyle("I deposit duh zat rawn provide rawh")
 const texts = text.trim()
 const user = m.sender;
-const cara = 'cara'
-    const deposit = await eco.deposit(user, cara, texts)
+const currency = '₹'
+    const deposit = await eco.deposit(user, currency, texts)
         if(deposit.noten) return replyherbertstyle('I wallet ah chu tiang zat a awm loh avangin i deposit thei lo ang.') //if user states more than whats in his wallet
          replyherbertstyle(`I bank a ₹ ${deposit.amount} deposit a ni`)
   }
       break
+      case 'deposit': case 'pay-in': {
+    HBWABotInc.sendMessage(from, { react: { text: "📥", key: m.key } })
+    if (!text) {
+        return replyherbertstyle("I deposit duh zat rawn provide rawh")
+    }
+    const textAmount = text.trim();
+    const user = m.sender;
+    const currency = '₹'; // You can specify the currency symbol here
+    if (isNaN(textAmount) || parseFloat(textAmount) <= 0) {
+        return replyherbertstyle('Deposit tur positive amount dik tak min rawn pe rawh.');
+    }
+    const depositResult = await eco.deposit(user, currency, parseFloat(textAmount));
+    if (depositResult.noten) {
+        return replyherbertstyle('I wallet ah chu tiang zat a awm loh avangin i deposit thei lo ang.');
+    }
+    replyherbertstyle(`I bank a ${currency} ${depositResult.amount} deposit a ni`);
+}
+break;
+
 
       case 'withdraw':  case 'withdrawal': {
     HBWABotInc.sendMessage(from, { react: { text: "💸" , key: m.key }})
@@ -1275,41 +1294,40 @@ const cara = 'cara'
           const user = m.sender
       if (!text) return replyherbertstyle("I withdraw duh zat rawn provide rawh!")
       const query = text.trim()
-          const cara = 'cara'
-          const withdraw = await eco.withdraw(user, cara, query)
+          const currency = '₹'
+          const withdraw = await eco.withdraw(user, currency, query)
           if(withdraw.noten) return replyherbertstyle('Chutiang zat zat i bank ah pawisa i nei lo') //if user states more than whats in his wallet
-          const add = eco.give(user, cara, query)
-            replyherbertstyle(`🏧 ALERT I wallet a ₹${withdraw.amount} dah a ni.`)
+          const add = eco.give(user, currency, query)
+replyherbertstyle(`🏧 ALERT I wallet a ₹${withdraw.amount} dah a ni.`)
           
   }
   break 
   case 'transfer': {
 HBWABotInc.sendMessage(from, { react: { text: "🗿" , key: m.key }})
-            let value = text.trim().split(" ")
-            if (value[0] === "") return replyherbertstyle(`Tiang hian ti tawh : ${prefix}transfer 100 @user`)
-            const target =
-                             m.quoted && m.mentionedJid.length === 0
-                             ? m.quoted.sender
-                             : m.mentionedJid[0] || null;    
-                     if (!target || target === m.sender) return replyherbertstyle("Engtia tih nge i tum")
-                     if (m.quoted?.sender && !m.mentionedJid.includes(m.quoted.sender)) m.mentionedJid.push(m.quoted.sender)
-                  while (m.mentionedJid.length < 2) m.mentionedJid.push(m.sender)
-                  const cara = "cara"
-                  const user1 = m.sender
-                  const user2 = target
-                         const word = value[0];
-                         const code = value[1];
-              let d = parseInt(word)
-              if (!d) return replyherbertstyle("I thil ziah khi check teh, command i hmang dik lo a ni mai thei")
-              
-              const balance = await eco.balance(user1, cara) 
-                  let a = (balance.wallet) < parseInt(word)
-                  //Returns wallet, bank, and bankCapacity. Also creates a USer if it doesn't exist.	
-                  if(a == true) return replyherbertstyle("Chutiang zat transfer turin i wallet ah a awm lo")
-                  
-                  const deduct = await eco.deduct(user1, cara, value[0])
-                  const give = await eco.give(user2, cara, value[0])
-                  replyherbertstyle(`📠 transfer a ni e✓`)
+let value = text.trim().split(" ")
+if (value[0] === "") return replyherbertstyle(`Tiang hian ti tawh : ${prefix}transfer 100 @user`)
+const target =
+     m.quoted && m.mentionedJid.length === 0
+     ? m.quoted.sender
+     : m.mentionedJid[0] || null;    
+         if (!target || target === m.sender) return replyherbertstyle("Engtia tih nge i tum")
+         if (m.quoted?.sender && !m.mentionedJid.includes(m.quoted.sender)) m.mentionedJid.push(m.quoted.sender)
+      while (m.mentionedJid.length < 2) m.mentionedJid.push(m.sender)
+      const currency = "₹"
+      const user1 = m.sender
+      const user2 = target
+ const word = value[0];
+ const code = value[1];
+  let d = parseInt(word)
+  if (!d) return replyherbertstyle("I thil ziah khi check teh, command i hmang dik lo a ni mai thei")
+  
+  const balance = await eco.balance(user1, currency) 
+      let a = (balance.wallet) < parseInt(word)
+      if(a == true) return replyherbertstyle("Chutiang zat transfer turin i wallet ah a awm lo")
+      
+      const deduct = await eco.deduct(user1, currency, value[0])
+      const give = await eco.give(user2, currency, value[0])
+      replyherbertstyle(`📠 transfer a ni e✓`)
           
           }
           break 
@@ -1320,8 +1338,8 @@ HBWABotInc.sendMessage(from, { react: { text: "🗿" , key: m.key }})
   var value = texts[0].toLowerCase()
   var gg = parseInt(value)
   const user = m.sender
-  const cara = 'cara'
-  const balance = await eco.balance(user, cara) 
+  const currency = '₹'
+  const balance = await eco.balance(user, currency) 
   const g = (balance.wallet) > parseInt(value)
   const k = 50
   const a = (k) > parseInt(value)
@@ -1331,7 +1349,7 @@ HBWABotInc.sendMessage(from, { react: { text: "🗿" , key: m.key }})
   //if (link1 == link2){
      if (texts[0] === "")
          return replyherbertstyle(
-             `Tiang hian tih tur:  ${prefix}gamble 100 direction(left,right,up,down)`
+ `Tiang hian tih tur:  ${prefix}gamble 100 direction(left,right,up,down)`
          )
      if (!value) return replyherbertstyle("*I gamble zat tur rawn tarlang rawh!")
      if (!opp) return replyherbertstyle("I bet tur direction kha rawn dah rawh")
@@ -1340,11 +1358,11 @@ HBWABotInc.sendMessage(from, { react: { text: "🗿" , key: m.key }})
      if (g == false) return replyherbertstyle(`Chutiang zat gamble turin i pawisa neihin a daih lo`)
      if (a == true) return replyherbertstyle(`Sorry ${pushname}, ₹50 aia tlem chuan a gamble thei lo`)
      if ( r == opp){
-        let give = await eco.give(user , cara, twice)
+        let give = await eco.give(user , currency, twice)
         replyherbertstyle(`*₹${twice} i dawng e✓*`)
      }
      else{
-        let deduct = await eco.deduct(user, cara, texts[0])
+        let deduct = await eco.deduct(user, currency, texts[0])
         replyherbertstyle(`*₹${texts[0]} i chan(loss) a ni*`)
       }
 }
@@ -1354,10 +1372,10 @@ case 'alive': case 'menu': case 'help':{
 HBWABotInc.sendMessage(from, { react: { text: "❤️" , key: m.key }})
 Menu()
 	        let ownernya = ownernomer + '@s.whatsapp.net'
-            let me = m.sender
-            let timestampe = speed()
-            let latensie = speed() - timestampe
-            herbertezy = `┌─❖
+let me = m.sender
+let timestampe = speed()
+let latensie = speed() - timestampe
+herbertezy = `┌─❖
 │ Hi 👋 
 └┬❖  ${pushname} 
 ┌┤✑  ${herbertytimewisher} 😄
@@ -1708,17 +1726,17 @@ case 'listblock': case 'listban': case 'blocklist': case 'banlist': {
 	}
 	break
 case 'delete': case 'del': {
-                if (!m.quoted) throw false
-                let { chat, fromMe, id, isBaileys } = m.quoted
-                 HBWABotInc.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: true, id: m.quoted.id, participant: m.quoted.sender } })
-            }
-            break
-            case 'linkgroup': case 'linkgc': case 'gclink': case 'grouplink': {
-                if (!m.isGroup) return m.reply(mess.group)
-                if (!isBotAdmins) return m.reply(mess.botAdmin)
-                let response = await HBWABotInc.groupInviteCode(m.chat)
-                HBWABotInc.sendText(m.chat, `https://chat.whatsapp.com/${response}\n\nGroup Link : ${groupMetadata.subject}`, m, { detectLink: true })
-            }
+    if (!m.quoted) throw false
+    let { chat, fromMe, id, isBaileys } = m.quoted
+     HBWABotInc.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: true, id: m.quoted.id, participant: m.quoted.sender } })
+}
+break
+case 'linkgroup': case 'linkgc': case 'gclink': case 'grouplink': {
+    if (!m.isGroup) return m.reply(mess.group)
+    if (!isBotAdmins) return m.reply(mess.botAdmin)
+    let response = await HBWABotInc.groupInviteCode(m.chat)
+    HBWABotInc.sendText(m.chat, `https://chat.whatsapp.com/${response}\n\nGroup Link : ${groupMetadata.subject}`, m, { detectLink: true })
+}
             break
 case 'add': {
 if (!m.isGroup) return m.reply(mess.group)
