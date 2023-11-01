@@ -15,7 +15,7 @@ const { uptotelegra } = require('./scrape/upload')
 const { TelegraPh } = require('./lib/uploader')
 const { msgFilter } = require('./lib/antispam')
 const eco = require('discord-mongoose-economy')
-const ty = eco.connect('mongodb+srv://Arch:1t6l2G0r6nagLlOb@cluster0.gedh4.mongodb.net/?retryWrites=true&w=majority')                       
+const ty = eco.connect('mongodb+srv://HBMods-Api:h34b34t@hbmods.0fjkaql.mongodb.net/?retryWrites=true&w=majority')                       
 const mizo_tawnga_translate_na = require("@kreisler/js-google-translate-free")
 const { ytDonlodMp3, ytDonlodMp4, ytPlayMp3, ytPlayMp4, ytSearch } = require('./scrape/yt')
 const anon = require('./lib/menfess') 
@@ -1073,16 +1073,14 @@ const rssFeedURL = `https://www.mizolyric.com/feeds/posts/default?q=${mizoly}`
 }
 break
 
-case 'dawntur': case'claim': case 'daily': {
+case'claim': case 'daily': {
       if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
           HBWABotInc.sendMessage(from, { react: { text: "💰" , key: m.key }})  
 let user = m.sender
-      const currency = "₹"
-      const daily  = await eco.daily(user, currency, 999); //give 999 for daily, can be changed
-      
-  if (daily.cd) return replyherbertstyle(`I claim tawh, ${daily.cdL} a ral hunah i claim leh thei chauh ang`); //cdL is already formatted cooldown Left
-      
-    replyherbertstyle(`Vawiin a tan ₹${daily.amount} i claim e, darkar 24 ral hunah i claim leh thei ang!!!`);        
+      const currency = "cara"
+      const daily  = await eco.daily(user, currency, 999)  
+  if (daily.cd) return replyherbertstyle(`I claim tawh, ${daily.cdL} a ral hunah i claim leh thei chauh ang`)      
+ replyherbertstyle(`Vawiin a tan ₹${daily.amount} i claim e, darkar 24 ral hunah i claim leh thei ang!!!`);        
     }
     break
 case 'mzly': case 'hlaly': {
@@ -1127,17 +1125,11 @@ const Vawk = await HBWABotInc.sendMessage(m.chat, {audio: {url: dl_url} , mimety
 break
      
     case 'wallet': {
-
-  HBWABotInc.sendMessage(from, { react: { text: "💳" , key: m.key }})
-
+HBWABotInc.sendMessage(from, { react: { text: "💳" , key: m.key }})
 if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
-
   const user = m.sender
-
-  const currency = "₹"
-
-  const balance = await eco.balance(user, currency); //Returns wallet, bank, and bankCapacity. Also creates a USer if it doesn't exist.
-
+  const currency = "cara"
+  const balance = await eco.balance(user, currency)
   await replyherbertstyle(`💳 ${pushname} I wallet ah pawisa awm zat:\n\n_₹${balance.wallet}_`);
 
 }
@@ -1149,83 +1141,81 @@ case 'slot': case 'spin': {
 if (today.getDay() == 6 || today.getDay() == 5 || today.getDay() == 0){
   if (text == 'help') return replyherbertstyle(`*1:* ${prefix}Spin tih hi i hmang ang\n\n*2:* I wallet ah cheng ₹100 i neih tling tur a ni a,\n\n*3:* Wallet-ah pawisa i nei loh chuan i bank a tangin withdraw ang che\n\n*4:* I bank-ah pawh pawisa i la nei lo cheu a nih chuan i sum hmuhna turin economy features hi hmang rawh`)
   if (text == 'pawisa') return replyherbertstyle(`*1:* Small Win -in ₹20 an hlawh anga\n\n*2:* Small Lose in ₹20 an chan ang\n\n*3:* Big Win in ₹100 an hlawh anga\n\n*4:* Big Lose in ₹50 an chan ang\n\n*5:* 🎉 JackPot in ₹1000 an dawng bawk ang`)
-  const fruit1= ["🥥", "🍎", "🍇"]
-  const fruit2 = ["🍎", "🍇", "🥥"]  
-  const fruit3 = ["🍇", "🥥", "🍎"]         
-  const fruit4 = ["🍇", "🥥", "🍎"]
-  const lose = ['*Tun game-ah hi chuan i vanduai tlat mai*\n\n_--> 🍇-🥥-🍎_', '*Line a tangin a chhuak vek*\n\n_--> 🥥-🍎-🍇_', '*Van a duai tlat🌚😂 ti tha leh mai rawh*\n\n_--> 🍎-🍇-🥥_']
-  const smallLose = ['*Grape pahnih inkawp lohin i spin fuh a ni!!*\n\n_--> 🍇>🥥<🍇_', '*Apple pahnih inkawp lohin i spin fuh a ni!!*\n\n_--> 🍎>🥥<🍎_', '*Coconut pahnih inkawp lohin i spin fih a ni!!*\n\n_--> 🥥>🍎<🥥_']
-  const won = ['*🤩Nice Apple patum i spin fuh e...*\n\n_--> 🍎+🍎+🍎_', '*Eheuh, Coconut pathum i spin fuh e🤩*\n\n_--> 🥥+🥥+🥥_', '*Ropui lutuk🤩, i chhungte tan Grape juice i siam sak dawn nia*\n\n_--> 🍇+🍇+🍇_']             
+  const fruit1= ["🍍", "🍎", "🍇"]
+  const fruit2 = ["🍎", "🍇", "🍍"]  
+  const fruit3 = ["🍇", "🍍", "🍎"]         
+  const fruit4 = ["🍇", "🍍", "🍎"]
+  const fruit5 = ["❤", "❤️", "❤️"]
+  const lose = ['*Tun game-ah hi chuan i vanduai tlat mai*\n\n_--> 🍇-🍍-🍎_', '*Line a tangin a chhuak vek*\n\n_--> 🍍-🍎-🍇_', '*Van a duai tlat🌚😂 ti tha leh mai rawh*\n\n_--> 🍎-🍇-🍍_']
+  const smallLose = ['*Grape pahnih inkawp lohin i spin fuh a ni!!*\n\n_--> 🍇>🍍<🍇_', '*Apple pahnih inkawp lohin i spin fuh a ni!!*\n\n_--> 🍎>🍍<🍎_', '*Lakhuih pahnih inkawp lohin i spin fih a ni!!*\n\n_--> 🍍>🍎<🍍_']
+  const won = ['*🤩Nice Apple patum i spin fuh e...*\n\n_--> 🍎+🍎+🍎_', '*Eheuh, Lakhuih pathum i spin fuh e🤩*\n\n_--> 🍍+🍍+🍍_', '*Ropui lutuk🤩, i chhungte tan Grape juice i siam sak dawn nia*\n\n_--> 🍇+🍇+🍇_']
   const near = ['*Wow, Grape pahnih leh apple pakhat😂*\n\n_--> 🍎-🍇+🍇_', '*Hehe, Apple pahnih leh Grape pakhat*\n\n_--> 🍎+🍎-🍇_']          
-  const jack = ['*🥳 JackPot 🤑*\n\n_--> 🍇×🍇×🍇×🍇_', '*🎉 JaaackPooot!*\n\n_--> 🥥×🥥×🥥×🥥_', '*🎊I JackPot e ₹1000 i dawng e✓*']
+  const jack = ['*🥳 JackPot 🤑*\n\n_--> 🍇×🍇×🍇×🍇_', '*🎉 JaaackPooot!*\n\n_--> 🍍×🍍×🍍×🍍_', '*🎊I JackPot e ₹1000 i dawng e✓*']
   const user = m.sender
-  const currency = "₹"
+  const currency = "cara"
   const k = 100
   const balance1  = await eco.balance(user, currency)
-  
   if (k > balance1.wallet) return replyherbertstyle(`I wallet ah ₹100 tal i neih a ngai\nI bank a tangin ₹100 aia tlemlo withdraw ang che`);
   const f1 = fruit1[Math.floor(Math.random() * fruit1.length)];
   const f2 = fruit2[Math.floor(Math.random() * fruit2.length)];
   const f3 = fruit3[Math.floor(Math.random() * fruit3.length)];
   const f4 = fruit4[Math.floor(Math.random() * fruit4.length)];
+  const f5 = fruit5[Math.floor(Math.random() * fruit5.length)];
   const mess1 = lose[Math.floor(Math.random() * lose.length)];
   const mess2 = won[Math.floor(Math.random() * won.length)];
   const mess3 = near[Math.floor(Math.random() * near.length)];
   const mess4 = jack[Math.floor(Math.random() * jack.length)];
   const mess5 = smallLose[Math.floor(Math.random() * smallLose.length)];
-  
   if ((f1 !== f2) && f2 !== f3){
-     const deduct1 = await eco.deduct(user, currency, 50);
+  const deduct1 = await eco.deduct(user, currency, 50);
 replyherbertstyle(`${mess1}\n\n*Big Lose -->* _₹50 i chan_`)
   }
-  else if ((f1 == f2) && f2 == f3){
-     const give1 = await eco.give(user, currency, 100); 
-           replyherbertstyle(`${mess2}\n*_Big Win -->* _₹100 i dawng e_`)
+else if ((f1 == f2) && f2 == f3){
+const give1 = await eco.give(user, currency, 100); 
+replyherbertstyle(`${mess2}\n*_Big Win -->* _₹100 i dawng e_`)
   }
-  else if ((f1 == f2) && f2 !== f3){
-     const give2 = await eco.give(user, currency, 20);
-           replyherbertstyle(`${mess3}\n*Small Win -->* _₹20 i dawng e_`)
+else if ((f1 == f2) && f2 !== f3){
+const give2 = await eco.give(user, currency, 20);
+replyherbertstyle(`${mess3}\n*Small Win -->* _₹20 i dawng e_`)
   }
-  else if ((f1 !== f2) && f1 == f3){
-     const deduct2 = await eco.deduct(user, currency, 20);
-           replyherbertstyle(`${mess5}\n\n*Small Lose -->* _₹20 i chan_`)
+else if ((f1 !== f2) && f1 == f3){
+const deduct2 = await eco.deduct(user, currency, 20);
+replyherbertstyle(`${mess5}\n\n*Small Lose -->* _₹20 i chan_`)
   }
-  else if ((f1 !== f2) && f2 == f3){
-     const give4 = eco.give(user, currency, 20); 
-           replyherbertstyle(`${mess3}\n\n*Small Win -->* _₹20 i dawng e_`)
+else if ((f1 !== f2) && f2 == f3){
+const give4 = eco.give(user, currency, 20); 
+replyherbertstyle(`${mess3}\n\n*Small Win -->* _₹20 i dawng e_`)
   }
-  else if (((f1 == f2) && f2 == f3) && f3 == f4){
-     const give5 = eco.give(user, currency, 1000);
-          replyherbertstyle(`${mess4}\n\n_🎊 JackPot --> _₹1000 tawp mai i dawng e🤩_`)
+else if (((f1 == f2) && f2 == f3) && f3 == f5){
+const give5 = eco.give(user, currency, 1000);
+replyherbertstyle(`${mess4}\n\n_🎊 JackPot --> _₹1000 i dawng e🤩_`)
   }
-  else { 
-          replyherbertstyle(`I thil tih hi i hrethiam em ni?`)
+else { 
+replyherbertstyle(`I thil tih hi i hrethiam em ni?`)
   }
 }
 else{
-      replyherbertstyle(`*Kartawpah chauh he game hi i khei thei ang*\n\n*🌿 Zirtawpni*\n*🎏 Inrinni*\n*🎐 Pathianni thleng*`)
+replyherbertstyle(`*Kartawpah chauh he game hi i khei thei ang*\n\n*🌿 Zirtawpni*\n*🎏 Inrinni*\n*🎐 Pathianni thleng*`)
 }
 }
 break
 
 case 'bank':  case 'levee': {
 	if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
-HBWABotInc.sendMessage(from, { react: { text: "💳" , key: m.key }})
-		
+HBWABotInc.sendMessage(from, { react: { text: "💳" , key: m.key }})		
     const user = m.sender
-    const currency = "₹"
-    const balance = await eco.balance(user, currency); //Returns wallet, bank, and bankCapacity. Also creates a USer if it doesn't exist.
+    const currency = "cara"
+    const balance = await eco.balance(user, currency)
     await replyherbertstyle(`🏦 ${pushname}'I Bank a pawisa awm zat:\n_₹${balance.bank}_\nPawisa awm thei zat: _₹${balance.bankCapacity}_`); 
 }
 break
-		
 		
 		case 'capacity':  case 'bankupgrade': {
 			HBWABotInc.sendMessage(from, { react: { text: "💲" , key: m.key }})
 	if (!text) return replyherbertstyle(`💴 Bank-capacity 💳\n\n1 | 1000 sp = ₹100\n\n2 | 10000 sp = ₹1000\n\n3 | 100000 sp = ₹10000\n\nTiang hian ti la ${prefix}capacity 1 In emaw ${prefix}bankupgrade 1000`)	
 	if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
         const user = m.mentionedJid[0] ? m.mentionedJid[0] : m.sender
-	const currency = "₹"
+	const currency = "cara"
 	let value = text.trim()
 	let k = parseInt(value)
 	const balance  = await eco.balance(user, currency) 
@@ -1255,28 +1245,27 @@ const add3 = eco.giveCapacity(user, currency, 100000)
           
 	case 'deposit':  case 'pay-in': {
 HBWABotInc.sendMessage(from, { react: { text: "📥" , key: m.key }})
-
-    if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
+if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
 if (!text) return replyherbertstyle("I deposit duh zat rawn provide rawh")
 const query1 = text.trim()
 const user = m.sender;
-const currency = '₹'
-    const deposit = await eco.deposit(user, currency, query1)
-        if(deposit.noten) return replyherbertstyle('I wallet ah chu tiang zat a awm loh avangin i deposit thei lo ang.') //if user states more than whats in his wallet
+const currency = 'cara'
+const deposit = await eco.deposit(user, currency, query1)
+        if(deposit.noten) return replyherbertstyle('I wallet ah chu tiang zat a awm loh avangin i deposit thei lo ang.')
          replyherbertstyle(`I bank a ₹ ${deposit.amount} deposit a ni`)
   }
-      break
+break
 
-      case 'withdraw':  case 'withdrawal': {
+case 'withdraw':  case 'withdrawal': {
     HBWABotInc.sendMessage(from, { react: { text: "💸" , key: m.key }})
         
         if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
           const user = m.sender
       if (!text) return replyherbertstyle("I withdraw duh zat rawn provide rawh!")
       const query = text.trim()
-          const currency = '₹'
+          const currency = 'cara'
           const withdraw = await eco.withdraw(user, currency, query)
-          if(withdraw.noten) return replyherbertstyle('Chutiang zat zat i bank ah pawisa i nei lo') //if user states more than whats in his wallet
+          if(withdraw.noten) return replyherbertstyle('Chutiang zat zat i bank ah pawisa i nei lo')
           const add = eco.give(user, currency, query)
 replyherbertstyle(`🏧 ALERT I wallet a ₹ ${withdraw.amount} dah a ni.`)
           
@@ -1293,7 +1282,7 @@ const target =
          if (!target || target === m.sender) return replyherbertstyle("Engtia tih nge i tum")
          if (m.quoted?.sender && !m.mentionedJid.includes(m.quoted.sender)) m.mentionedJid.push(m.quoted.sender)
       while (m.mentionedJid.length < 2) m.mentionedJid.push(m.sender)
-      const currency = "₹"
+      const currency = "cara"
       const user1 = m.sender
       const user2 = target
  const word = value[0];
@@ -1318,7 +1307,7 @@ const target =
   var value = texts[0].toLowerCase()
   var gg = parseInt(value)
   const user = m.sender
-  const currency = '₹'
+  const currency = 'cara'
   const balance = await eco.balance(user, currency) 
   const g = (balance.wallet) > parseInt(value)
   const k = 50
@@ -1953,7 +1942,34 @@ break
     const generatedTranslation = await mizo_tawnga_translate_na.translate(source1, target1, generatedText);
     await HBWABotInc.sendMessage(from, { text: generatedTranslation }, { quoted: m });
 }
-break;
+break 
+case 'rob':  case 'attack': {
+  HBWABotInc.sendMessage(from, { react: { text: "🔪" , key: m.key }})
+  if (!text) return replyherbertstyle(`_🤖Kha tiang ringawt loh khan tiang hian type tur_\n*⟨Entir nan :*${prefix}rob @user`)
+  const target =
+			             m.quoted && m.mentionedJid.length === 0
+			             ? m.quoted.sender
+			             : m.mentionedJid[0] || null;    
+           if (!target || target === m.sender) return replyherbertstyle("Engtia tih nge i tum?..🧐")
+           if (m.quoted?.sender && !m.mentionedJid.includes(m.quoted.sender)) m.mentionedJid.push(m.quoted.sender)
+        while (m.mentionedJid.length < 2) m.mentionedJid.push(m.sender)
+        const cara = "cara"
+        const user1 = m.sender
+        const user2 = target
+	    const k = 250
+	const balance1  = await eco.balance(user1, cara)
+	const balance2  = await eco.balance(user2, cara)
+	const typ = ['ran','rob','caught'];
+    const random = typ[Math.floor(Math.random() * typ.length)];
+    if (k > balance1.wallet) return replyherbertstyle(`☹️ I caught palh hlauha mahse pek mai tur i wallet ah a awmi lo`);
+    if (k > balance2.wallet) return replyherbertstyle(`Sorry, i victim hi a rethei lutuk 🤷 chhuah tir rawh`);
+    let tpy = random
+  switch (random) {
+          case 'ran':
+                await replyherbertstyle(`I victim chu a tlanchhuak a, a leh pekah chuan a aia hlauhawm zawkin i ti tawh ang`)
+  }
+	}
+                break
 
 			case 'gimage': {
                 if (!text) return replyherbertstyle(`_🤖Kha tiang ringawt loh khan tiang hian type tur_\n*⟨Entir nan :* ${prefix + command} Mizoram`)
