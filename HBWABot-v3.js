@@ -15,8 +15,7 @@ const { uptotelegra } = require('./scrape/upload')
 const { TelegraPh } = require('./lib/uploader')
 const { msgFilter } = require('./lib/antispam')
 const eco = require('discord-mongoose-economy')
-const ty = eco.connect('mongodb+srv://HBMods-Api:h34b34t@hbmods.0fjkaql.mongodb.net/?retryWrites=true&w=majority')
-
+const ty = eco.connect('mongodb+srv://HBWABot-v3:h34b34t@hbwabot.hg2ie6t.mongodb.net/?retryWrites=true&w=majority')                       
 const mizo_tawnga_translate_na = require("@kreisler/js-google-translate-free")
 const { ytDonlodMp3, ytDonlodMp4, ytPlayMp3, ytPlayMp4, ytSearch } = require('./scrape/yt')
 const anon = require('./lib/menfess') 
@@ -1079,7 +1078,7 @@ case 'dawntur': case'claim': case 'daily': {
           HBWABotInc.sendMessage(from, { react: { text: "💰" , key: m.key }})  
 let user = m.sender
       const currency = "₹"
-      const daily  = await eco.daily(user, currency, 10000); //give 999 for daily, can be changed
+      const daily  = await eco.daily(user, currency, 999); //give 999 for daily, can be changed
       
   if (daily.cd) return replyherbertstyle(`I claim tawh, ${daily.cdL} a ral hunah i claim leh thei chauh ang`); //cdL is already formatted cooldown Left
       
@@ -1259,33 +1258,14 @@ HBWABotInc.sendMessage(from, { react: { text: "📥" , key: m.key }})
 
     if (m.quoted?.sender) m.mentionedJid.push(m.quoted.sender)
 if (!text) return replyherbertstyle("I deposit duh zat rawn provide rawh")
-const texts = text.trim()
+const query1 = text.trim()
 const user = m.sender;
 const currency = '₹'
-    const deposit = await eco.deposit(user, currency, texts)
+    const deposit = await eco.deposit(user, currency, query1)
         if(deposit.noten) return replyherbertstyle('I wallet ah chu tiang zat a awm loh avangin i deposit thei lo ang.') //if user states more than whats in his wallet
          replyherbertstyle(`I bank a ₹ ${deposit.amount} deposit a ni`)
   }
       break
-      case 'deposit': case 'pay-in': {
-    HBWABotInc.sendMessage(from, { react: { text: "📥", key: m.key } })
-    if (!text) {
-        return replyherbertstyle("I deposit duh zat rawn provide rawh")
-    }
-    const textAmount = text.trim();
-    const user = m.sender;
-    const currency = '₹'; // You can specify the currency symbol here
-    if (isNaN(textAmount) || parseFloat(textAmount) <= 0) {
-        return replyherbertstyle('Deposit tur positive amount dik tak min rawn pe rawh.');
-    }
-    const depositResult = await eco.deposit(user, currency, parseFloat(textAmount));
-    if (depositResult.noten) {
-        return replyherbertstyle('I wallet ah chu tiang zat a awm loh avangin i deposit thei lo ang.');
-    }
-    replyherbertstyle(`I bank a ${currency} ${depositResult.amount} deposit a ni`);
-}
-break;
-
 
       case 'withdraw':  case 'withdrawal': {
     HBWABotInc.sendMessage(from, { react: { text: "💸" , key: m.key }})
@@ -1298,7 +1278,7 @@ break;
           const withdraw = await eco.withdraw(user, currency, query)
           if(withdraw.noten) return replyherbertstyle('Chutiang zat zat i bank ah pawisa i nei lo') //if user states more than whats in his wallet
           const add = eco.give(user, currency, query)
-replyherbertstyle(`🏧 ALERT I wallet a ₹${withdraw.amount} dah a ni.`)
+replyherbertstyle(`🏧 ALERT I wallet a ₹ ${withdraw.amount} dah a ni.`)
           
   }
   break 
