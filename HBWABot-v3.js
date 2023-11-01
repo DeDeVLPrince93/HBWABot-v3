@@ -15,7 +15,8 @@ const { uptotelegra } = require('./scrape/upload')
 const { TelegraPh } = require('./lib/uploader')
 const { msgFilter } = require('./lib/antispam')
 const eco = require('discord-mongoose-economy')
-const ty = eco.connect('mongodb+srv://Arch:1t6l2G0r6nagLlOb@cluster0.gedh4.mongodb.net/?retryWrites=true&w=majority')
+const ty = eco.connect('mongodb+srv://HBMods-Api:h34b34t@hbmods.0fjkaql.mongodb.net/?retryWrites=true&w=majority')
+
 const mizo_tawnga_translate_na = require("@kreisler/js-google-translate-free")
 const { ytDonlodMp3, ytDonlodMp4, ytPlayMp3, ytPlayMp4, ytSearch } = require('./scrape/yt')
 const anon = require('./lib/menfess') 
@@ -1078,7 +1079,7 @@ break
           HBWABotInc.sendMessage(from, { react: { text: "💰" , key: m.key }})  
             let user = m.sender
       const cara = "cara"
-      const daily  = await eco.daily(user, cara, 999); //give 999 for daily, can be changed
+      const daily  = await eco.daily(user, cara, 999999999); //give 999 for daily, can be changed
       
               if (daily.cd) return replyherbertstyle(`I claim tawh, ${daily.cdL} a ral hunah i claim leh thei chauh ang`); //cdL is already formatted cooldown Left
       
