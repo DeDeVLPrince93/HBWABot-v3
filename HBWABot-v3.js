@@ -1943,33 +1943,6 @@ break
     await HBWABotInc.sendMessage(from, { text: generatedTranslation }, { quoted: m });
 }
 break 
-case 'rob':  case 'attack': {
-  HBWABotInc.sendMessage(from, { react: { text: "🔪" , key: m.key }})
-  if (!text) return replyherbertstyle(`_🤖Kha tiang ringawt loh khan tiang hian type tur_\n*⟨Entir nan :*${prefix}rob @user`)
-  const target =
-			             m.quoted && m.mentionedJid.length === 0
-			             ? m.quoted.sender
-			             : m.mentionedJid[0] || null;    
-           if (!target || target === m.sender) return replyherbertstyle("Engtia tih nge i tum?..🧐")
-           if (m.quoted?.sender && !m.mentionedJid.includes(m.quoted.sender)) m.mentionedJid.push(m.quoted.sender)
-        while (m.mentionedJid.length < 2) m.mentionedJid.push(m.sender)
-        const cara = "cara"
-        const user1 = m.sender
-        const user2 = target
-	    const k = 250
-	const balance1  = await eco.balance(user1, cara)
-	const balance2  = await eco.balance(user2, cara)
-	const typ = ['ran','rob','caught'];
-    const random = typ[Math.floor(Math.random() * typ.length)];
-    if (k > balance1.wallet) return replyherbertstyle(`☹️ I caught palh hlauha mahse pek mai tur i wallet ah a awmi lo`);
-    if (k > balance2.wallet) return replyherbertstyle(`Sorry, i victim hi a rethei lutuk 🤷 chhuah tir rawh`);
-    let tpy = random
-  switch (random) {
-          case 'ran':
-                await replyherbertstyle(`I victim chu a tlanchhuak a, a leh pekah chuan a aia hlauhawm zawkin i ti tawh ang`)
-  }
-	}
-                break
 
 			case 'gimage': {
                 if (!text) return replyherbertstyle(`_🤖Kha tiang ringawt loh khan tiang hian type tur_\n*⟨Entir nan :* ${prefix + command} Mizoram`)
