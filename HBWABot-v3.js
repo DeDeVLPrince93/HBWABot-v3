@@ -1206,7 +1206,7 @@ HBWABotInc.sendMessage(from, { react: { text: "💳" , key: m.key }})
     const user = m.sender
     const currency = "cara"
     const balance = await eco.balance(user, currency)
-    await replyherbertstyle(`🏦 ${pushname}'I Bank a pawisa awm zat:\n_₹${balance.bank}_\nPawisa awm thei zat: _₹${balance.bankCapacity}_`); 
+    await replyherbertstyle(`🏦 ${pushname} i Bank a pawisa awm zat:\n_₹${balance.bank}_\nPawisa awm thei zat: _₹${balance.bankCapacity}_`); 
 }
 break
 		
@@ -3629,7 +3629,7 @@ const results = await facebook(url)
 console.log(results) // JSON
 await uploadreact()
 await HBWABotInc.sendMessage(m.chat,{
-video: {url: results.result.hd_q},
+video: {url: results.result.sd_q},
 caption: "Facebook Video download by HBWABot"
 }, {quoted:m})
 await finishreact()
