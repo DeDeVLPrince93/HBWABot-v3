@@ -1886,64 +1886,47 @@ const mizotranslation = await mizo_tawnga_translate_na.translate(source, target,
 await HBWABotInc.sendMessage(from, { text: mizotranslation }, { quoted: m })
 }
   break 
-  case 'aix': case 'openaix':
-try {
-if (global.keyopenai === '') return replyherbertstyle("Api key limi exceeded");
-if (!q) return dodoi(`Chat with AI.\n\nExample:\n${prefix + command} What is coding`)
-const { Configuration, OpenAIApi } = require('openai')
-const configuration = new Configuration({
-apiKey: global.keyopenai,
-});
-const openai = new OpenAIApi(configuration);
-const response = await openai.createCompletion({
-model: "text-davinci-003",
-prompt: q,
-temperature: 0.3,
-max_tokens: 2000,
-top_p: 1.0,
-frequency_penalty: 0.0,
-presence_penalty: 0.0,
-});
-dodoi(`${response.data.choices[0].text}`);
-} catch (error) {
-if (error.response) {
-console.log(error.response.status);
-console.log(error.response.data);
-console.log(`${error.response.status}\n\n${error.response.data}`);
+  case 'ai3': case 'gpt':{
+if (!q) return replyherbertstyle(`Ai nen a in biakna\n\nTiang hian i hmang ang:\n${prefix + command} ChatGpt hi eng nge a nih min hrilh fiah thei em?.`);
+const source = 'auto'
+const target = 'en'
+const athu = `${q}`
+const mizotranslation = await mizo_tawnga_translate_na.translate(source, target, athu)
+const apiUrl1 = `https://vihangayt.me/tools/chatgpt?q=${encodeURIComponent(mizotranslation)}`;
+const apiUrl2 = `https://gurugpt.cyclic.app/gpt4?prompt=${encodeURIComponent(mizotranslation)}&model=llama`;
+ try {  
+const response1 = await fetch(apiUrl1);
+const responseData1 = await response1.json();
+if (response1.status === 200 && responseData1 && responseData1.status === true && responseData1.data) {
+const message = responseData1.data;
+const source1 = 'auto'
+const target1 = 'lus'
+const athu1 = `${message}`
+const mizotranslation1 = await mizo_tawnga_translate_na.translate(source1, target1, athu1)
+  const me = m.sender;
+  await HBWABotInc.sendMessage(m.chat, { text: mizotranslation1, mentions: [me] }, { quoted: m });
 } else {
-console.log(error);
-dodoi("Sorry, there seems to be an error :"+ error.message);
+  const response2 = await fetch(apiUrl2);
+  const responseData2 = await response2.json();
+  if (response2.status === 200 && responseData2 && responseData2.data) {
+const message = responseData2.data;
+const source2 = 'auto'
+const target2 = 'lus'
+const athu2 = `${message}`
+const mizotranslation2 = await mizo_tawnga_translate_na.translate(source1, target1, athu1)
+const me = m.sender;
+await HBWABotInc.sendMessage(m.chat, { text: mizotranslation2, mentions: [me] }, { quoted: m });
+  } else {
+reply("Sorry, tunah hian API pahnih te atangin chhanna ka la thei lo.");
+  }
+}
+} catch (error) {
+console.error(error);
+reply("API pahnihte atanga chhanna ka lak chhuah laiin error a awm");
 }
 }
-break
- case 'ai3': case 'openai3': {
- if (!q) return replyherbertstyle(`Ai nen a in biakna\n\nTiang hian i hmang ang:\n${prefix + command} Tunge mizoram chief minister?`)
-  await robotreact();
-  const apiKey = global.keyopenai;
-  const apiEndpoint = 'https://api.openai.com/v1/engines/davinci/completions';
-  const source = 'auto';
-  const target = 'lus';
-  const inputText = `${q}`;
-  const mizotranslation = await mizo_tawnga_translate_na.translate(source, target, inputText);
-    const prompt = `${mizotranslation}`;
-    const requestData = {
-      prompt: prompt,
-      max_tokens: 2000,
-    };
-    const headers = {
-      'Authorization': `Bearer ${apiKey}`,
-      'Content-Type': 'application/json',
-    };
-    const response = await axios.post(apiEndpoint, requestData, { headers });
-    const generatedText = response.data.choices[0].text;
-    console.log('Generated Text:');
-    console.log(generatedText);
-    const source1 = 'auto';
-    const target1 = 'lus';
-    const generatedTranslation = await mizo_tawnga_translate_na.translate(source1, target1, generatedText);
-    await HBWABotInc.sendMessage(from, { text: generatedTranslation }, { quoted: m });
-}
-break 
+break;
+
 
 			case 'gimage': {
                 if (!text) return replyherbertstyle(`_🤖Kha tiang ringawt loh khan tiang hian type tur_\n*⟨Entir nan :* ${prefix + command} Mizoram`)
