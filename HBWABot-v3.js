@@ -1846,7 +1846,7 @@ if (!quoted) return replyherbertstyle(`Thlalak rawn dah rawh`)
 }
 break 		
 
-case 'ai': case 'openai': {
+case 'openai': {
 if (!text) return replyherbertstyle(`Ai nen a in biakna\n\nTiang hian i hmang ang:\n${prefix + command} Tunge mizoram chief minister?`)
 await robotreact()
 const { openai } = require('betabotz-tools') 
@@ -1886,8 +1886,9 @@ const mizotranslation = await mizo_tawnga_translate_na.translate(source, target,
 await HBWABotInc.sendMessage(from, { text: mizotranslation }, { quoted: m })
 }
   break 
-  case 'ai3': case 'gpt':{
-if (!q) return replyherbertstyle(`Ai nen a in biakna\n\nTiang hian i hmang ang:\n${prefix + command} ChatGpt hi eng nge a nih min hrilh fiah thei em?.`);
+  case 'ai': case 'gpt':{
+if (!q) return replyherbertstyle(`_🤖Ai nen a in biakna_\n\nTiang hian i hmang ang:\n*${prefix + command} ChatGpt hi eng nge a nih min hrilh fiah thei em?.*`);
+await robotreact()
 const source = 'auto'
 const target = 'en'
 const athu = `${q}`
